@@ -1,6 +1,9 @@
 // Modules
 import React from "react";
 
+// Styles
+import "suankularb-components/dist/css/suankularb-components.min.css"
+
 export interface NavigationProps {
   currentPath: string;
   navItems: Array<{
@@ -10,6 +13,11 @@ export interface NavigationProps {
   }>;
 }
 
+/**
+ * A responsive Navigation bar
+ * @param currentPath The current path of the application, can include queries and fragments
+ * @param navItems A list of navigation items, each consists of name, icon, and URL; should not be longer than 5 items
+ */
 const Navigation = ({ currentPath, navItems }: NavigationProps) => {
   // Removes queries and fragments
   const cleanedCurrentPath = currentPath.split(/\?|#/)[0];
