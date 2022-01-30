@@ -26,7 +26,7 @@ const HeaderIcons = ({
     backIcon ? (
       // If backIcon is a string, render Material Icon of that string
       typeof backIcon == "string" ? (
-        <i className="icon header__icons__page" translate="no">
+        <i className="icon" translate="no">
           {backIcon}
         </i>
       ) : (
@@ -35,7 +35,7 @@ const HeaderIcons = ({
       )
     ) : (
       // Default
-      <i className="icon header__icons__page" translate="no">
+      <i className="icon" translate="no">
         arrow_back
       </i>
     );
@@ -43,12 +43,12 @@ const HeaderIcons = ({
     <div className="header__icons">
       {LinkElement ? (
         <LinkElement href={backGoesTo}>
-          <a>
+          <a className="header__icons__page">
             <BackIconElement />
           </a>
         </LinkElement>
       ) : (
-        <a href={backGoesTo}>
+        <a href={backGoesTo} className="header__icons__page">
           <BackIconElement />
         </a>
       )}
@@ -63,10 +63,20 @@ const HeaderIcons = ({
   );
 };
 
+export interface HeaderProps {
+  name: { title: string; subtitle?: string };
+  pageIcon: JSX.Element | string;
+  backGoesTo: string;
+  backIcon?: JSX.Element;
+  LinkElement?: LinkElementType;
+  className?: string;
+  style?: React.CSSProperties;
+}
+
 /**
  * Header summarises what the page is about in very few words
- * 
- * Header requires a background gradient, apply background gradient with a class or a style entry 
+ *
+ * Header requires a background gradient, apply background gradient with a class or a style entry
  * @param name.title The name of the page
  * @param name.subtitle Some more info about the page (i.e. the type of the page)
  * @param pageIcon The icon that symobolises the page
@@ -82,16 +92,8 @@ const Header = ({
   LinkElement,
   className,
   style,
-}: {
-  name: { title: string; subtitle?: string };
-  pageIcon: JSX.Element | string;
-  backGoesTo: string;
-  backIcon?: JSX.Element;
-  LinkElement?: LinkElementType;
-  className?: string;
-  style?: React.CSSProperties;
-}) => (
-  <header className={`header ${className}`} style={style}>
+}: HeaderProps) => (
+  <header className={`header ${className || ""}`} style={style}>
     <HeaderIcons
       pageIcon={pageIcon}
       backGoesTo={backGoesTo}

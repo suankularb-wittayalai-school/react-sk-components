@@ -1,7 +1,7 @@
 // Modules
 import { ReactNode } from "react";
 
-export type  LinkElement = ({
+export type LinkElement = ({
   href,
   children,
 }: {
