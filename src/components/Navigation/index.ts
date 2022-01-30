@@ -1,4 +1,2 @@
 export { default } from "@components/Navigation/Navigation";
-
-import NextNavigation from "@components/Navigation/NextNavigation";
-export { NextNavigation };
+export { default as NextNavigation } from "@components/Navigation/NextNavigation";;
