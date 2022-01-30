@@ -4,6 +4,13 @@ import React from "react";
 // Types
 import { LinkElement as LinkElementType } from "@utils/types/elements";
 
+/**
+ * The Icons section of Header, shaped like a pill
+ * @param pageIcon The icon that symobolises the page
+ * @param backGoesTo The link in which clicking Back icon will lead to
+ * @param backIcon The Back icon
+ * @param LinkElement The element wrapping the Anchor (i.e. `Link` from `next/link`)
+ */
 const HeaderIcons = ({
   pageIcon,
   backGoesTo,

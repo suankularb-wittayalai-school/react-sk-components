@@ -9,6 +9,7 @@ import Navigation from "@components/Navigation";
 import "suankularb-components/dist/css/suankularb-components.min.css"
 
 // Types
+import { LinkElement as LinkElementType } from "@utils/types/elements";
 import { NavItem } from "@utils/types/navigation";
 
 /**
@@ -23,6 +24,7 @@ const PageLayout = ({
 }: {
   currentPath: string;
   navItems: Array<NavItem>;
+  LinkElement?: LinkElementType;
   children: ReactNode;
 }) => (
   <div className="page-layout">
