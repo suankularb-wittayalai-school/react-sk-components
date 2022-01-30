@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/suankularb-wittayalai-school/react-sk-components#readme",
   "dependencies": {
+    "next": "^12.0.9",
     "suankularb-components": "^1.0.0"
   },
   "devDependencies": {
