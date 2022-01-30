@@ -7,16 +7,15 @@ import Header from "@components/Header";
 // Types
 import { HeaderProps } from "@components/Header/Header";
 
+export interface RegularLayoutProps {
+  header: HeaderProps;
+  children: ReactNode;
+}
+
 /**
  * Transforms Markdown into a Content Layout
  */
-const RegularLayout = ({
-  header,
-  children,
-}: {
-  header: HeaderProps;
-  children: ReactNode;
-}) => (
+const RegularLayout = ({ header, children }: RegularLayoutProps) => (
   <>
     {/* Header */}
     <Header

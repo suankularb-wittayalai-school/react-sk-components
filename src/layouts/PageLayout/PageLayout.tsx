@@ -12,21 +12,19 @@ import "suankularb-components/dist/css/suankularb-components.min.css";
 import { LinkElement as LinkElementType } from "@utils/types/elements";
 import { NavItem } from "@utils/types/navigation";
 
+export interface PageLayoutTypes {
+  currentPath: string;
+  navItems: Array<NavItem>;
+  LinkElement?: LinkElementType;
+  children: ReactNode;
+}
+
 /**
  * The layout shared among all pages
  * @param currentPath The current path of the application, can include queries and fragments
  * @param navItems A list of navigation items, each consists of name, icon, and URL; should not be longer than 5 items
  */
-const PageLayout = ({
-  currentPath,
-  navItems,
-  children,
-}: {
-  currentPath: string;
-  navItems: Array<NavItem>;
-  LinkElement?: LinkElementType;
-  children: ReactNode;
-}) => (
+const PageLayout = ({ currentPath, navItems, children }: PageLayoutTypes) => (
   <div className="page-layout">
     <Navigation currentPath={currentPath} navItems={navItems} />
     {children}

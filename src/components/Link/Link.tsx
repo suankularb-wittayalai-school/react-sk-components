@@ -4,20 +4,17 @@ import React, { ReactNode } from "react";
 // Styles
 import "suankularb-components/dist/css/suankularb-components.min.css";
 
+// Types
+import { LinkElement as LinkElementType } from "@utils/types/elements";
+
 export interface LinkProps {
   name: string;
   type: "filled" | "outlined" | "text";
   icon?: JSX.Element;
   url: string;
-  LinkElement?: ({
-    href,
-    children,
-  }: {
-    href: string;
-    children: ReactNode;
-  }) => JSX.Element;
+  LinkElement?: LinkElementType;
   style?: React.CSSProperties;
-  attr?: React.AnchorHTMLAttributes<HTMLAnchorElement>
+  attr?: React.AnchorHTMLAttributes<HTMLAnchorElement>;
 }
 
 /**
@@ -28,17 +25,25 @@ export interface LinkProps {
  * @param url The location of the page this Link Button leads to
  * @param LinkElement The element wrapping the Anchor (i.e. `Link` from `next/link`)
  */
-const LinkButton = ({ name, type, icon, url, LinkElement, style, attr }: LinkProps) =>
+const LinkButton = ({
+  name,
+  type,
+  icon,
+  url,
+  LinkElement,
+  style,
+  attr,
+}: LinkProps) =>
   LinkElement ? (
     <LinkElement href={url}>
       <a
-        className={
-          `${type == "outlined"
+        className={`${
+          type == "outlined"
             ? "btn-outlined"
             : type == "text"
             ? "btn--text"
-            : "btn--filled"}`
-        }
+            : "btn--filled"
+        }`}
         style={style}
       >
         {icon}

@@ -5,8 +5,23 @@ import React, { useState } from "react";
 import Header from "@components/Header";
 import Search from "@components/Input/Search";
 
-//Types
+// Types
 import { HeaderProps } from "@components/Header/Header";
+
+export interface ListLayoutProps {
+  header: HeaderProps;
+  listGroups: Array<{ groupName: string; content: Array<{}> }>;
+  ItemElement: ({
+    className,
+    content,
+  }: {
+    className: string;
+    content: {};
+  }) => JSX.Element;
+  ActiveItemElement: ({ content }: { content: any }) => JSX.Element;
+  fetchItem: Function;
+  defaultActiveID?: number;
+}
 
 /**
  * The complete layout for List Layout, contains List Section and Main Section
@@ -23,20 +38,7 @@ const ListLayout = ({
   ActiveItemElement,
   fetchItem,
   defaultActiveID,
-}: {
-  header: HeaderProps;
-  listGroups: Array<{ groupName: string; content: Array<{}> }>;
-  ItemElement: ({
-    className,
-    content,
-  }: {
-    className: string;
-    content: {};
-  }) => JSX.Element;
-  ActiveItemElement: ({ content }: { content: any }) => JSX.Element;
-  fetchItem: Function;
-  defaultActiveID?: number;
-}) => {
+}: ListLayoutProps) => {
   const [activeID, setActiveID] = useState<number>(defaultActiveID || 0);
   const [activeItem, setActiveItem] = useState<any>();
 

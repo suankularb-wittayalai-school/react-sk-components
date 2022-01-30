@@ -4,19 +4,17 @@ import React, { useState } from "react";
 // Styles
 import "suankularb-components/dist/css/suankularb-components.min.css";
 
+export interface SearchProps {
+  placeholder?: string;
+  onChange?: Function;
+  onSubmit?: Function;
+}
+
 /**
  * A place for the user to search for something
  * @param placeholder Placeholder text, disappears when user starts typing
  */
-const Search = ({
-  placeholder,
-  onChange,
-  onSubmit,
-}: {
-  placeholder?: string;
-  onChange?: Function;
-  onSubmit?: Function;
-}) => {
+const Search = ({ placeholder, onChange, onSubmit }: SearchProps) => {
   const [query, setQuery] = useState<string>("");
 
   return (
