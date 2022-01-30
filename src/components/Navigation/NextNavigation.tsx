@@ -1,6 +1,6 @@
 // Modules
-import React from "react";
 import Link from "next/link";
+import React from "react";
 
 // Styles
 import "suankularb-components/dist/css/suankularb-components.min.css"
