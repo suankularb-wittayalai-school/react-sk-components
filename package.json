@@ -11,7 +11,9 @@
     "url": "git+https://github.com/suankularb-wittayalai-school/react-sk-components.git"
   },
   "keywords": [
-    "react"
+    "react",
+    "component",
+    "suankularb"
   ],
   "author": "Suankularb Wittayalai School",
   "license": "MIT",
@@ -20,7 +22,7 @@
   },
   "homepage": "https://github.com/suankularb-wittayalai-school/react-sk-components#readme",
   "dependencies": {
-    "suankularb-components": "^1.0.0"
+    "suankularb-components": "^1.1.1"
   },
   "devDependencies": {
     "@types/react": "^17.0.38",

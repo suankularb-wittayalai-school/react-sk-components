@@ -9,6 +9,7 @@ export interface ButtonProps {
   type: "filled" | "outlined" | "text";
   icon?: JSX.Element;
   onClick: Function;
+  attr: React.ButtonHTMLAttributes<HTMLButtonElement>;
 }
 
 /**
@@ -17,7 +18,7 @@ export interface ButtonProps {
  * @param type The type of the button, can be "filled" | "outlined" | "text"
  * @param icon An icon in the form of a JSX Element, will be placed in front of the text
  */
-const Button = ({ name, type, icon }: ButtonProps) => (
+const Button = ({ name, type, icon, onClick, attr }: ButtonProps) => (
   <button
     className={
       type == "outlined"
@@ -26,6 +27,18 @@ const Button = ({ name, type, icon }: ButtonProps) => (
         ? "btn--text"
         : "btn--filled"
     }
+    autoFocus={attr.autoFocus}
+    disabled={attr.disabled}
+    form={attr.form}
+    formAction={attr.formAction}
+    formEncType={attr.formEncType}
+    formMethod={attr.formMethod}
+    formNoValidate={attr.formNoValidate}
+    formTarget={attr.formTarget}
+    name={attr.name}
+    type={attr.type}
+    value={attr.value}
+    onClick={() => onClick()}
   >
     {icon}
     <span>{name}</span>
