@@ -43,22 +43,24 @@ const HeaderIcons = ({
     <div className="header__icons">
       {LinkElement ? (
         <LinkElement href={backGoesTo}>
-          <a className="header__icons__page">
+          <a className="header__icons__abck">
             <BackIconElement />
           </a>
         </LinkElement>
       ) : (
-        <a href={backGoesTo} className="header__icons__page">
+        <a href={backGoesTo} className="header__icons__back">
           <BackIconElement />
         </a>
       )}
-      {typeof pageIcon == "string" ? (
-        <i className="icon header__icons__page" translate="no">
-          {pageIcon}
-        </i>
-      ) : (
-        pageIcon
-      )}
+      <div className="header__icons__page">
+        {typeof pageIcon == "string" ? (
+          <i className="icon" translate="no">
+            {pageIcon}
+          </i>
+        ) : (
+          pageIcon
+        )}
+      </div>
     </div>
   );
 };
