@@ -3,41 +3,34 @@ import React from "react";
 
 // Types
 import { LinkElement as LinkElementType } from "@utils/types/elements";
+import { NavItem } from "@utils/types/navigation";
 
 // Styles
 import "suankularb-components/dist/css/suankularb-components.min.css";
 
 const NavigationItem = ({
-  cleanedCurrentPath,
+  active,
   navItem,
   LinkElement,
   attr,
 }: {
-  cleanedCurrentPath: string;
-  navItem: {
-    name: string;
-    icon: JSX.Element | {};
-    url: string;
-  };
+  active: boolean;
+  navItem: NavItem;
   LinkElement?: LinkElementType;
   attr?: React.AnchorHTMLAttributes<HTMLAnchorElement>;
-}) =>
+}): JSX.Element =>
   LinkElement ? (
     <LinkElement href={navItem.url}>
-      <a
-        className={`nav__item ${
-          cleanedCurrentPath == navItem.url ? "active" : ""
-        }`}
-      >
-        <div className="nav__item__icon">{navItem.icon}</div>
+      <a className={`nav__item ${active ? "active" : ""}`}>
+        <div className="nav__item__icon">
+          {active ? navItem.icon.active : navItem.icon.inactive}
+        </div>
         <span>{navItem.name}</span>
       </a>
     </LinkElement>
   ) : (
     <a
-      className={`nav__item ${
-        cleanedCurrentPath == navItem.url ? "active" : ""
-      }`}
+      className={`nav__item ${active ? "active" : ""}`}
       download={attr?.download}
       href={navItem.url}
       hrefLang={attr?.hrefLang}
@@ -48,18 +41,16 @@ const NavigationItem = ({
       type={attr?.type}
       referrerPolicy={attr?.referrerPolicy}
     >
-      <div className="nav__item__icon">{navItem.icon}</div>
+      <div className="nav__item__icon">
+        {active ? navItem.icon.active : navItem.icon.inactive}
+      </div>
       <span>{navItem.name}</span>
     </a>
   );
 
 export interface NavigationProps {
   currentPath: string;
-  navItems: Array<{
-    name: string;
-    icon: JSX.Element | {};
-    url: string;
-  }>;
+  navItems: Array<NavItem>;
   LinkElement?: LinkElementType;
   attr?: React.AnchorHTMLAttributes<HTMLAnchorElement>;
 }
@@ -74,7 +65,7 @@ const Navigation = ({
   navItems,
   LinkElement,
   attr,
-}: NavigationProps) => {
+}: NavigationProps): JSX.Element => {
   // Removes queries and fragments
   const cleanedCurrentPath = currentPath.split(/\?|#/)[0];
 
@@ -82,7 +73,7 @@ const Navigation = ({
     <nav className="nav">
       {navItems.map((navItem) => (
         <NavigationItem
-          cleanedCurrentPath={cleanedCurrentPath}
+          active={cleanedCurrentPath == navItem.url}
           navItem={navItem}
           LinkElement={LinkElement}
           attr={attr}
