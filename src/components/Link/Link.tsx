@@ -1,5 +1,5 @@
 // Modules
-import React, { ReactNode } from "react";
+import React from "react";
 
 // Styles
 import "suankularb-components/dist/css/suankularb-components.min.css";

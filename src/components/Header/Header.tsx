@@ -1,6 +1,9 @@
 // Modules
 import React from "react";
 
+// Styles
+import "suankularb-components/dist/css/suankularb-components.min.css";
+
 // Types
 import { LinkElement as LinkElementType } from "@utils/types/elements";
 

@@ -1,6 +1,9 @@
 // Modules
 import React, { useState } from "react";
 
+// Styles
+import "suankularb-components/dist/css/suankularb-components.min.css";
+
 export interface NativeInputProps {
   name: string;
   type: "color" | "date" | "datetime-local" | "month" | "time" | "week";

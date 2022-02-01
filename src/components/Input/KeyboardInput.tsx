@@ -1,6 +1,9 @@
 // Modules
 import React, { useState } from "react";
 
+// Styles
+import "suankularb-components/dist/css/suankularb-components.min.css";
+
 export interface KeyboardInputProps {
   name: string;
   type: "email" | "number" | "password" | "tel" | "text" | "url";

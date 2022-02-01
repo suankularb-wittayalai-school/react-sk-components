@@ -8,6 +8,9 @@ import { NavItem } from "@utils/types/navigation";
 // Styles
 import "suankularb-components/dist/css/suankularb-components.min.css";
 
+/**
+ * An item inside of Navigation Bar
+ */
 const NavigationItem = ({
   active,
   navItem,

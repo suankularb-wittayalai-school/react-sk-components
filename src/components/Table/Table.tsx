@@ -1,4 +1,9 @@
+// Module
 import React, { ReactNode } from "react";
+
+// Styles
+import "suankularb-components/dist/css/suankularb-components.min.css";
+
 
 export interface TableProps {
   type?: "outlined" | "elevated";
