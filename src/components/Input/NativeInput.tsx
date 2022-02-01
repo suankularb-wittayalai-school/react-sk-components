@@ -3,12 +3,27 @@ import React, { useState } from "react";
 
 export interface NativeInputProps {
   name: string;
-  type: "color" | "date" | "datetime-local" | "month" | "time";
+  type: "color" | "date" | "datetime-local" | "month" | "time" | "week";
   label: string;
   defaultValue?: string | number;
   attr?: React.InputHTMLAttributes<HTMLInputElement>;
 }
 
+/**
+ * Native Input is meant for inputs that have native UIs
+ * 
+ * @param name Used for ID
+ * 
+ * @param type `input` element type, Keyboard Input supports
+ * 
+ * ```ts
+ * "color" | "date" | "datetime-local" | "month" | "time" | "week"
+ * ```
+ * 
+ * @param label The display label/placeholder
+ * 
+ * @param defaultValue The value that already is in the `input` element
+ */
 const NativeInput = ({
   name,
   type,
