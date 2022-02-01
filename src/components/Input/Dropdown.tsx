@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import MaterialIcon from "@components/Icon/MaterialIcon";
 
 // Styles
-import "suankularb-components/dist/css/suankularb-components.min.css";
+import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 // Type
 import { DropdownOption as DropdownOptionType } from "@utils/types/input";
