@@ -6,7 +6,7 @@ import { ReactNode } from "react";
 import Navigation from "@components/Navigation";
 
 // Styles
-import "suankularb-components/dist/css/suankularb-components.min.css";
+import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 // Types
 import { LinkElement as LinkElementType } from "@utils/types/elements";

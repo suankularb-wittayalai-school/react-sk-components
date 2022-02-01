@@ -1,5 +1,5 @@
 {
-  "name": "react-suankularb-components",
+  "name": "@suankularb-components/react",
   "version": "0.1.0",
   "description": "A React implementation of Suankularb Components",
   "main": "src/index.js",
@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/suankularb-wittayalai-school/react-sk-components#readme",
   "dependencies": {
-    "suankularb-components": "^1.1.1"
+    "@suankularb-components/css": "^1.1.1",
+    "framer-motion": "^6.2.3"
   },
   "devDependencies": {
     "@types/react": "^17.0.38",
