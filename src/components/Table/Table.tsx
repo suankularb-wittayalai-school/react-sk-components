@@ -4,13 +4,17 @@ import React, { ReactNode } from "react";
 // Styles
 import "suankularb-components/dist/css/suankularb-components.min.css";
 
-
 export interface TableProps {
   type?: "outlined" | "elevated";
   width?: number;
   children: ReactNode;
 }
 
+/**
+ * Table reacts to small screens by letting its content scroll once Table is smaller that the minimum width
+ * @param type "outlined" | "elevated"
+ * @param width The minimum width of the table content
+ */
 const Table = ({ type, width, children }: TableProps): JSX.Element => (
   <div
     className={
