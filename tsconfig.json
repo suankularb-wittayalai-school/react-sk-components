@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
     /* Language and Environment */
-    "target": "es2016",
+    "lib": ["es6", "dom", "es2017"],
+    "target": "es5",
     "jsx": "react",
 
     /* Modules */
-    "module": "ESNext",
+    "module": "commonjs",
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
@@ -19,7 +20,6 @@
     "emitDeclarationOnly": true,
     "sourceMap": true,
     "outDir": "dist",
-    "declarationDir": "types",
 
     /* Interop Constraints */
     "allowSyntheticDefaultImports": true,
@@ -31,5 +31,7 @@
 
     /* Completeness */
     "skipLibCheck": true
-  }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "**/__tests__/*"]
 }
