@@ -22,6 +22,7 @@ const Dropdown = ({ options, icon }: DropdownProps): JSX.Element => {
         aria-haspopup="listbox"
         className="dropdown__button"
         onClick={() => setShowList(!showList)}
+        onBlur={() => setShowList(false)}
         role="combobox"
       >
         <span>Selected Item</span>
