@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/suankularb-wittayalai-school/react-sk-components#readme",
   "dependencies": {
+    "framer-motion": "^6.2.3",
     "suankularb-components": "^1.1.1"
   },
   "devDependencies": {

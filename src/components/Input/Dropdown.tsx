@@ -4,15 +4,61 @@ import React, { useState } from "react";
 // Components
 import MaterialIcon from "@components/Icon/MaterialIcon";
 
+// Type
+import { DropdownOption as DropdownOptionType } from "@utils/types/input";
+
+/**
+ * Displays the options for the dropdown
+ */
+const DropdownOptions = ({
+  options,
+  noShowSelected,
+  selectedItemValue,
+  optionOnClick,
+  noOptionsText,
+}: {
+  options: Array<DropdownOptionType>;
+  noShowSelected: boolean;
+  selectedItemValue: any;
+  optionOnClick: (optionValue: any) => void;
+  noOptionsText?: string;
+}) => (
+  <div className="dropdown__options" role="listbox">
+    {options.length == 0 ? (
+      <button disabled>{noOptionsText || "No options"}</button>
+    ) : (
+      options.map((option) =>
+        noShowSelected && selectedItemValue === option.value ? (
+          <button aria-selected="true" className="selected" role="option">
+            {option.label}
+          </button>
+        ) : (
+          <button aria-selected="false" onClick={optionOnClick} role="option">
+            {option.label}
+          </button>
+        )
+      )
+    )}
+  </div>
+);
+
 export interface DropdownProps {
   name: string;
   label: string;
   options: Array<{ value: any; label: string }>;
   placeholder?: string;
-  noOptionsText?: boolean;
+  noOptionsText?: string;
   icon?: { expandMore: JSX.Element; expandLess: JSX.Element };
 }
 
+/**
+ * A custom but accessible Dropdown
+ * @param name Used for ID
+ * @param label The display label/placeholder
+ * @param options An array of options for the Dropdown Options
+ * @param placeholder Displays when the user hasn’t selected
+ * @param noOptionsText Displays when there is no options
+ */
 const Dropdown = ({
   name,
   label,
@@ -29,6 +75,7 @@ const Dropdown = ({
 
   return (
     <div className={`dropdown ${showList ? "show" : ""}`}>
+      {/* This button toggles the Dropdown Options */}
       <button
         aria-expanded={showList}
         aria-haspopup="listbox"
@@ -37,46 +84,47 @@ const Dropdown = ({
         role="combobox"
       >
         <span>
-          {hasBeenSelected || !placeholder
-            ? options.find((option) => selectedItemValue === option.value)
-                ?.label || placeholder
-            : placeholder}
+          {
+            // Displays placeholder if placeholder exists until the user selects an option
+            // If not, the first option or noOptionsText is displayed
+            hasBeenSelected || !placeholder
+              ? options.length == 0
+                ? noOptionsText || "No options"
+                : options.find((option) => selectedItemValue === option.value)
+                    ?.label || placeholder
+              : placeholder
+          }
         </span>
+
         <div className="dropdown__icon">
           {showList
             ? icon?.expandLess || <MaterialIcon icon="expand_less" />
             : icon?.expandMore || <MaterialIcon icon="expand_more" />}
         </div>
       </button>
+
       {showList && (
         <div className="dropdown__options" role="listbox">
           {options.length == 0 ? (
             <button disabled>{noOptionsText || "No options"}</button>
           ) : (
-            options.map((option) =>
-              hasBeenSelected && selectedItemValue === option.value ? (
-                <button aria-selected="true" className="selected" role="option">
-                  {option.label}
-                </button>
-              ) : (
-                <button
-                  aria-selected="false"
-                  onClick={() => {
-                    if (!hasBeenSelected) {
-                      setHasBeenSelected(true);
-                    }
-                    setSelectedItemValue(option.value);
-                    setShowList(false);
-                  }}
-                  role="option"
-                >
-                  {option.label}
-                </button>
-              )
-            )
+            <DropdownOptions
+              options={options}
+              noShowSelected={hasBeenSelected}
+              selectedItemValue={selectedItemValue}
+              optionOnClick={(optionValue) => {
+                if (!hasBeenSelected) {
+                  setHasBeenSelected(true);
+                }
+                setSelectedItemValue(optionValue);
+                setShowList(false);
+              }}
+              noOptionsText={noOptionsText}
+            />
           )}
         </div>
       )}
+
       <label className="dropdown__label" htmlFor={name}>
         {label}
       </label>

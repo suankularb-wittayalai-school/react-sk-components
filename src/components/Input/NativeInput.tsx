@@ -20,7 +20,7 @@ export interface NativeInputProps {
  * "color" | "date" | "datetime-local" | "month" | "time" | "week"
  * ```
  * 
- * @param label The display label/placeholder
+ * @param label The display label
  * 
  * @param defaultValue The value that already is in the `input` element
  */
