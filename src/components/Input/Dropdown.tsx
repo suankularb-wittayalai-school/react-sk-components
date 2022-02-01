@@ -1,36 +1,57 @@
 // Modules
 import React, { useState } from "react";
 
-const Dropdown = (): JSX.Element => {
+// Components
+import MaterialIcon from "@components/Icon/MaterialIcon";
+
+export interface DropdownProps {
+  options: Array<{ value: any; label: string }>;
+  icon?: { expandMore: JSX.Element; expandLess: JSX.Element };
+}
+
+const Dropdown = ({ options, icon }: DropdownProps): JSX.Element => {
   const [showList, setShowList] = useState<boolean>(false);
+  const [selectedItemValue, setSelectedItemValue] = useState<any>(
+    options.length > 0 ? options[0].value : undefined
+  );
 
   return (
     <div className={`dropdown ${showList ? "show" : ""}`}>
       <button
+        aria-expanded={showList}
         aria-haspopup="listbox"
         className="dropdown__button"
         onClick={() => setShowList(!showList)}
         role="combobox"
       >
         <span>Selected Item</span>
-        <i className="icon dropdown__icon">expand_more</i>
+        <div className="dropdown__icon">
+          {showList ? (
+            <MaterialIcon icon="expand_less" />
+          ) : (
+            <MaterialIcon icon="expand_more" />
+          )}
+        </div>
       </button>
-
-      <div className="dropdown__options" role="listbox">
-        <button aria-selected="false" role="option">
-          Item 1
-        </button>
-        <button aria-selected="true" role="option" className="selected">
-          Selected Item
-        </button>
-        <button aria-selected="false" role="option">
-          Item 3
-        </button>
-        <button aria-selected="false" role="option">
-          Item 4
-        </button>
-      </div>
-
+      {showList && (
+        <div className="dropdown__options" role="listbox">
+          {options.length == 0 ? (
+            <button disabled>No options</button>
+          ) : (
+            options.map((option) =>
+              selectedItemValue === option.value ? (
+                <button aria-selected="true" role="option" className="selected">
+                  {option.label}
+                </button>
+              ) : (
+                <button aria-selected="false" role="option">
+                  {option.label}
+                </button>
+              )
+            )
+          )}
+        </div>
+      )}
       <div className="dropdown__label">Label</div>
     </div>
   );
