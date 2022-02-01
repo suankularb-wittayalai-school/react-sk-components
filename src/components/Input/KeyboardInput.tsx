@@ -16,15 +16,15 @@ export interface KeyboardInputProps {
  * 
  * @param name Used for ID
  * 
- * @param type Input element type, Keyboard Input supports
+ * @param type `input` element type, Keyboard Input supports
  * 
  * ```ts
  * "email" | "number" | "password" | "tel" | "text" | "url"
  * ```
  * 
- * @param label 
+ * @param label The display label/placeholder
  * 
- * @param defaultValue 
+ * @param defaultValue The value that already is in the `input` element
  */
 const KeyboardInput = ({
   name,
