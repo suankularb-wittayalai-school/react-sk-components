@@ -1,5 +1,5 @@
 // Modules
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // Styles
 import "suankularb-components/dist/css/suankularb-components.min.css";
@@ -8,33 +8,37 @@ export interface NativeInputProps {
   name: string;
   type: "color" | "date" | "datetime-local" | "month" | "time" | "week";
   label: string;
+  onChange?: Function;
   defaultValue?: string | number;
   attr?: React.InputHTMLAttributes<HTMLInputElement>;
 }
 
 /**
  * Native Input is meant for inputs that have native UIs
- * 
+ *
  * @param name Used for ID
- * 
+ *
  * @param type `input` element type, Keyboard Input supports
- * 
+ *
  * ```ts
  * "color" | "date" | "datetime-local" | "month" | "time" | "week"
  * ```
- * 
+ *
  * @param label The display label
- * 
+ *
  * @param defaultValue The value that already is in the `input` element
  */
 const NativeInput = ({
   name,
   type,
   label,
+  onChange,
   defaultValue,
   attr,
 }: NativeInputProps): JSX.Element => {
   const [inputValue, setInputValue] = useState(defaultValue);
+
+  useEffect(() => onChange && onChange(inputValue), [inputValue]);
 
   return (
     <div className="input--persistent">

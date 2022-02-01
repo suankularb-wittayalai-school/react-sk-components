@@ -1,5 +1,5 @@
 // Modules
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // Styles
 import "suankularb-components/dist/css/suankularb-components.min.css";
@@ -8,6 +8,7 @@ export interface KeyboardInputProps {
   name: string;
   type: "email" | "number" | "password" | "tel" | "text" | "url";
   label: string;
+  onChange: Function;
   defaultValue?: string | number;
   attr?: React.InputHTMLAttributes<HTMLInputElement>;
 }
@@ -33,11 +34,14 @@ const KeyboardInput = ({
   name,
   type,
   label,
+  onChange,
   defaultValue,
   attr,
 }: KeyboardInputProps): JSX.Element => {
   const [inputValue, setInputValue] = useState(defaultValue);
 
+  useEffect(() => onChange && onChange(inputValue), [inputValue]);
+  
   return (
     <div className="input">
       <input
