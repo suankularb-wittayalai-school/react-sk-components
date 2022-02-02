@@ -8,6 +8,8 @@ export interface FileInputProps {
   name: string;
   label: string;
   onChange?: Function;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 /**
@@ -15,13 +17,19 @@ export interface FileInputProps {
  * @param name Used for ID
  * @param label The display label
  */
-const FileInput = ({ name, label, onChange }: FileInputProps) => {
+const FileInput = ({
+  name,
+  label,
+  onChange,
+  className,
+  style,
+}: FileInputProps) => {
   const [file, setFile] = useState<File>();
 
   useEffect(() => onChange && onChange(file), [file]);
 
   return (
-    <div className="input--file">
+    <div className={`input--file ${className}`} style={style}>
       <input
         id={name}
         type="file"

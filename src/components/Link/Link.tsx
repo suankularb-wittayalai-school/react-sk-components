@@ -5,7 +5,7 @@ import React from "react";
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 // Types
-import { LinkElement as LinkElementType } from "@utils/types/elements";
+import { LinkElement as LinkElementType } from "../../utils/types";
 
 export interface LinkProps {
   name: string;
@@ -13,6 +13,7 @@ export interface LinkProps {
   icon?: JSX.Element;
   url: string;
   LinkElement?: LinkElementType;
+  className?: string;
   style?: React.CSSProperties;
   attr?: React.AnchorHTMLAttributes<HTMLAnchorElement>;
 }
@@ -31,6 +32,7 @@ const LinkButton = ({
   icon,
   url,
   LinkElement,
+  className,
   style,
   attr,
 }: LinkProps) =>
@@ -39,11 +41,11 @@ const LinkButton = ({
       <a
         className={`${
           type == "outlined"
-            ? "btn-outlined"
+            ? "btn--outlined"
             : type == "text"
             ? "btn--text"
             : "btn--filled"
-        }`}
+        } ${className}`}
         style={style}
       >
         {icon}
@@ -52,13 +54,13 @@ const LinkButton = ({
     </LinkElement>
   ) : (
     <a
-      className={
+      className={`${
         type == "outlined"
-          ? "btn-outlined"
+          ? "btn--outlined"
           : type == "text"
           ? "btn--text"
           : "btn--filled"
-      }
+      } ${className}`}
       download={attr?.download}
       href={url}
       hrefLang={attr?.hrefLang}

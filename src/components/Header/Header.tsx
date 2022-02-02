@@ -5,7 +5,7 @@ import React from "react";
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 // Types
-import { LinkElement as LinkElementType } from "@utils/types/elements";
+import { LinkElement as LinkElementType } from "../../utils/types";
 
 /**
  * The Icons section of Header, shaped like a pill

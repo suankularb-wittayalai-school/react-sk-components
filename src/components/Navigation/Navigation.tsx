@@ -2,8 +2,8 @@
 import React from "react";
 
 // Types
-import { LinkElement as LinkElementType } from "@utils/types/elements";
-import { NavItem } from "@utils/types/navigation";
+import { LinkElement as LinkElementType } from "../../utils/types";
+import { NavItem } from "../../utils/types";
 
 // Styles
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
@@ -55,6 +55,8 @@ export interface NavigationProps {
   currentPath: string;
   navItems: Array<NavItem>;
   LinkElement?: LinkElementType;
+  className?: string;
+  style?: React.CSSProperties;
   attr?: React.AnchorHTMLAttributes<HTMLAnchorElement>;
 }
 
@@ -67,13 +69,15 @@ const Navigation = ({
   currentPath,
   navItems,
   LinkElement,
+  className,
+  style,
   attr,
 }: NavigationProps): JSX.Element => {
   // Removes queries and fragments
   const cleanedCurrentPath = currentPath.split(/\?|#/)[0];
 
   return (
-    <nav className="nav">
+    <nav className={`nav ${className}`} style={style}>
       {navItems.map((navItem) => (
         <NavigationItem
           active={cleanedCurrentPath == navItem.url}

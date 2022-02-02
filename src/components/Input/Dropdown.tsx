@@ -3,16 +3,16 @@ import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
 
 // Components
-import MaterialIcon from "@components/Icon/MaterialIcon";
+import MaterialIcon from "../Icon";
 
 // Styles
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 // Type
-import { DropdownOption as DropdownOptionType } from "@utils/types/input";
+import { DropdownOption as DropdownOptionType } from "../../utils/types/input";
 
 // Utils
-import { animationTransition } from "@utils/animations/config";
+import { animationTransition } from "../../utils/animations/config";
 
 /**
  * Displays the options for the dropdown
@@ -60,6 +60,8 @@ export interface DropdownProps {
   placeholder?: string;
   noOptionsText?: string;
   icon?: { expandMore: JSX.Element; expandLess: JSX.Element };
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 /**
@@ -77,6 +79,8 @@ const Dropdown = ({
   placeholder,
   noOptionsText,
   icon,
+  className,
+  style,
 }: DropdownProps): JSX.Element => {
   const [showList, setShowList] = useState<boolean>(false);
   const [hasBeenSelected, setHasBeenSelected] = useState<boolean>(false);
@@ -85,7 +89,10 @@ const Dropdown = ({
   );
 
   return (
-    <div className={`dropdown ${showList ? "show" : ""}`}>
+    <div
+      className={`dropdown ${showList ? "show" : ""} ${className}`}
+      style={style}
+    >
       {/* This button toggles the Dropdown Options */}
       <button
         aria-expanded={showList}

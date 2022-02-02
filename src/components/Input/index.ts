@@ -1,4 +1,4 @@
-export { default as Dropdown } from "@components/Input/Dropdown";
-export { default } from "@components/Input/KeyboardInput";
-export { default as NativeInput } from "@components/Input/NativeInput";
-export { default as Search } from "@components/Input/Search";
+export { default as Dropdown } from "./Dropdown";
+export { default } from "./KeyboardInput";
+export { default as NativeInput } from "./NativeInput";
+export { default as Search } from "./Search";

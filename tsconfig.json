@@ -6,7 +6,7 @@
     "jsx": "react",
 
     /* Modules */
-    "module": "commonjs",
+    "module": "esnext",
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
@@ -16,10 +16,10 @@
     },
 
     /* Emit */
-    "declaration": true,
-    "emitDeclarationOnly": true,
     "sourceMap": true,
-    "outDir": "dist",
+    "declaration": true,
+    "declarationDir": "dist/types",
+    "emitDeclarationOnly": true,
 
     /* Interop Constraints */
     "allowSyntheticDefaultImports": true,
@@ -32,6 +32,6 @@
     /* Completeness */
     "skipLibCheck": true
   },
-  "include": ["src"],
+  "include": ["src", "test.ts"],
   "exclude": ["node_modules", "**/__tests__/*"]
 }
