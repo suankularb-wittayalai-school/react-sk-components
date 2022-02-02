@@ -3,14 +3,14 @@ import React from "react";
 import { ReactNode } from "react";
 
 // Components
-import Navigation from "@components/Navigation";
+import Navigation from "../../components/Navigation";
 
 // Styles
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 // Types
-import { LinkElement as LinkElementType } from "@utils/types/elements";
-import { NavItem } from "@utils/types/navigation";
+import { LinkElement as LinkElementType } from "../../utils/types";
+import { NavItem } from "../../utils/types";
 
 export interface PageLayoutTypes {
   currentPath: string;
