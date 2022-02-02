@@ -17,9 +17,9 @@
 
     /* Emit */
     "declaration": true,
-    "emitDeclarationOnly": true,
     "sourceMap": true,
-    "outDir": "dist",
+    "outDir": "dist/esm",
+    "declarationDir": "dist/types",
 
     /* Interop Constraints */
     "allowSyntheticDefaultImports": true,
