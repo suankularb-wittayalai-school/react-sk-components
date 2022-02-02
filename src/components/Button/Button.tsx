@@ -2,14 +2,16 @@
 import React from "react";
 
 // Styles
-import "@suankularb-components/css/dist/css/suankularb-components.min.css"
+import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 export interface ButtonProps {
   name: string;
   type: "filled" | "outlined" | "text";
   icon?: JSX.Element;
   onClick: Function;
-  attr: React.ButtonHTMLAttributes<HTMLButtonElement>;
+  className?: string;
+  style?: React.CSSProperties;
+  attr?: React.ButtonHTMLAttributes<HTMLButtonElement>;
 }
 
 /**
@@ -18,26 +20,35 @@ export interface ButtonProps {
  * @param type The type of the button, can be "filled" | "outlined" | "text"
  * @param icon An icon in the form of a JSX Element, will be placed in front of the text
  */
-const Button = ({ name, type, icon, onClick, attr }: ButtonProps) => (
+const Button = ({
+  name,
+  type,
+  icon,
+  onClick,
+  className,
+  style,
+  attr,
+}: ButtonProps) => (
   <button
-    className={
+    autoFocus={attr?.autoFocus}
+    className={`${
       type == "outlined"
-        ? "btn-outlined"
+        ? "btn--outlined"
         : type == "text"
         ? "btn--text"
         : "btn--filled"
-    }
-    autoFocus={attr.autoFocus}
-    disabled={attr.disabled}
-    form={attr.form}
-    formAction={attr.formAction}
-    formEncType={attr.formEncType}
-    formMethod={attr.formMethod}
-    formNoValidate={attr.formNoValidate}
-    formTarget={attr.formTarget}
-    name={attr.name}
-    type={attr.type}
-    value={attr.value}
+    } ${className}`}
+    disabled={attr?.disabled}
+    form={attr?.form}
+    formAction={attr?.formAction}
+    formEncType={attr?.formEncType}
+    formMethod={attr?.formMethod}
+    formNoValidate={attr?.formNoValidate}
+    formTarget={attr?.formTarget}
+    name={attr?.name}
+    style={style}
+    type={attr?.type}
+    value={attr?.value}
     onClick={() => onClick()}
   >
     {icon}

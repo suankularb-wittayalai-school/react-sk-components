@@ -8,17 +8,25 @@ export interface SearchProps {
   placeholder?: string;
   onChange?: Function;
   onSubmit?: Function;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 /**
  * A place for the user to search for something
  * @param placeholder Placeholder text, disappears when user starts typing
  */
-const Search = ({ placeholder, onChange, onSubmit }: SearchProps) => {
+const Search = ({
+  placeholder,
+  onChange,
+  onSubmit,
+  className,
+  style,
+}: SearchProps) => {
   const [query, setQuery] = useState<string>("");
 
   return (
-    <form className="search">
+    <form className={`search ${className}`} style={style}>
       <button
         className="search__button"
         onClick={(e) => {

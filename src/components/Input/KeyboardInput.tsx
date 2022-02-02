@@ -10,24 +10,26 @@ export interface KeyboardInputProps {
   label: string;
   onChange: Function;
   defaultValue?: string | number;
+  className?: string;
+  style?: React.CSSProperties;
   attr?: React.InputHTMLAttributes<HTMLInputElement>;
 }
 
 /**
  * Keyboard Input is meant for input that requires the user to use their keyboard
- * 
+ *
  * Focusing on Keyboard Input will move the placeholder up to be the label of the Input
- * 
+ *
  * @param name Used for ID
- * 
+ *
  * @param type `input` element type, Keyboard Input supports
- * 
+ *
  * ```ts
  * "email" | "number" | "password" | "tel" | "text" | "url"
  * ```
- * 
+ *
  * @param label The display label/placeholder
- * 
+ *
  * @param defaultValue The value that already is in the `input` element
  */
 const KeyboardInput = ({
@@ -36,14 +38,16 @@ const KeyboardInput = ({
   label,
   onChange,
   defaultValue,
+  className,
+  style,
   attr,
 }: KeyboardInputProps): JSX.Element => {
   const [inputValue, setInputValue] = useState(defaultValue);
 
   useEffect(() => onChange && onChange(inputValue), [inputValue]);
-  
+
   return (
-    <div className="input">
+    <div className={`input ${className}`} style={style}>
       <input
         aria-labelledby={name}
         onChange={(e) => setInputValue(e.target.value)}

@@ -10,6 +10,8 @@ export interface NativeInputProps {
   label: string;
   onChange?: Function;
   defaultValue?: string | number;
+  className?: string;
+  style?: React.CSSProperties;
   attr?: React.InputHTMLAttributes<HTMLInputElement>;
 }
 
@@ -34,6 +36,8 @@ const NativeInput = ({
   label,
   onChange,
   defaultValue,
+  className,
+  style,
   attr,
 }: NativeInputProps): JSX.Element => {
   const [inputValue, setInputValue] = useState(defaultValue);
@@ -41,7 +45,7 @@ const NativeInput = ({
   useEffect(() => onChange && onChange(inputValue), [inputValue]);
 
   return (
-    <div className="input--persistent">
+    <div className={`input--persistent ${className}`} style={style}>
       <input
         aria-labelledby={name}
         onChange={(e) => setInputValue(e.target.value)}

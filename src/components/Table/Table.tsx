@@ -7,6 +7,8 @@ import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 export interface TableProps {
   type?: "outlined" | "elevated";
   width?: number;
+  className?: string;
+  style?: React.CSSProperties;
   children: ReactNode;
 }
 
@@ -15,13 +17,20 @@ export interface TableProps {
  * @param type "outlined" | "elevated"
  * @param width The minimum width of the table content
  */
-const Table = ({ type, width, children }: TableProps): JSX.Element => (
+const Table = ({
+  type,
+  width,
+  className,
+  style,
+  children,
+}: TableProps): JSX.Element => (
   <div
-    className={
+    className={`${
       type == "elevated"
         ? "table__wrapper--elevated"
         : "table__wrapper--outlined"
-    }
+    } ${className}`}
+    style={style}
   >
     <table className="table" style={{ width: width }}>
       {children}

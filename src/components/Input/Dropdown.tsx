@@ -60,6 +60,8 @@ export interface DropdownProps {
   placeholder?: string;
   noOptionsText?: string;
   icon?: { expandMore: JSX.Element; expandLess: JSX.Element };
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 /**
@@ -77,6 +79,8 @@ const Dropdown = ({
   placeholder,
   noOptionsText,
   icon,
+  className,
+  style,
 }: DropdownProps): JSX.Element => {
   const [showList, setShowList] = useState<boolean>(false);
   const [hasBeenSelected, setHasBeenSelected] = useState<boolean>(false);
@@ -85,7 +89,10 @@ const Dropdown = ({
   );
 
   return (
-    <div className={`dropdown ${showList ? "show" : ""}`}>
+    <div
+      className={`dropdown ${showList ? "show" : ""} ${className}`}
+      style={style}
+    >
       {/* This button toggles the Dropdown Options */}
       <button
         aria-expanded={showList}
