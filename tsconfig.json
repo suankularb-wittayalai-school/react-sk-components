@@ -6,20 +6,20 @@
     "jsx": "react",
 
     /* Modules */
-    "module": "commonjs",
+    "module": "esnext",
     "moduleResolution": "node",
     "baseUrl": ".",
-    "paths": {
-      "@components/*": ["src/components/*"],
-      "@layouts/*": ["src/layouts/*"],
-      "@utils/*": ["src/utils/*"],
-    },
+    // "paths": {
+    //   "@components/*": ["src/components/*"],
+    //   "@layouts/*": ["src/layouts/*"],
+    //   "@utils/*": ["src/utils/*"],
+    // },
 
     /* Emit */
-    "declaration": true,
     "sourceMap": true,
-    "outDir": "dist/esm",
+    "declaration": true,
     "declarationDir": "dist/types",
+    "emitDeclarationOnly": true,
 
     /* Interop Constraints */
     "allowSyntheticDefaultImports": true,
