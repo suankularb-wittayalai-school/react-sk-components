@@ -2,11 +2,11 @@
 import React, { useState } from "react";
 
 // Components
-import Header from "@components/Header";
-import Search from "@components/Input/Search";
+import Header from "../../components/Header";
+import Search from "../../components/Input/Search";
 
 // Types
-import { HeaderProps } from "@components/Header/Header";
+import { HeaderProps } from "../../components/Header/Header";
 
 export interface ListLayoutProps {
   header: HeaderProps;

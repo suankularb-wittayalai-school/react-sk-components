@@ -1,1 +1,1 @@
-export { default } from "@components/Table/Table";
+export { default } from "./Table";

@@ -2,8 +2,8 @@
 import React from "react";
 
 // Types
-import { LinkElement as LinkElementType } from "@utils/types/elements";
-import { NavItem } from "@utils/types/navigation";
+import { LinkElement as LinkElementType } from "../../utils/types";
+import { NavItem } from "../../utils/types";
 
 // Styles
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";

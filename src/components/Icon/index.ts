@@ -1,1 +1,1 @@
-export { default } from "@components/Icon/MaterialIcon";
+export { default } from "./MaterialIcon";

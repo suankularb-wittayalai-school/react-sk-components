@@ -9,11 +9,11 @@
     "module": "esnext",
     "moduleResolution": "node",
     "baseUrl": ".",
-    // "paths": {
-    //   "@components/*": ["src/components/*"],
-    //   "@layouts/*": ["src/layouts/*"],
-    //   "@utils/*": ["src/utils/*"],
-    // },
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@utils/*": ["src/utils/*"],
+    },
 
     /* Emit */
     "sourceMap": true,
