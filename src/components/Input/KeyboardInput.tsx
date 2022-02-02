@@ -4,14 +4,8 @@ import React, { useEffect, useState } from "react";
 // Styles
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
-export interface KeyboardInputProps {
-  name: string;
-  type: "email" | "number" | "password" | "tel" | "text" | "url";
-  label: string;
-  onChange: Function;
-  defaultValue?: string | number;
-  attr?: React.InputHTMLAttributes<HTMLInputElement>;
-}
+// Types
+import { KeyboardInputProps } from "@components/Input/Input.type";
 
 /**
  * Keyboard Input is meant for input that requires the user to use their keyboard

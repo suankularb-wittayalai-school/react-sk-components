@@ -6,22 +6,7 @@ import Header from "@components/Header";
 import Search from "@components/Input/Search";
 
 // Types
-import { HeaderProps } from "@components/Header/Header";
-
-export interface ListLayoutProps {
-  header: HeaderProps;
-  listGroups: Array<{ groupName: string; content: Array<{}> }>;
-  ItemElement: ({
-    className,
-    content,
-  }: {
-    className: string;
-    content: {};
-  }) => JSX.Element;
-  ActiveItemElement: ({ content }: { content: any }) => JSX.Element;
-  fetchItem: Function;
-  defaultActiveID?: number;
-}
+import { ListLayoutProps } from "@layouts/ContentLayout/ContentLayout.type";
 
 /**
  * The complete layout for List Layout, contains List Section and Main Section

@@ -4,11 +4,8 @@ import React, { useState } from "react";
 // Styles
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
-export interface SearchProps {
-  placeholder?: string;
-  onChange?: Function;
-  onSubmit?: Function;
-}
+// Types
+import { SearchProps } from "@components/Input/Input.type";
 
 /**
  * A place for the user to search for something

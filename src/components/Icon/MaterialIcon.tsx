@@ -4,10 +4,8 @@ import React from "react";
 // Styles
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
-export interface MaterialIconProps {
-  icon: string;
-  type?: "filled" | "outlined";
-}
+// Types
+import { MaterialIconProps } from "@components/Icon/Icon.type";
 
 /**
  * A font implementation of Google’s Material Design Icons

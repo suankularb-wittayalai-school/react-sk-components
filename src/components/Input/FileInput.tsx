@@ -4,11 +4,8 @@ import React, { useEffect, useState } from "react";
 // Styles
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
-export interface FileInputProps {
-  name: string;
-  label: string;
-  onChange?: Function;
-}
+// Types
+import { FileInputProps } from "@components/Input/Input.type";
 
 /**
  * File Input accepts one file and displays it

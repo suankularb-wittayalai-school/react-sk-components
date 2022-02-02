@@ -4,13 +4,8 @@ import React from "react";
 // Styles
 import "@suankularb-components/css/dist/css/suankularb-components.min.css"
 
-export interface ButtonProps {
-  name: string;
-  type: "filled" | "outlined" | "text";
-  icon?: JSX.Element;
-  onClick: Function;
-  attr: React.ButtonHTMLAttributes<HTMLButtonElement>;
-}
+// Types
+import { ButtonProps } from "@components/Button/Button.types";
 
 /**
  * A Button triggers an action

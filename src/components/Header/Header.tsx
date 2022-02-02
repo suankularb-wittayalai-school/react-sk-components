@@ -5,6 +5,7 @@ import React from "react";
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 // Types
+import { HeaderProps } from "@components/Header/Header.type";
 import { LinkElement as LinkElementType } from "@utils/types/elements";
 
 /**
@@ -67,16 +68,6 @@ const HeaderIcons = ({
     </div>
   );
 };
-
-export interface HeaderProps {
-  name: { title: string; subtitle?: string };
-  pageIcon: JSX.Element | string;
-  backGoesTo: string;
-  backIcon?: JSX.Element;
-  LinkElement?: LinkElementType;
-  className?: string;
-  style?: React.CSSProperties;
-}
 
 /**
  * Header summarises what the page is about in very few words

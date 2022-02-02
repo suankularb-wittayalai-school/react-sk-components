@@ -9,6 +9,7 @@ import MaterialIcon from "@components/Icon/MaterialIcon";
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 // Type
+import { DropdownProps } from "@components/Input/Input.type";
 import { DropdownOption as DropdownOptionType } from "@utils/types/input";
 
 // Utils
@@ -52,15 +53,6 @@ const DropdownOptions = ({
     )}
   </div>
 );
-
-export interface DropdownProps {
-  name: string;
-  label: string;
-  options: Array<DropdownOptionType>;
-  placeholder?: string;
-  noOptionsText?: string;
-  icon?: { expandMore: JSX.Element; expandLess: JSX.Element };
-}
 
 /**
  * A custom but accessible Dropdown

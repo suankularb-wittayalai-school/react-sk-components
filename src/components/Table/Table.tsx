@@ -1,14 +1,11 @@
 // Module
-import React, { ReactNode } from "react";
+import React from "react";
 
 // Styles
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
-export interface TableProps {
-  type?: "outlined" | "elevated";
-  width?: number;
-  children: ReactNode;
-}
+// Types
+import { TableProps } from "@components/Table/Table.type";
 
 /**
  * Table reacts to small screens by letting its content scroll once Table is smaller that the minimum width

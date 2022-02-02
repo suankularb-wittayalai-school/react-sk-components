@@ -4,14 +4,8 @@ import React, { useEffect, useState } from "react";
 // Styles
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
-export interface NativeInputProps {
-  name: string;
-  type: "color" | "date" | "datetime-local" | "month" | "time" | "week";
-  label: string;
-  onChange?: Function;
-  defaultValue?: string | number;
-  attr?: React.InputHTMLAttributes<HTMLInputElement>;
-}
+// Types
+import { NativeInputProps } from "@components/Input/Input.type";
 
 /**
  * Native Input is meant for inputs that have native UIs

@@ -5,17 +5,7 @@ import React from "react";
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 // Types
-import { LinkElement as LinkElementType } from "@utils/types/elements";
-
-export interface LinkProps {
-  name: string;
-  type: "filled" | "outlined" | "text";
-  icon?: JSX.Element;
-  url: string;
-  LinkElement?: LinkElementType;
-  style?: React.CSSProperties;
-  attr?: React.AnchorHTMLAttributes<HTMLAnchorElement>;
-}
+import { LinkProps } from "@components/Link/Link.type";
 
 /**
  * A Link Button redirects the user to a page

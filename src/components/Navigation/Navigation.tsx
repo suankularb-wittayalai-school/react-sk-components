@@ -8,6 +8,9 @@ import { NavItem } from "@utils/types/navigation";
 // Styles
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
+// Types
+import { NavigationProps } from "@components/Navigation/Navigation.type";
+
 /**
  * An item inside of Navigation Bar
  */
@@ -50,13 +53,6 @@ const NavigationItem = ({
       <span>{navItem.name}</span>
     </a>
   );
-
-export interface NavigationProps {
-  currentPath: string;
-  navItems: Array<NavItem>;
-  LinkElement?: LinkElementType;
-  attr?: React.AnchorHTMLAttributes<HTMLAnchorElement>;
-}
 
 /**
  * A responsive Navigation bar
