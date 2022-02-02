@@ -5,7 +5,7 @@ import React, { ReactNode } from "react";
 import Header from "@components/Header";
 
 // Types
-import { RegularLayoutProps } from "@layouts/ContentLayout/ContentLayout.type";
+import { RegularLayoutProps } from "@layouts/ContentLayout/ContentLayout.types";
 
 /**
  * Transforms Markdown into a Content Layout

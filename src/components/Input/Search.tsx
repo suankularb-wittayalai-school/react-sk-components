@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 // Types
-import { SearchProps } from "@components/Input/Input.type";
+import { SearchProps } from "@components/Input/Input.types";
 
 /**
  * A place for the user to search for something

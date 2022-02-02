@@ -9,7 +9,7 @@ import MaterialIcon from "@components/Icon/MaterialIcon";
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 // Type
-import { DropdownProps } from "@components/Input/Input.type";
+import { DropdownProps } from "@components/Input/Input.types";
 import { DropdownOption as DropdownOptionType } from "@utils/types/input";
 
 // Utils

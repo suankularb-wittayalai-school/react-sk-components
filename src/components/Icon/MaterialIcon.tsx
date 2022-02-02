@@ -5,7 +5,7 @@ import React from "react";
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 // Types
-import { MaterialIconProps } from "@components/Icon/Icon.type";
+import { MaterialIconProps } from "@components/Icon/Icon.types";
 
 /**
  * A font implementation of Google’s Material Design Icons

@@ -5,7 +5,7 @@ import React from "react";
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 // Types
-import { TableProps } from "@components/Table/Table.type";
+import { TableProps } from "@components/Table/Table.types";
 
 /**
  * Table reacts to small screens by letting its content scroll once Table is smaller that the minimum width

@@ -9,7 +9,7 @@ import { NavItem } from "@utils/types/navigation";
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 // Types
-import { NavigationProps } from "@components/Navigation/Navigation.type";
+import { NavigationProps } from "@components/Navigation/Navigation.types";
 
 /**
  * An item inside of Navigation Bar

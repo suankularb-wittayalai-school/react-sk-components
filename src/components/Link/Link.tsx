@@ -5,7 +5,7 @@ import React from "react";
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 // Types
-import { LinkProps } from "@components/Link/Link.type";
+import { LinkProps } from "@components/Link/Link.types";
 
 /**
  * A Link Button redirects the user to a page

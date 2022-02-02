@@ -5,7 +5,7 @@ import React from "react";
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 // Types
-import { HeaderProps } from "@components/Header/Header.type";
+import { HeaderProps } from "@components/Header/Header.types";
 import { LinkElement as LinkElementType } from "@utils/types/elements";
 
 /**

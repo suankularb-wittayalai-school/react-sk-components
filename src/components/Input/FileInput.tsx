@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 // Types
-import { FileInputProps } from "@components/Input/Input.type";
+import { FileInputProps } from "@components/Input/Input.types";
 
 /**
  * File Input accepts one file and displays it

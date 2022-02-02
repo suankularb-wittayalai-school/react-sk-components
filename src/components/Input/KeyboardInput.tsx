@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 // Types
-import { KeyboardInputProps } from "@components/Input/Input.type";
+import { KeyboardInputProps } from "@components/Input/Input.types";
 
 /**
  * Keyboard Input is meant for input that requires the user to use their keyboard

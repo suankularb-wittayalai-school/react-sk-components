@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 // Types
-import { NativeInputProps } from "@components/Input/Input.type";
+import { NativeInputProps } from "@components/Input/Input.types";
 
 /**
  * Native Input is meant for inputs that have native UIs

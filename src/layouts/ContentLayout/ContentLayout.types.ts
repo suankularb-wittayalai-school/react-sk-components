@@ -2,7 +2,7 @@
 import { ReactNode } from "react";
 
 // Types
-import { HeaderProps } from "@components/Header/Header.type";
+import { HeaderProps } from "@components/Header/Header.types";
 
 export interface ListLayoutProps {
   header: HeaderProps;

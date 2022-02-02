@@ -6,7 +6,7 @@ import Header from "@components/Header";
 import Search from "@components/Input/Search";
 
 // Types
-import { ListLayoutProps } from "@layouts/ContentLayout/ContentLayout.type";
+import { ListLayoutProps } from "@layouts/ContentLayout/ContentLayout.types";
 
 /**
  * The complete layout for List Layout, contains List Section and Main Section

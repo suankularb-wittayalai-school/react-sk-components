@@ -8,7 +8,7 @@ import Navigation from "@components/Navigation";
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 // Types
-import { PageLayoutTypes } from "@layouts/PageLayout/PageLayout.type";
+import { PageLayoutTypes } from "@layouts/PageLayout/PageLayout.types";
 
 /**
  * The layout shared among all pages
