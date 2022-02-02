@@ -6,7 +6,7 @@
     "jsx": "react",
 
     /* Modules */
-    "module": "commonjs",
+    "module": "esnext",
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
@@ -17,6 +17,7 @@
 
     /* Emit */
     "declaration": true,
+    "declarationDir": "types",
     "emitDeclarationOnly": true,
     "sourceMap": true,
     "outDir": "dist",
