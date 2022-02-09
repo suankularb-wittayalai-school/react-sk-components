@@ -1,5 +1,5 @@
 // Modules
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // Components
 import Search from "../../../components/Input/Search";
@@ -15,10 +15,17 @@ export interface ListSectionProps {
   }: {
     content: {};
     className: string;
+    onClick: () => void;
   }) => JSX.Element;
   onChange: (id: number) => any;
 }
 
+/**
+ * The left section of List Layout where Select List lives
+ * @param listGroups An array of List Groups which contains List Items
+ * @param ListItem The element for List Item, must accept content, className, and onClick
+ * @param onChange The function triggered when the active ID changes
+ */
 const ListSection = ({ listGroups, ListItem, onChange }: ListSectionProps) => {
   const [activeID, setActiveID] = useState<number>(0);
 
@@ -48,6 +55,7 @@ const ListSection = ({ listGroups, ListItem, onChange }: ListSectionProps) => {
                     className={`select-list__item ${
                       activeID == listItem.id ? "active" : ""
                     }`}
+                    onClick={() => setActiveID(listItem.id)}
                   />
                 </li>
               ))}

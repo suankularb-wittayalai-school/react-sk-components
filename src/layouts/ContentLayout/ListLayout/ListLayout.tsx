@@ -13,7 +13,11 @@ export interface ListLayoutProps {
 }
 
 /**
- * The complete layout for List Layout, contains List Section and Main Section
+ * The complete layout for List Layout
+ * 
+ * Its children must consist of `ListSection` and `MainSection`
+ * 
+ * @param header Props for Header
  */
 const ListLayout = ({ header, children }: ListLayoutProps) => {
   return (
@@ -28,9 +32,7 @@ const ListLayout = ({ header, children }: ListLayoutProps) => {
         style={header.style}
       />
 
-      <main className="content-layout--list">
-        {children}
-      </main>
+      <main className="content-layout--list">{children}</main>
     </>
   );
 };
