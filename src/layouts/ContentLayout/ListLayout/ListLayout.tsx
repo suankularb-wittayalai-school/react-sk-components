@@ -7,6 +7,9 @@ import Header from "../../../components/Header";
 // Types
 import { HeaderProps } from "../../../components/Header/Header";
 
+// Styles
+import "@suankularb-components/css/dist/css/suankularb-components.min.css";
+
 export interface ListLayoutProps {
   header: HeaderProps;
   children: ReactNode;

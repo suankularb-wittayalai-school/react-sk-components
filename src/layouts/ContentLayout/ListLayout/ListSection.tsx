@@ -4,6 +4,9 @@ import React, { useEffect, useState } from "react";
 // Components
 import Search from "../../../components/Input/Search";
 
+// Styles
+import "@suankularb-components/css/dist/css/suankularb-components.min.css";
+
 export interface ListSectionProps {
   listGroups: Array<{
     groupName: string;

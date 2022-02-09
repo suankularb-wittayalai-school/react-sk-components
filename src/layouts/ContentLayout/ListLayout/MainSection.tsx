@@ -1,6 +1,9 @@
 // Modules
 import React, { ReactNode } from "react"
 
+// Styles
+import "@suankularb-components/css/dist/css/suankularb-components.min.css";
+
 export interface MainSectionProps {
   children: ReactNode;
 }
