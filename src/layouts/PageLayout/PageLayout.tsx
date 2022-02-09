@@ -1,6 +1,5 @@
 // Modules
-import React from "react";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 
 // Components
 import Navigation from "../../components/Navigation";
@@ -24,9 +23,18 @@ export interface PageLayoutTypes {
  * @param currentPath The current path of the application, can include queries and fragments
  * @param navItems A list of navigation items, each consists of name, icon, and URL; should not be longer than 5 items
  */
-const PageLayout = ({ currentPath, navItems, children }: PageLayoutTypes) => (
+const PageLayout = ({
+  currentPath,
+  navItems,
+  LinkElement,
+  children,
+}: PageLayoutTypes) => (
   <div className="page-layout">
-    <Navigation currentPath={currentPath} navItems={navItems} />
+    <Navigation
+      currentPath={currentPath}
+      navItems={navItems}
+      LinkElement={LinkElement}
+    />
     {children}
   </div>
 );
