@@ -11,8 +11,7 @@ export interface FABGroupProps {
 /**
  * A group of Floating Action Buttons
  */
-const FABGroup = ({ children }: FABGroupProps) => {
-  <div className="fab-group">{children}</div>;
-};
-
+const FABGroup = ({ children }: FABGroupProps) => (
+  <div className="fab-group">{children}</div>
+);
 export default FABGroup;
