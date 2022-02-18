@@ -1,0 +1,58 @@
+// Modules
+import React from "react";
+
+// Types
+import { FAB as FABType } from "../../utils/types/fabs";
+
+export interface FABProps {
+  content: FABType;
+  onClick: Function;
+  className?: string;
+  style?: React.CSSProperties;
+  attr?: React.ButtonHTMLAttributes<HTMLButtonElement>;
+}
+
+/**
+ * The Floating Action Button represents the most important action on a screen
+ * @param content The icon and the label of the FAB
+ * @param onClick The action triggered when the FAB is clicked
+ */
+const FAB = ({
+  content,
+  onClick,
+  className,
+  style,
+  attr,
+}: FABProps): JSX.Element => (
+  <button
+    autoFocus={attr?.autoFocus}
+    className={`
+      ${
+        content.type == "small"
+          ? "fab--small"
+          : content.type == "large"
+          ? "fab--large"
+          : content.type == "extended"
+          ? "fab--extended"
+          : "fab"
+      } ${className || ""}
+    `}
+    disabled={attr?.disabled}
+    form={attr?.form}
+    formAction={attr?.formAction}
+    formEncType={attr?.formEncType}
+    formMethod={attr?.formMethod}
+    formNoValidate={attr?.formNoValidate}
+    formTarget={attr?.formTarget}
+    name={attr?.name}
+    style={style}
+    type={attr?.type}
+    value={attr?.value}
+    onClick={() => onClick()}
+  >
+    <div className="fab__icon">{content.icon}</div>
+    {content.type == "extended" && <span>{content.label}</span>}
+  </button>
+);
+
+export default FAB;
