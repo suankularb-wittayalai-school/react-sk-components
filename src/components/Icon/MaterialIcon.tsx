@@ -29,6 +29,7 @@ const MaterialIcon = ({
       allowCustomSize ? "icon--custom-size" : ""
     } ${className}`}
     style={style}
+    translate="no"
   >
     {icon}
   </i>
