@@ -29,7 +29,7 @@ const Table = ({
       type == "elevated"
         ? "table__wrapper--elevated"
         : "table__wrapper--outlined"
-    } ${className}`}
+    } ${className || ""}`}
     style={style}
   >
     <table className="table" style={{ width: width }}>

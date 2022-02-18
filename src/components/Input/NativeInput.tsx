@@ -45,7 +45,7 @@ const NativeInput = ({
   useEffect(() => onChange && onChange(inputValue), [inputValue]);
 
   return (
-    <div className={`input--persistent ${className}`} style={style}>
+    <div className={`input--persistent ${className || ""}`} style={style}>
       <input
         aria-labelledby={name}
         onChange={(e) => setInputValue(e.target.value)}

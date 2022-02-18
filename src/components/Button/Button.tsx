@@ -37,7 +37,7 @@ const Button = ({
         : type == "text"
         ? "btn--text"
         : "btn--filled"
-    } ${className}`}
+    } ${className || ""}`}
     disabled={attr?.disabled}
     form={attr?.form}
     formAction={attr?.formAction}

@@ -27,7 +27,7 @@ const MaterialIcon = ({
   <i
     className={`${type == "outlined" ? "icon--outlined" : "icon"} ${
       allowCustomSize ? "icon--custom-size" : ""
-    } ${className}`}
+    } ${className || ""}`}
     style={style}
     translate="no"
   >
