@@ -14,4 +14,5 @@ export interface FABGroupProps {
 const FABGroup = ({ children }: FABGroupProps) => (
   <div className="fab-group">{children}</div>
 );
+
 export default FABGroup;
