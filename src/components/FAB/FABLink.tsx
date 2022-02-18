@@ -10,6 +10,7 @@ import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 export interface FABProps {
   content: FABType;
+  color?: "primary" | "secondary" | "tertiary" | "surface" | "error";
   url: string;
   LinkElement: LinkElementType;
   className?: string;
@@ -25,6 +26,7 @@ export interface FABProps {
  */
 const FAB = ({
   content,
+  color,
   url,
   LinkElement,
   className,
@@ -61,6 +63,16 @@ const FAB = ({
           : content.type == "extended"
           ? "fab--extended"
           : "fab"
+      } ${
+        color == "secondary"
+          ? "fab--secondary"
+          : color == "tertiary"
+          ? "fab--tertiary"
+          : color == "surface"
+          ? "fab--surface"
+          : color == "error"
+          ? "fab--error"
+          : "fab--primary"
       } ${className || ""}`}
       download={attr?.download}
       href={url}
@@ -72,8 +84,10 @@ const FAB = ({
       type={attr?.type}
       referrerPolicy={attr?.referrerPolicy}
     >
-      <div className="fab__icon">{content.icon}</div>
-      <span>{content.type == "extended" && <span>{content.label}</span>}</span>
+      <div className="fab__content">
+        <div className="fab__icon">{content.icon}</div>
+        <span>{content.type == "extended" && <span>{content.label}</span>}</span>
+      </div>
     </a>
   );
 

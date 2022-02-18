@@ -9,6 +9,7 @@ import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 export interface FABProps {
   content: FABType;
+  color?: "primary" | "secondary" | "tertiary" | "surface" | "error";
   onClick: Function;
   className?: string;
   style?: React.CSSProperties;
@@ -22,6 +23,7 @@ export interface FABProps {
  */
 const FAB = ({
   content,
+  color,
   onClick,
   className,
   style,
@@ -29,16 +31,25 @@ const FAB = ({
 }: FABProps): JSX.Element => (
   <button
     autoFocus={attr?.autoFocus}
-    className={`
-      ${
-        content.type == "small"
-          ? "fab--small"
-          : content.type == "large"
-          ? "fab--large"
-          : content.type == "extended"
-          ? "fab--extended"
-          : "fab"
-      } ${className || ""}
+    className={`${
+      content.type == "small"
+        ? "fab--small"
+        : content.type == "large"
+        ? "fab--large"
+        : content.type == "extended"
+        ? "fab--extended"
+        : "fab"
+    } ${
+      color == "secondary"
+        ? "fab--secondary"
+        : color == "tertiary"
+        ? "fab--tertiary"
+        : color == "surface"
+        ? "fab--surface"
+        : color == "error"
+        ? "fab--error"
+        : "fab--primary"
+    } ${className || ""}
     `}
     disabled={attr?.disabled}
     form={attr?.form}
@@ -53,8 +64,10 @@ const FAB = ({
     value={attr?.value}
     onClick={() => onClick()}
   >
-    <div className="fab__icon">{content.icon}</div>
-    {content.type == "extended" && <span>{content.label}</span>}
+    <div className="fab__content">
+      <div className="fab__icon">{content.icon}</div>
+      {content.type == "extended" && <span>{content.label}</span>}
+    </div>
   </button>
 );
 
