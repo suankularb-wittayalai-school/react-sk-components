@@ -1,6 +1,9 @@
 export {
   Button,
   Card,
+  CardActions,
+  CardHeader,
+  CardSupportingText,
   Header,
   MaterialIcon,
   KeyboardInput,
