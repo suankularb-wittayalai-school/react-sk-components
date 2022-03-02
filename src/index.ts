@@ -1,13 +1,15 @@
 export {
   Button,
   Header,
+  MaterialIcon,
   KeyboardInput,
   NativeInput,
   Dropdown,
   Search,
   LinkButton,
   Navigation,
-  MaterialIcon,
+  Table,
+  Title
 } from "./components";
 
 export {
