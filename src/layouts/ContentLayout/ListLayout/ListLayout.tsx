@@ -5,7 +5,7 @@ import React, { ReactNode } from "react";
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 export interface ListLayoutProps {
-  Header: () => JSX.Element;
+  Title: () => JSX.Element;
   children: ReactNode;
 }
 
@@ -14,12 +14,12 @@ export interface ListLayoutProps {
  * 
  * Its children must consist of `ListSection` and `MainSection`
  * 
- * @param Header Header element
+ * @param Title Title element
  */
-const ListLayout = ({ Header, children }: ListLayoutProps) => {
+const ListLayout = ({ Title, children }: ListLayoutProps) => {
   return (
     <>
-      <Header />
+      <Title />
       <main className="content-layout--list">{children}</main>
     </>
   );

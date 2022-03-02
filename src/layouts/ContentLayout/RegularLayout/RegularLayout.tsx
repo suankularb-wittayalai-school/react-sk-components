@@ -5,18 +5,18 @@ import React, { ReactNode } from "react";
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 export interface RegularLayoutProps {
-  Header: () => JSX.Element;
+  Title: () => JSX.Element;
   children: ReactNode;
 }
 
 /**
  * Transforms Markdown into a Content Layout
  * 
- * @param Header Header element
+ * @param Title Title element
  */
-const RegularLayout = ({ Header, children }: RegularLayoutProps) => (
+const RegularLayout = ({ Title, children }: RegularLayoutProps) => (
   <>
-    <Header />
+    <Title />
     <main className="content-layout markdown">{children}</main>
   </>
 );
