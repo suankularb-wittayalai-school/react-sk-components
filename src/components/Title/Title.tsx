@@ -99,15 +99,17 @@ const Title = ({
   style,
 }: TitleProps) => (
   <header className={`title ${className || ""}`} style={style}>
-    <TitleIcons
-      pageIcon={pageIcon}
-      backGoesTo={backGoesTo}
-      backIcon={backIcon}
-      LinkElement={LinkElement}
-    />
-    <div className="title__text">
-      <h1>{name.title}</h1>
-      {name.subtitle && <p>{name.subtitle}</p>}
+    <div className="title__content">
+      <TitleIcons
+        pageIcon={pageIcon}
+        backGoesTo={backGoesTo}
+        backIcon={backIcon}
+        LinkElement={LinkElement}
+      />
+      <div className="title__text">
+        <h1>{name.title}</h1>
+        {name.subtitle && <p>{name.subtitle}</p>}
+      </div>
     </div>
   </header>
 );
