@@ -7,7 +7,7 @@ import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 export interface MaterialIconProps {
   icon: string;
   type?: "filled" | "outlined";
-  allowCustomSize: boolean;
+  allowCustomSize?: boolean;
   className?: string;
   style?: React.CSSProperties;
 }
