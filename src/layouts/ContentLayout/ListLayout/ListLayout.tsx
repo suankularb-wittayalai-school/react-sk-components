@@ -1,17 +1,11 @@
 // Modules
 import React, { ReactNode } from "react";
 
-// Components
-import Header from "../../../components/Header";
-
-// Types
-import { HeaderProps } from "../../../components/Header/Header";
-
 // Styles
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 export interface ListLayoutProps {
-  header: HeaderProps;
+  Header: () => JSX.Element;
   children: ReactNode;
 }
 
@@ -20,21 +14,12 @@ export interface ListLayoutProps {
  * 
  * Its children must consist of `ListSection` and `MainSection`
  * 
- * @param header Props for Header
+ * @param Header Header element
  */
-const ListLayout = ({ header, children }: ListLayoutProps) => {
+const ListLayout = ({ Header, children }: ListLayoutProps) => {
   return (
     <>
-      <Header
-        name={header.name}
-        pageIcon={header.pageIcon}
-        backGoesTo={header.backGoesTo}
-        backIcon={header.backIcon}
-        LinkElement={header.LinkElement}
-        className={header.className}
-        style={header.style}
-      />
-
+      <Header />
       <main className="content-layout--list">{children}</main>
     </>
   );
