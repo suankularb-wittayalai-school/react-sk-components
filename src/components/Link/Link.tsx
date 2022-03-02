@@ -45,7 +45,7 @@ const LinkButton = ({
             : type == "text"
             ? "btn--text"
             : "btn--filled"
-        } ${className}`}
+        } ${className || ""}`}
         style={style}
       >
         {icon}
@@ -60,7 +60,7 @@ const LinkButton = ({
           : type == "text"
           ? "btn--text"
           : "btn--filled"
-      } ${className}`}
+      } ${className || ""}`}
       download={attr?.download}
       href={url}
       hrefLang={attr?.hrefLang}

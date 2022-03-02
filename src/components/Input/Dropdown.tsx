@@ -90,7 +90,7 @@ const Dropdown = ({
 
   return (
     <div
-      className={`dropdown ${showList ? "show" : ""} ${className}`}
+      className={`dropdown ${showList ? "show" : ""} ${className || ""}`}
       style={style}
     >
       {/* This button toggles the Dropdown Options */}

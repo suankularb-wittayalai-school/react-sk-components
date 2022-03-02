@@ -77,7 +77,7 @@ const Navigation = ({
   const cleanedCurrentPath = currentPath.split(/\?|#/)[0];
 
   return (
-    <nav className={`nav ${className}`} style={style}>
+    <nav className={`nav ${className || ""}`} style={style}>
       {navItems.map((navItem) => (
         <NavigationItem
           active={cleanedCurrentPath == navItem.url}

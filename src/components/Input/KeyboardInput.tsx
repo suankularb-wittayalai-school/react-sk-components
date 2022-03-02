@@ -47,7 +47,7 @@ const KeyboardInput = ({
   useEffect(() => onChange && onChange(inputValue), [inputValue]);
 
   return (
-    <div className={`input ${className}`} style={style}>
+    <div className={`input ${className || ""}`} style={style}>
       <input
         aria-labelledby={name}
         onChange={(e) => setInputValue(e.target.value)}

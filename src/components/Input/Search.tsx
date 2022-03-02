@@ -26,7 +26,7 @@ const Search = ({
   const [query, setQuery] = useState<string>("");
 
   return (
-    <form className={`search ${className}`} style={style}>
+    <form className={`search ${className || ""}`} style={style}>
       <button
         className="search__button"
         onClick={(e) => {

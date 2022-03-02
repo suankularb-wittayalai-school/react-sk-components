@@ -29,7 +29,7 @@ const FileInput = ({
   useEffect(() => onChange && onChange(file), [file]);
 
   return (
-    <div className={`input--file ${className}`} style={style}>
+    <div className={`input--file ${className || ""}`} style={style}>
       <input
         id={name}
         type="file"
