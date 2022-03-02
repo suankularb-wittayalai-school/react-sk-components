@@ -78,14 +78,16 @@ const Navigation = ({
 
   return (
     <nav className={`nav ${className || ""}`} style={style}>
-      {navItems.map((navItem) => (
-        <NavigationItem
-          active={cleanedCurrentPath == navItem.url}
-          navItem={navItem}
-          LinkElement={LinkElement}
-          attr={attr}
-        />
-      ))}
+      <div className="nav__content">
+        {navItems.map((navItem) => (
+          <NavigationItem
+            active={cleanedCurrentPath == navItem.url}
+            navItem={navItem}
+            LinkElement={LinkElement}
+            attr={attr}
+          />
+        ))}
+      </div>
     </nav>
   );
 };
