@@ -10,14 +10,16 @@ export interface RegularLayoutProps {
 }
 
 /**
- * Transforms Markdown into a Content Layout
- * 
+ * A Content Layout that is fit for most pages
+ *
  * @param Title Title element
  */
 const RegularLayout = ({ Title, children }: RegularLayoutProps) => (
   <>
     <Title />
-    <main className="content-layout markdown">{children}</main>
+    <main className="content-layout">
+      <div className="content-layout__content">{children}</div>
+    </main>
   </>
 );
 
