@@ -11,16 +11,18 @@ export interface ListLayoutProps {
 
 /**
  * The complete layout for List Layout
- * 
+ *
  * Its children must consist of `ListSection` and `MainSection`
- * 
+ *
  * @param Title Title element
  */
 const ListLayout = ({ Title, children }: ListLayoutProps) => {
   return (
     <>
       <Title />
-      <main className="content-layout--list">{children}</main>
+      <main className="content-layout--list">
+        <div className="content-layout__content">{children}</div>
+      </main>
     </>
   );
 };
