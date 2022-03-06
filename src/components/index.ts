@@ -18,3 +18,4 @@ export { default as LinkButton } from "./Link";
 export { default as Navigation } from "./Navigation";
 export { default as Table } from "./Table";
 export { default as Title } from "./Title";
+export { default as XScrollContent } from "./XScrollContent";
