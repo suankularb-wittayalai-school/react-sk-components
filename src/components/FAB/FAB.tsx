@@ -1,5 +1,5 @@
 // Modules
-import React from "react";
+
 
 // Types
 import { FAB as FABType } from "../../utils/types/fabs";

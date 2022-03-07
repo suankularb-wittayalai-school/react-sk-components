@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 
 /**
  * Content in X Scroll Content, which should be <li> of Cards, is put into a row and scrolls horizontally

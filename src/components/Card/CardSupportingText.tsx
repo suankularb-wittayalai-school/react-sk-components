@@ -1,5 +1,5 @@
 // Modules
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 
 export interface CardSupportingTextProps {
   children: ReactNode;
