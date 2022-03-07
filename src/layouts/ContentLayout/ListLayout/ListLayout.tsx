@@ -5,22 +5,28 @@ import React, { ReactNode } from "react";
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 export interface ListLayoutProps {
-  Title: () => JSX.Element;
+  Title: JSX.Element;
   children: ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 /**
  * The complete layout for List Layout
- * 
+ *
  * Its children must consist of `ListSection` and `MainSection`
- * 
+ *
  * @param Title Title element
  */
-const ListLayout = ({ Title, children }: ListLayoutProps) => {
+const ListLayout = ({ Title, className, style, children }: ListLayoutProps) => {
+  const TitleElement = () => Title;
+
   return (
     <>
-      <Title />
-      <main className="content-layout--list">{children}</main>
+      <TitleElement />
+      <main className={`content-layout--list ${className || ""}`} style={style}>
+        <div className="content-layout__content">{children}</div>
+      </main>
     </>
   );
 };
