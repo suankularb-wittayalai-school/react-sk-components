@@ -5,7 +5,7 @@ import React, { ReactNode } from "react";
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 export interface ListLayoutProps {
-  Title: () => JSX.Element;
+  Title: JSX.Element;
   children: ReactNode;
 }
 
@@ -17,9 +17,11 @@ export interface ListLayoutProps {
  * @param Title Title element
  */
 const ListLayout = ({ Title, children }: ListLayoutProps) => {
+  const TitleElement = () => Title;
+
   return (
     <>
-      <Title />
+      <TitleElement />
       <main className="content-layout--list">
         <div className="content-layout__content">{children}</div>
       </main>

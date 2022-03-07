@@ -5,7 +5,7 @@ import React, { ReactNode } from "react";
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 export interface RegularLayoutProps {
-  Title: () => JSX.Element;
+  Title: JSX.Element;
   children: ReactNode;
 }
 
@@ -14,13 +14,17 @@ export interface RegularLayoutProps {
  *
  * @param Title Title element
  */
-const RegularLayout = ({ Title, children }: RegularLayoutProps) => (
-  <>
-    <Title />
-    <main className="content-layout">
-      <div className="content-layout__content">{children}</div>
-    </main>
-  </>
-);
+const RegularLayout = ({ Title, children }: RegularLayoutProps) => {
+  const TitleElement = () => Title;
+  
+  return (
+    <>
+      <TitleElement />
+      <main className="content-layout">
+        <div className="content-layout__content">{children}</div>
+      </main>
+    </>
+  );
+};
 
 export default RegularLayout;
