@@ -7,6 +7,8 @@ import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 export interface ListLayoutProps {
   Title: JSX.Element;
   children: ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 /**
@@ -16,13 +18,13 @@ export interface ListLayoutProps {
  *
  * @param Title Title element
  */
-const ListLayout = ({ Title, children }: ListLayoutProps) => {
+const ListLayout = ({ Title, className, style, children }: ListLayoutProps) => {
   const TitleElement = () => Title;
 
   return (
     <>
       <TitleElement />
-      <main className="content-layout--list">
+      <main className={`content-layout--list ${className || ""}`} style={style}>
         <div className="content-layout__content">{children}</div>
       </main>
     </>

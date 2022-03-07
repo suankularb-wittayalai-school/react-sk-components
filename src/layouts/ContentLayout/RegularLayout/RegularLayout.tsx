@@ -7,6 +7,8 @@ import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 export interface RegularLayoutProps {
   Title: JSX.Element;
   children: ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 /**
@@ -14,13 +16,18 @@ export interface RegularLayoutProps {
  *
  * @param Title Title element
  */
-const RegularLayout = ({ Title, children }: RegularLayoutProps) => {
+const RegularLayout = ({
+  Title,
+  className,
+  style,
+  children,
+}: RegularLayoutProps) => {
   const TitleElement = () => Title;
-  
+
   return (
     <>
       <TitleElement />
-      <main className="content-layout">
+      <main className={`content-layout ${className || ""}`} style={style}>
         <div className="content-layout__content">{children}</div>
       </main>
     </>
