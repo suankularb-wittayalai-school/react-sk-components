@@ -6,6 +6,8 @@ export {
   CardSupportingText,
 } from "./Card";
 export { default as CardList } from "./CardList";
+export { default as Chip } from "./Chip";
+export { default as ChipList, ChipRadioGroup } from "./ChipList";
 export { default as Header } from "./Header";
 export { default as MaterialIcon } from "./Icon";
 export {

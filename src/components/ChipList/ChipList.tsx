@@ -1,13 +1,13 @@
 // Modules
 import { ReactNode } from "react";
 
-interface ChipList {
+interface ChipListProps {
   scrollable?: boolean;
   noWrap?: boolean;
   children: ReactNode;
 }
 
-const ChipList = ({ scrollable, noWrap, children }: ChipList): JSX.Element =>
+const ChipList = ({ scrollable, noWrap, children }: ChipListProps): JSX.Element =>
   scrollable ? (
     <div className="x-scroll-content">
       <div className="x-scroll-content__content">
