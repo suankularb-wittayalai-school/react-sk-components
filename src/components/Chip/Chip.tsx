@@ -1,21 +1,21 @@
 interface ChipProps {
   name: string;
+  appearance: "regular" | "elevated";
   leadingIcon?: JSX.Element;
   trailingIcon?: JSX.Element;
   avatar?: JSX.Element;
   onClick?: Function;
-  onClose?: Function;
   className?: string;
   style?: React.CSSProperties;
 }
 
 const Chip = ({
   name,
+  appearance,
   avatar,
   leadingIcon,
   trailingIcon,
   onClick,
-  onClose,
   className,
   style,
 }: ChipProps): JSX.Element => (
@@ -32,7 +32,11 @@ const Chip = ({
         : avatar
         ? "chip--has-avatar"
         : "chip"
-    } ${className || ""}`}
+    } ${appearance == "elevated" ? "chip--elevated" : ""} ${className || ""}`}
+    style={style}
+    onClick={() => {
+      if (onClick) onClick();
+    }}
   >
     {avatar && <div className="chip__avatar">{avatar}</div>}
     {leadingIcon && <div className="chip__icon">{leadingIcon}</div>}
