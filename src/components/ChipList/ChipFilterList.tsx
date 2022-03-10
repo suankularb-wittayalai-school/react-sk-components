@@ -17,6 +17,11 @@ export interface ChipFilterListProps {
   onChange?: Function;
 }
 
+/**
+ * A list of Filter Chips and Chip Radio Groups that the user can choose many from
+ * @param choices An array of choices the user can choose from, include an array inside this array for a Chip Radio Group
+ * @param onChange Triggered when the selected Chips change
+ */
 const ChipFilterList = ({
   choices,
   onChange,
