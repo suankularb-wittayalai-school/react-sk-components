@@ -1,6 +1,6 @@
 // Modules
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useState } from "react";
+import { useState } from "react";
 
 // Components
 import MaterialIcon from "../Icon";

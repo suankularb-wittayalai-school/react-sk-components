@@ -1,6 +1,3 @@
-// Modules
-import React from "react";
-
 // Components
 import MaterialIcon from "../Icon/MaterialIcon";
 

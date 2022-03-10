@@ -1,6 +1,3 @@
-// Modules
-import React from "react";
-
 // Components
 import CardList from "../../../components/CardList/CardList";
 

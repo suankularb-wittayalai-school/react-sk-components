@@ -1,5 +1,5 @@
 // Modules
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 // Styles
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";

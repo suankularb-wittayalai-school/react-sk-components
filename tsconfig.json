@@ -3,7 +3,7 @@
     /* Language and Environment */
     "lib": ["es6", "dom", "es2017"],
     "target": "es5",
-    "jsx": "react",
+    "jsx": "react-jsx",
 
     /* Modules */
     "module": "esnext",

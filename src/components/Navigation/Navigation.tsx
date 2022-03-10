@@ -1,6 +1,3 @@
-// Modules
-import React from "react";
-
 // Types
 import { LinkElement as LinkElementType } from "../../utils/types";
 import { NavItem } from "../../utils/types";

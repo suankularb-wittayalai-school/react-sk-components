@@ -1,6 +1,3 @@
-// Modules
-import React from "react";
-
 // Types
 import { FAB as FABType } from "../../utils/types/fabs";
 import { LinkElement as LinkElementType } from "../../utils/types";
