@@ -7,6 +7,11 @@ interface ChipListProps {
   children: ReactNode;
 }
 
+/**
+ * A list of Chips
+ * @param scrollable If true, Chip List will fill the width and scroll
+ * @param noWrap Disables wrapping when the width is too small, is *not* needed if `scrollable` is true
+ */
 const ChipList = ({ scrollable, noWrap, children }: ChipListProps): JSX.Element =>
   scrollable ? (
     <div className="x-scroll-content">
