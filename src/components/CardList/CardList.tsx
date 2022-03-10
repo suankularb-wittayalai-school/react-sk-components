@@ -54,6 +54,7 @@ const CardList = ({ listGroups, ListItem, onChange }: CardListProps) => {
                   // List Item
                   <li>
                     <ListItem
+                      key={listItem.id}
                       content={listItem}
                       className={`card-list__item ${
                         activeID == listItem.id ? "active" : ""

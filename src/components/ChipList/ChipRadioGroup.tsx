@@ -34,6 +34,7 @@ const ChipRadioGroup = ({
     <div className="chip-list--radio">
       {choices.map((choice) => (
         <Chip
+          key={choice.id}
           name={choice.name}
           selected={selectedID == choice.id}
           leadingIcon={

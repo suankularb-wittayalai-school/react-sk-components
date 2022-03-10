@@ -36,12 +36,18 @@ const DropdownOptions = ({
     ) : (
       options.map((option) =>
         noShowSelected && selectedItemValue === option.value ? (
-          <button aria-selected="true" className="selected" role="option">
+          <button
+            aria-selected="true"
+            className="selected"
+            key={option.value}
+            role="option"
+          >
             {option.label}
           </button>
         ) : (
           <button
             aria-selected="false"
+            key={option.value}
             onClick={() => optionOnClick(option.value)}
             role="option"
           >

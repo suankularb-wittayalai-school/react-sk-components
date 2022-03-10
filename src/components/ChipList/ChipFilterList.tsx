@@ -42,14 +42,16 @@ const ChipFilterList = ({
 
   return (
     <ChipList>
-      {choices.map((choice) =>
+      {choices.map((choice, index) =>
         choice instanceof Array ? (
           <ChipRadioGroup
+            key={index}
             choices={choice}
             onChange={(id: string) => toggleSelectedID(id)}
           />
         ) : (
           <Chip
+            key={index}
             name={choice.name}
             selected={selectedIDs.includes(choice.id)}
             leadingIcon={
