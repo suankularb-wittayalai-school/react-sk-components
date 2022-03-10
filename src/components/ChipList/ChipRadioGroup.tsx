@@ -1,5 +1,5 @@
 // Modules
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // Components
 import Chip from "../Chip/Chip";
@@ -18,6 +18,10 @@ const ChipRadioGroup = ({
   value,
 }: ChipRadioGroupProps): JSX.Element => {
   const [selectedID, setSelectedID] = useState<string | undefined>(value);
+
+  useEffect(() => {
+    if (onChange) onChange(selectedID);
+  }, [selectedID]);
 
   return (
     <div className="chip-list--radio">

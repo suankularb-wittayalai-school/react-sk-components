@@ -19,16 +19,19 @@ const ChipFilterList = ({
   choices,
   onChange,
 }: ChipFilterListProps): JSX.Element => {
-  const [selectedIDs, setSelectedIDs] = useState<Array<Choice>>([]);
+  const [selectedIDs, setSelectedIDs] = useState<Array<string>>([]);
 
   useEffect(() => {
-    if (onChange) onChange();
+    if (onChange) onChange(selectedIDs);
   }, [selectedIDs]);
 
   return (
     <ChipList>
       {choices.map((choice) => (
-        <Chip name={choice.name} />
+        <Chip
+          name={choice.name}
+          onClick={() => setSelectedIDs([...selectedIDs, choice.id])}
+        />
       ))}
     </ChipList>
   );
