@@ -5,14 +5,10 @@ import { useState } from "react";
 import Chip from "../Chip/Chip";
 import MaterialIcon from "../Icon/MaterialIcon";
 
-export interface Choice {
-  id: string;
-  name: string;
-}
+// Types
+import { ChipFilterListProps } from "./ChipFilterList";
 
-export interface ChipRadioGroupProps {
-  choices: Array<Choice>;
-  onChange?: Function;
+export interface ChipRadioGroupProps extends ChipFilterListProps {
   value?: string;
 }
 

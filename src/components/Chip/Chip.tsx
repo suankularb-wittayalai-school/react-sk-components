@@ -1,4 +1,4 @@
-interface ChipProps {
+export interface ChipProps {
   name: string;
   appearance?: "regular" | "elevated";
   selected?: boolean;
