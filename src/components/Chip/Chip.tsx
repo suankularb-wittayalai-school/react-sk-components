@@ -28,9 +28,9 @@ const Chip = ({
         : avatar && trailingIcon
         ? "chip--has-avatar-and-icon"
         : leadingIcon
-        ? "chip--leading-icon"
+        ? "chip--has-leading-icon"
         : trailingIcon
-        ? "chip--trailing-icon"
+        ? "chip--has-trailing-icon"
         : avatar
         ? "chip--has-avatar"
         : "chip"

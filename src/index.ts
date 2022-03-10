@@ -5,6 +5,7 @@ export {
   CardHeader,
   CardSupportingText,
   Chip,
+  FilterChip,
   ChipList,
   ChipRadioGroup,
   Header,
