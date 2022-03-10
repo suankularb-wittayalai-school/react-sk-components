@@ -1,6 +1,3 @@
-// Modules
-
-
 // Types
 import { LinkElement as LinkElementType } from "../../utils/types";
 import { NavItem } from "../../utils/types";

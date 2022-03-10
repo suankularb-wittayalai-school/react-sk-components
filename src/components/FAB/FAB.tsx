@@ -1,6 +1,3 @@
-// Modules
-
-
 // Types
 import { FAB as FABType } from "../../utils/types/fabs";
 

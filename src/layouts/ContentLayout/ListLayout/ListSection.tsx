@@ -1,6 +1,3 @@
-// Modules
-
-
 // Components
 import CardList from "../../../components/CardList/CardList";
 

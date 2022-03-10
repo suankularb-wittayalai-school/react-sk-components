@@ -1,6 +1,3 @@
-// Modules
-
-
 // Components
 import MaterialIcon from "../Icon/MaterialIcon";
 
