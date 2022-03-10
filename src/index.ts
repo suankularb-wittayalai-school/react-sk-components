@@ -17,6 +17,7 @@ export {
   Search,
   LinkButton,
   Navigation,
+  Section,
   Table,
   Title
 } from "./components";
