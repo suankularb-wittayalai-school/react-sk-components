@@ -32,6 +32,7 @@ const ChipRadioGroup = ({
           leadingIcon={
             selectedID == choice.id ? <MaterialIcon icon="done" /> : undefined
           }
+          onClick={() => setSelectedID(choice.id)}
         />
       ))}
     </div>
