@@ -14,6 +14,11 @@ export interface ChipRadioGroupProps {
   value?: string;
 }
 
+/**
+ * A list of Chips that the user can only choose *one* from
+ * @param choices An array of choices
+ * @param onChange Triggered when the selected Chip change
+ */
 const ChipRadioGroup = ({
   choices,
   onChange,
