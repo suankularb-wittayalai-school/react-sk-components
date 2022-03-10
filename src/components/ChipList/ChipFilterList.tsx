@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 // Components
 import Chip from "../Chip/Chip";
 import ChipList from "./ChipList";
+import ChipRadioGroup from "./ChipRadioGroup";
+import MaterialIcon from "../Icon/MaterialIcon";
 
 export interface Choice {
   id: string;
@@ -11,7 +13,7 @@ export interface Choice {
 }
 
 export interface ChipFilterListProps {
-  choices: Array<Choice>;
+  choices: Array<Choice | Array<Choice>>;
   onChange?: Function;
 }
 
@@ -25,14 +27,35 @@ const ChipFilterList = ({
     if (onChange) onChange(selectedIDs);
   }, [selectedIDs]);
 
+  function toggleSelectedID(id: string) {
+    if (selectedIDs.includes(id)) {
+      setSelectedIDs(selectedIDs.filter((item) => item != id));
+    } else {
+      setSelectedIDs([...selectedIDs, id]);
+    }
+  }
+
   return (
     <ChipList>
-      {choices.map((choice) => (
-        <Chip
-          name={choice.name}
-          onClick={() => setSelectedIDs([...selectedIDs, choice.id])}
-        />
-      ))}
+      {choices.map((choice) =>
+        choice instanceof Array ? (
+          <ChipRadioGroup
+            choices={choice}
+            onChange={(id: string) => toggleSelectedID(id)}
+          />
+        ) : (
+          <Chip
+            name={choice.name}
+            selected={selectedIDs.includes(choice.id)}
+            leadingIcon={
+              selectedIDs.includes(choice.id) ? (
+                <MaterialIcon icon="done" />
+              ) : undefined
+            }
+            onClick={() => toggleSelectedID(choice.id)}
+          />
+        )
+      )}
     </ChipList>
   );
 };

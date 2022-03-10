@@ -7,6 +7,7 @@ export {
   Chip,
   FilterChip,
   ChipList,
+  ChipFilterList,
   ChipRadioGroup,
   Header,
   MaterialIcon,

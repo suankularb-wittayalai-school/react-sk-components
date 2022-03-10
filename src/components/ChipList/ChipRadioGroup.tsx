@@ -6,9 +6,11 @@ import Chip from "../Chip/Chip";
 import MaterialIcon from "../Icon/MaterialIcon";
 
 // Types
-import { ChipFilterListProps } from "./ChipFilterList";
+import { Choice } from "./ChipFilterList";
 
-export interface ChipRadioGroupProps extends ChipFilterListProps {
+export interface ChipRadioGroupProps {
+  choices: Array<Choice>;
+  onChange?: Function;
   value?: string;
 }
 
