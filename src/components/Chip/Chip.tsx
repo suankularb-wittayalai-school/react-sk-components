@@ -1,6 +1,7 @@
 interface ChipProps {
   name: string;
-  appearance: "regular" | "elevated";
+  appearance?: "regular" | "elevated";
+  selected?: boolean;
   leadingIcon?: JSX.Element;
   trailingIcon?: JSX.Element;
   avatar?: JSX.Element;
@@ -12,6 +13,7 @@ interface ChipProps {
 const Chip = ({
   name,
   appearance,
+  selected,
   avatar,
   leadingIcon,
   trailingIcon,
@@ -32,7 +34,9 @@ const Chip = ({
         : avatar
         ? "chip--has-avatar"
         : "chip"
-    } ${appearance == "elevated" ? "chip--elevated" : ""} ${className || ""}`}
+    } ${selected ? "selected" : ""} ${
+      appearance == "elevated" ? "chip--elevated" : ""
+    } ${className || ""}`}
     style={style}
     onClick={() => {
       if (onClick) onClick();
