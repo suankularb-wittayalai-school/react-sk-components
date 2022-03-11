@@ -15,16 +15,22 @@ export interface Choice {
 export interface ChipFilterListProps {
   choices: Array<Choice | Array<Choice>>;
   onChange?: Function;
+  scrollable?: boolean;
+  noWrap?: boolean;
 }
 
 /**
  * A list of Filter Chips and Chip Radio Groups that the user can choose many from
  * @param choices An array of choices the user can choose from, include an array inside this array for a Chip Radio Group
  * @param onChange Triggered when the selected Chips change
+ * @param scrollable If true, Chip List will fill the width and scroll
+ * @param noWrap Disables wrapping when the width is too small, is *not* needed if `scrollable` is true
  */
 const ChipFilterList = ({
   choices,
   onChange,
+  scrollable,
+  noWrap,
 }: ChipFilterListProps): JSX.Element => {
   const [selectedIDs, setSelectedIDs] = useState<Array<string>>([]);
 
@@ -41,7 +47,7 @@ const ChipFilterList = ({
   }
 
   return (
-    <ChipList>
+    <ChipList scrollable={scrollable} noWrap={noWrap}>
       {choices.map((choice, index) =>
         choice instanceof Array ? (
           <ChipRadioGroup
