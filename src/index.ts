@@ -19,7 +19,8 @@ export {
   Navigation,
   Section,
   Table,
-  Title
+  Title,
+  XScrollContent
 } from "./components";
 
 export {
