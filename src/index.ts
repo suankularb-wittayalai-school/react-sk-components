@@ -4,6 +4,11 @@ export {
   CardActions,
   CardHeader,
   CardSupportingText,
+  Chip,
+  FilterChip,
+  ChipList,
+  ChipFilterList,
+  ChipRadioGroup,
   Header,
   MaterialIcon,
   KeyboardInput,
@@ -12,8 +17,10 @@ export {
   Search,
   LinkButton,
   Navigation,
+  Section,
   Table,
-  Title
+  Title,
+  XScrollContent
 } from "./components";
 
 export {

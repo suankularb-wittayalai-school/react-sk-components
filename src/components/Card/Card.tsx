@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 export interface CardProps {
   type: "horizontal" | "stacked";
   appearance?: "outlined" | "elevated" | "tonal";
+  hasAction?: boolean;
   children: ReactNode;
   className?: string;
   style?: React.CSSProperties;
@@ -12,6 +13,7 @@ export interface CardProps {
 const Card = ({
   type,
   appearance,
+  hasAction,
   children,
   className,
   style,
@@ -23,6 +25,8 @@ const Card = ({
         : appearance == "tonal"
         ? "card--tonal"
         : "card--outlined"
+    } ${
+      hasAction ? "card--has-action" : ""
     } ${className || ""}`}
     style={style}
   >

@@ -6,6 +6,12 @@ export {
   CardSupportingText,
 } from "./Card";
 export { default as CardList } from "./CardList";
+export { default as Chip, FilterChip } from "./Chip";
+export {
+  default as ChipList,
+  ChipFilterList,
+  ChipRadioGroup,
+} from "./ChipList";
 export { default as Header } from "./Header";
 export { default as MaterialIcon } from "./Icon";
 export {
@@ -16,6 +22,7 @@ export {
 } from "./Input";
 export { default as LinkButton } from "./Link";
 export { default as Navigation } from "./Navigation";
+export { default as Section } from "./Section";
 export { default as Table } from "./Table";
 export { default as Title } from "./Title";
 export { default as XScrollContent } from "./XScrollContent";

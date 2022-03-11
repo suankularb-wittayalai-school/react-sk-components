@@ -76,8 +76,9 @@ const Navigation = ({
   return (
     <nav className={`nav ${className || ""}`} style={style}>
       <div className="nav__content">
-        {navItems.map((navItem) => (
+        {navItems.map((navItem, index) => (
           <NavigationItem
+            key={index}
             active={cleanedCurrentPath == navItem.url}
             navItem={navItem}
             LinkElement={LinkElement}

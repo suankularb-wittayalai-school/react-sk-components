@@ -4,6 +4,7 @@ import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 export interface ButtonProps {
   name: string;
   type: "filled" | "outlined" | "text";
+  iconOnly?: boolean;
   icon?: JSX.Element;
   onClick: Function;
   className?: string;
@@ -20,6 +21,7 @@ export interface ButtonProps {
 const Button = ({
   name,
   type,
+  iconOnly,
   icon,
   onClick,
   className,
@@ -34,7 +36,9 @@ const Button = ({
         : type == "text"
         ? "btn--text"
         : "btn--filled"
-    } ${className || ""}`}
+    } ${iconOnly ? "btn--icon" : icon ? "btn--has-icon" : ""} ${
+      className || ""
+    }`}
     disabled={attr?.disabled}
     form={attr?.form}
     formAction={attr?.formAction}
@@ -46,7 +50,9 @@ const Button = ({
     style={style}
     type={attr?.type}
     value={attr?.value}
-    onClick={() => onClick()}
+    onClick={() => {
+      if (onClick) onClick();
+    }}
   >
     {icon}
     <span>{name}</span>

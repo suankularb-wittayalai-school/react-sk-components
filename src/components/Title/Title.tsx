@@ -43,7 +43,7 @@ const TitleIcons = ({
     <div className="title__icons">
       {LinkElement ? (
         <LinkElement href={backGoesTo}>
-          <a className="title__icons__abck">
+          <a className="title__icons__back">
             <BackIconElement />
           </a>
         </LinkElement>

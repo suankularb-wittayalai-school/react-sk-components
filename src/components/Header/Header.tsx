@@ -16,7 +16,7 @@ const Header = ({ icon, text }: HeaderProps): JSX.Element => (
     <div className="header__icon">
       {typeof icon == "string" ? <MaterialIcon icon={icon} /> : icon}
     </div>
-    <h2>{text}</h2>
+    <h2 className="header__text">{text}</h2>
   </div>
 );
 
