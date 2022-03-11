@@ -34,6 +34,8 @@ const Button = ({
         : type == "text"
         ? "btn--text"
         : "btn--filled"
+    } ${
+      icon ? "btn--has-icon" : ""
     } ${className || ""}`}
     disabled={attr?.disabled}
     form={attr?.form}
