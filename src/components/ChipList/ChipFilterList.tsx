@@ -33,18 +33,17 @@ const ChipFilterList = ({
   noWrap,
 }: ChipFilterListProps): JSX.Element => {
   const [selectedIDs, setSelectedIDs] = useState<Array<string>>([]);
+  const [radioStates, setRadioStates] = useState<
+    Array<{ index: number; selectedID: string }>
+  >([]);
 
   useEffect(() => {
-    if (onChange) onChange(selectedIDs);
-  }, [selectedIDs]);
-
-  function toggleSelectedID(id: string) {
-    if (selectedIDs.includes(id)) {
-      setSelectedIDs(selectedIDs.filter((item) => item != id));
-    } else {
-      setSelectedIDs([...selectedIDs, id]);
+    if (onChange) {
+      onChange(
+        selectedIDs.concat(radioStates.map((radioItem) => radioItem.selectedID))
+      );
     }
-  }
+  }, [selectedIDs, radioStates]);
 
   return (
     <ChipList scrollable={scrollable} noWrap={noWrap}>
@@ -53,7 +52,37 @@ const ChipFilterList = ({
           <ChipRadioGroup
             key={index}
             choices={choice}
-            onChange={(id: string) => toggleSelectedID(id)}
+            onChange={async (selectedID: string | null) => {
+              const thisRadioItem = radioStates.find(
+                (radioItem) => radioItem.index == index
+              );
+
+              // If this Radio Group state is already on the array
+              if (thisRadioItem) {
+                // If the selected item changes, change the array
+                if (selectedID) {
+                  setRadioStates(
+                    radioStates.map((radioItem) => {
+                      if (index == radioItem.index)
+                        radioItem.selectedID = selectedID;
+                      return radioItem;
+                    })
+                  );
+                }
+                // If this Radio Group is deselected, remove from the array
+                else {
+                  setRadioStates(
+                    radioStates.filter((radioItem) => index != radioItem.index)
+                  );
+                }
+              } else if (selectedID) {
+                // If this Radio Group state is not on the array, add it
+                setRadioStates([
+                  ...radioStates,
+                  { index: index, selectedID: selectedID },
+                ]);
+              }
+            }}
           />
         ) : (
           <Chip
@@ -65,7 +94,13 @@ const ChipFilterList = ({
                 <MaterialIcon icon="done" />
               ) : undefined
             }
-            onClick={() => toggleSelectedID(choice.id)}
+            onClick={() => {
+              if (selectedIDs.includes(choice.id)) {
+                setSelectedIDs(selectedIDs.filter((item) => item != choice.id));
+              } else {
+                setSelectedIDs([...selectedIDs, choice.id]);
+              }
+            }}
           />
         )
       )}
