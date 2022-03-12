@@ -7,6 +7,7 @@ import { LinkElement as LinkElementType } from "../../utils/types";
 export interface LinkProps {
   name: string;
   type: "filled" | "outlined" | "text";
+  iconOnly?: boolean;
   icon?: JSX.Element;
   url: string;
   LinkElement?: LinkElementType;
@@ -26,6 +27,7 @@ export interface LinkProps {
 const LinkButton = ({
   name,
   type,
+  iconOnly,
   icon,
   url,
   LinkElement,
@@ -42,7 +44,9 @@ const LinkButton = ({
             : type == "text"
             ? "btn--text"
             : "btn--filled"
-        } ${className || ""}`}
+        } ${iconOnly ? "btn--icon" : icon ? "btn--has-icon" : ""} ${
+          className || ""
+        }`}
         style={style}
       >
         {icon}

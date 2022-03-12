@@ -6,7 +6,7 @@ export interface ButtonProps {
   type: "filled" | "outlined" | "text";
   iconOnly?: boolean;
   icon?: JSX.Element;
-  onClick: Function;
+  onClick?: Function;
   className?: string;
   style?: React.CSSProperties;
   attr?: React.ButtonHTMLAttributes<HTMLButtonElement>;
