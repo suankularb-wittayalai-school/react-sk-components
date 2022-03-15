@@ -12,6 +12,7 @@ export {
   ChipFilterList,
   ChipRadioGroup,
 } from "./ChipList";
+export { default as Dialog, DialogHeader } from "./Dialog";
 export { default as Header } from "./Header";
 export { default as MaterialIcon } from "./Icon";
 export {

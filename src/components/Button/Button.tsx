@@ -2,7 +2,7 @@
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 export interface ButtonProps {
-  name: string | JSX.Element;
+  name?: string | JSX.Element;
   type: "filled" | "outlined" | "text";
   iconOnly?: boolean;
   icon?: JSX.Element;
@@ -55,7 +55,7 @@ const Button = ({
     }}
   >
     {icon}
-    <span>{name}</span>
+    {name && <span>{name}</span>}
   </button>
 );
 

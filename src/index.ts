@@ -9,6 +9,8 @@ export {
   ChipList,
   ChipFilterList,
   ChipRadioGroup,
+  Dialog,
+  DialogHeader,
   Header,
   MaterialIcon,
   KeyboardInput,
@@ -26,5 +28,7 @@ export {
 export {
   PageLayout,
   RegularLayout,
-  ListLayout
+  ListLayout,
+  ListSection,
+  MainSection
 } from "./layouts";

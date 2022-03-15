@@ -1,10 +1,12 @@
 // Modules
 import { ReactNode } from "react";
 
-interface DialogProps {
+export interface DialogProps {
   type: "regular" | "large";
   show?: boolean;
   hasOverlay?: boolean;
+  noBlurToClose?: boolean;
+  onClose: Function;
   children?: ReactNode;
 }
 
@@ -18,12 +20,16 @@ const Dialog = ({
   type,
   show,
   hasOverlay,
+  noBlurToClose,
+  onClose,
   children,
 }: DialogProps): JSX.Element => {
   return (
     <div className={`dialog__wrapper ${show ? "show" : ""}`}>
       {/* Overlay */}
-      {hasOverlay && <div className="overlay" />}
+      {hasOverlay && (
+        <div className="overlay" onClick={() => noBlurToClose || onClose()} />
+      )}
 
       {/* Dialog */}
       <dialog className={type == "large" ? "dialog--large" : "dialog"}>
