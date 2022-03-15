@@ -1,5 +1,5 @@
 export interface ChipProps {
-  name: string;
+  name: string | JSX.Element;
   appearance?: "regular" | "elevated";
   selected?: boolean;
   leadingIcon?: JSX.Element;

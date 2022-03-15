@@ -5,7 +5,7 @@ import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 import { LinkElement as LinkElementType } from "../../utils/types";
 
 export interface LinkProps {
-  name: string;
+  name: string | JSX.Element;
   type: "filled" | "outlined" | "text";
   iconOnly?: boolean;
   icon?: JSX.Element;

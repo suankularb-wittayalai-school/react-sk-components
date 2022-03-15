@@ -8,5 +8,5 @@ export type FABNormal = {
 export type FABExtended = {
   type: "extended";
   icon?: string | JSX.Element;
-  label: string;
+  label: string | JSX.Element;
 };

@@ -3,7 +3,7 @@ import MaterialIcon from "../Icon/MaterialIcon";
 
 export interface HeaderProps {
   icon: string | JSX.Element;
-  text: string;
+  text: string | JSX.Element;
 }
 
 /**

@@ -2,7 +2,7 @@
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 export interface ButtonProps {
-  name: string;
+  name: string | JSX.Element;
   type: "filled" | "outlined" | "text";
   iconOnly?: boolean;
   icon?: JSX.Element;

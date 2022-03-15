@@ -9,7 +9,7 @@ import MaterialIcon from "../Icon/MaterialIcon";
 
 export interface Choice {
   id: string;
-  name: string;
+  name: string | JSX.Element;
 }
 
 export interface ChipFilterListProps {
