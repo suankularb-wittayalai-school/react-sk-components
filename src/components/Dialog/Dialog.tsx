@@ -32,7 +32,10 @@ const Dialog = ({
       )}
 
       {/* Dialog */}
-      <dialog className={type == "large" ? "dialog--large" : "dialog"}>
+      <dialog
+        aria-hidden={!show}
+        className={type == "large" ? "dialog--large" : "dialog"}
+      >
         {children}
       </dialog>
     </div>
