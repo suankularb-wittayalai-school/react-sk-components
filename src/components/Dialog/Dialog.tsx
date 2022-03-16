@@ -69,6 +69,9 @@ const Dialog = ({
               <DialogHeader
                 name={headerName}
                 closeIcon={closeIcon}
+                submitName={
+                  actions?.find((action) => action.type == "submit")?.name
+                }
                 onClose={() => onClose()}
                 onSubmit={onSubmit ? () => onSubmit() : undefined}
               />

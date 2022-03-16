@@ -5,6 +5,7 @@ import MaterialIcon from "../Icon/MaterialIcon";
 export interface DialogHeaderProps {
   name: string;
   closeIcon?: JSX.Element;
+  submitName?: string;
   onClose: Function;
   onSubmit?: Function;
 }
@@ -12,6 +13,7 @@ export interface DialogHeaderProps {
 const DialogHeader = ({
   name,
   closeIcon,
+  submitName,
   onClose,
   onSubmit,
 }: DialogHeaderProps): JSX.Element => {
@@ -27,7 +29,11 @@ const DialogHeader = ({
         />
         <h1 id={name}>{name}</h1>
         {onSubmit && (
-          <Button name="Create" type="text" onClick={() => onSubmit()} />
+          <Button
+            name={submitName || "Submit"}
+            type="text"
+            onClick={() => onSubmit()}
+          />
         )}
       </div>
     </div>
