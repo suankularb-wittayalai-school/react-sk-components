@@ -3,17 +3,17 @@ import Button from "../Button/Button";
 import MaterialIcon from "../Icon/MaterialIcon";
 
 export interface DialogHeaderProps {
-  name: string | JSX.Element;
+  name: string;
   closeIcon?: JSX.Element;
   onClose: Function;
-  onAccept?: Function;
+  onSubmit?: Function;
 }
 
 const DialogHeader = ({
   name,
   closeIcon,
   onClose,
-  onAccept,
+  onSubmit,
 }: DialogHeaderProps): JSX.Element => {
   return (
     <div className="dialog__header">
@@ -25,8 +25,10 @@ const DialogHeader = ({
           onClick={() => onClose()}
           className="dialog__top-app-bar__close"
         />
-        {typeof name == "string" ? <h1>{name}</h1> : name}
-        <Button name="Create" type="text" onClick={() => onClose()} />
+        <h1 id={name}>{name}</h1>
+        {onSubmit && (
+          <Button name="Create" type="text" onClick={() => onSubmit()} />
+        )}
       </div>
     </div>
   );
