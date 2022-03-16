@@ -13,6 +13,11 @@ export interface DialogActionsProps {
   onSubmit?: Function;
 }
 
+/**
+ * @param actions An array of 1-2 action(s), each includes `name`, `type`, and `isDangerous`
+ * @param onClose Triggered when button with type `close` or close button is clicked/tapped
+ * @param onSubmit Triggered when button with type `submit` is clicked/tapped
+ */
 const DialogActions = ({ actions, onClose, onSubmit }: DialogActionsProps) => (
   <div className="dialog__actions">
     {actions.map((action) => (

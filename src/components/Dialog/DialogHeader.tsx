@@ -8,11 +8,20 @@ export interface DialogHeaderProps {
   supportingText?: string | JSX.Element;
   closeIcon?: JSX.Element;
   submitName?: string;
-  isHero?: boolean;
   onClose: Function;
   onSubmit?: Function;
 }
 
+/**
+ * The header of the Dialog, includes the title and some supporting text
+ * @param title The text to show on top of the Dialog, summarises the content
+ * @param icon The hero icon on top of title text, will make header centered
+ * @param supportingText A paragraph explaining the title in more detail
+ * @param closeIcon On mobile, an icon button closes the Dialog; this icon can be customized here
+ * @param submitName Submit button text
+ * @param onClose Triggered when close button is clicked/tapped
+ * @param onSubmit Triggered when button with type `submit` is clicked/tapped
+ */
 const DialogHeader = ({
   title,
   icon,
