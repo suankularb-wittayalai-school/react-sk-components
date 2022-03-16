@@ -17,8 +17,8 @@ export interface TextAreaProps {
  * Focusing on Text Area will move the placeholder up to be the label of the Input
  *
  * @param name Used for ID
- * @param type `input` element type, Keyboard Input supports
  * @param label The display label/placeholder
+ * @param onChange Triggered when the user content in Text Area changes
  * @param defaultValue The value that already is in the `textarea` element
  */
 const TextArea = ({
@@ -42,7 +42,6 @@ const TextArea = ({
         autoComplete={attr?.autoComplete}
         autoFocus={attr?.autoFocus}
         cols={attr?.cols}
-        dirName={attr?.dirName}
         disabled={attr?.disabled}
         form={attr?.form}
         maxLength={attr?.maxLength}

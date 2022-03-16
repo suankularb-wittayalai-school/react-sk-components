@@ -11,12 +11,14 @@ export interface DialogProps {
   // Type
   type: "regular" | "large";
   // Header
-  headerName?: string;
+  title: string;
+  icon?: JSX.Element;
+  supportingText?: string | JSX.Element;
   closeIcon?: JSX.Element;
   // Actions
   actions?: [DialogAction] | [DialogAction, DialogAction];
   // State
-  show?: boolean;
+  show: boolean;
   // Attrs
   noOverlay?: boolean;
   noBlurToClose?: boolean;
@@ -36,7 +38,9 @@ export interface DialogProps {
  */
 const Dialog = ({
   type,
-  headerName,
+  title,
+  icon,
+  supportingText,
   closeIcon,
   actions,
   show,
@@ -57,7 +61,7 @@ const Dialog = ({
       {/* Dialog */}
       <dialog
         aria-hidden={!show}
-        aria-labelledby={headerName}
+        aria-labelledby={title}
         className={type == "large" ? "dialog--large" : "dialog"}
       >
         {isBlank ? (
@@ -65,9 +69,11 @@ const Dialog = ({
         ) : (
           <>
             {/* Header */}
-            {headerName && (
+            {title && (
               <DialogHeader
-                name={headerName}
+                title={title}
+                icon={icon}
+                supportingText={supportingText}
                 closeIcon={closeIcon}
                 submitName={
                   actions?.find((action) => action.type == "submit")?.name

@@ -17,6 +17,7 @@ export {
   MaterialIcon,
   KeyboardInput,
   NativeInput,
+  TextArea,
   Dropdown,
   Search,
   LinkButton,

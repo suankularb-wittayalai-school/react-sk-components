@@ -24,6 +24,7 @@ export {
   default as KeyboardInput,
   NativeInput,
   Dropdown,
+  TextArea,
   Search,
 } from "./Input";
 export { default as LinkButton } from "./Link";
