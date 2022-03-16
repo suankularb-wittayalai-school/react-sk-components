@@ -11,6 +11,8 @@ export {
   ChipRadioGroup,
   Dialog,
   DialogHeader,
+  DialogSection,
+  DialogActions,
   Header,
   MaterialIcon,
   KeyboardInput,
@@ -22,7 +24,7 @@ export {
   Section,
   Table,
   Title,
-  XScrollContent
+  XScrollContent,
 } from "./components";
 
 export {
@@ -30,5 +32,5 @@ export {
   RegularLayout,
   ListLayout,
   ListSection,
-  MainSection
+  MainSection,
 } from "./layouts";
