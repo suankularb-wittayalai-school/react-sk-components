@@ -3,6 +3,7 @@ import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 export interface ButtonProps {
   name?: string | JSX.Element;
+  label?: string;
   type: "filled" | "outlined" | "text" | "tonal";
   iconOnly?: boolean;
   icon?: JSX.Element;
@@ -23,6 +24,7 @@ export interface ButtonProps {
  */
 const Button = ({
   name,
+  label,
   type,
   iconOnly,
   icon,
@@ -33,6 +35,7 @@ const Button = ({
   attr,
 }: ButtonProps) => (
   <button
+    aria-label={label}
     autoFocus={attr?.autoFocus}
     className={`${
       type == "outlined"
