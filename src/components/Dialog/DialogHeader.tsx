@@ -43,7 +43,7 @@ const DialogHeader = ({
         />
         {icon ? (
           <div className="dialog__hero">
-            <div className="dialog__hero-icon">{icon}</div>
+            <div className="dialog__hero__icon">{icon}</div>
             <h1 id={title}>{title}</h1>
           </div>
         ) : (
