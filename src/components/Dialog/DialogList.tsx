@@ -20,9 +20,9 @@ const DialogList = ({ content, onChange }: DialogListProps): JSX.Element => {
     () =>
       onChange &&
       onChange(
-        contentStates.map((contentState) => {
-          if (contentState.checked) return contentState.name;
-        })
+        contentStates
+          .filter((contentState) => contentState.checked)
+          .map((contentState) => contentState.name)
       ),
     [contentStates]
   );
