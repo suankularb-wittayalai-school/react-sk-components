@@ -6,6 +6,7 @@ export interface ButtonProps {
   type: "filled" | "outlined" | "text" | "tonal";
   iconOnly?: boolean;
   icon?: JSX.Element;
+  isDangerous?: boolean;
   onClick?: Function;
   className?: string;
   style?: React.CSSProperties;
@@ -25,6 +26,7 @@ const Button = ({
   type,
   iconOnly,
   icon,
+  isDangerous,
   onClick,
   className,
   style,
@@ -41,8 +43,8 @@ const Button = ({
         ? "btn--tonal"
         : "btn--filled"
     } ${iconOnly ? "btn--icon" : icon ? "btn--has-icon" : ""} ${
-      className || ""
-    }`}
+      isDangerous ? "btn--danger" : ""
+    } ${className || ""}`}
     disabled={attr?.disabled}
     form={attr?.form}
     formAction={attr?.formAction}
