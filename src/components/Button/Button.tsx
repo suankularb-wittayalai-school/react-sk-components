@@ -17,6 +17,7 @@ export interface ButtonProps {
 /**
  * A Button triggers an action
  * @param name The text in the button
+ * @param label The text label for screenreaders
  * @param type The type of the button, can be "filled" | "outlined" | "text"
  * @param iconOnly Has only icon
  * @param icon An icon in the form of a JSX Element, will be placed in front of the text

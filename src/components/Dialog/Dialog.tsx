@@ -10,7 +10,7 @@ import DialogActions, { DialogAction } from "./DialogActions";
 export interface DialogProps {
   // General
   type: "regular" | "large";
-  name: string;
+  label: string;
   // Header
   title: string | JSX.Element;
   icon?: JSX.Element;
@@ -34,6 +34,7 @@ export interface DialogProps {
 /**
  * Dialog presents information in need of immediate attention and prompts the user to make crucial decisions
  * @param type `"regular" | "large"`
+ * @param label The text label for screenreaders
  * @param title The text to show on top of the Dialog, summarises the content
  * @param icon The hero icon on top of title text, will make header centered
  * @param supportingText A paragraph explaining the title in more detail
@@ -48,7 +49,7 @@ export interface DialogProps {
  */
 const Dialog = ({
   type,
-  name,
+  label,
   title,
   icon,
   supportingText,
@@ -72,7 +73,7 @@ const Dialog = ({
       {/* Dialog */}
       <dialog
         aria-hidden={!show}
-        aria-labelledby={name}
+        aria-labelledby={label}
         className={type == "large" ? "dialog--large" : "dialog"}
       >
         {isBlank ? (
@@ -82,7 +83,7 @@ const Dialog = ({
             {/* Header */}
             {title && (
               <DialogHeader
-                name={name}
+                label={label}
                 title={title}
                 icon={icon}
                 supportingText={supportingText}

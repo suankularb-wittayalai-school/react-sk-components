@@ -8,6 +8,7 @@ interface SectionProps {
 
 /**
  * A section of Regular Component
+ * @param labelledBy The ID of this section’s Header
  */
 const Section = ({ labelledBy, children }: SectionProps): JSX.Element => (
   <section aria-labelledby={labelledBy} className="section">
