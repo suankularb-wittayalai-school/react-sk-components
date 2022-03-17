@@ -2,9 +2,6 @@
 import { FAB as FABType } from "../../utils/types/fabs";
 import { LinkElement as LinkElementType } from "../../utils/types";
 
-// Styles
-import "@suankularb-components/css/dist/css/suankularb-components.min.css";
-
 export interface FABProps {
   content: FABType;
   color?: "primary" | "secondary" | "tertiary" | "surface" | "error";
