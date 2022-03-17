@@ -1,9 +1,13 @@
-import { ChangeEvent, ChangeEventHandler, useEffect, useState } from "react";
+// Modules
+import { useEffect, useState } from "react";
 
 type DialogListItem = {
   name: string;
   label: string | JSX.Element;
   meta?: string | JSX.Element;
+  image?: JSX.Element;
+  monogramLetter?: string;
+  monogramDefault?: boolean;
 };
 
 interface DialogListProps {
@@ -32,10 +36,25 @@ const DialogList = ({ content, onChange }: DialogListProps): JSX.Element => {
       {content.map((listItem) => (
         <li key={listItem.name} className="dialog__list__item">
           <div className="dialog__list__item__section">
+            {listItem.image ? (
+              // Use supplied image element inside monogram
+              <div className="monogram">{listItem.image}</div>
+            ) : listItem.monogramLetter ? (
+              // Use supplied monogram letter
+              <div className="monogram">{listItem.monogramLetter}</div>
+            ) : (
+              listItem.monogramDefault &&
+              // Check if label is a string; cannot get first letter of JSX Element
+              typeof listItem.label == "string" && (
+                <div className="monogram">
+                  {listItem.label[0].toUpperCase()}
+                </div>
+              )
+            )}
             <label htmlFor={listItem.name}>{listItem.label}</label>
           </div>
           <div className="dialog__list__item__section">
-            <span>{listItem.meta}</span>
+            {listItem.meta && <span>{listItem.meta}</span>}
             <input
               type="checkbox"
               name={listItem.name}
