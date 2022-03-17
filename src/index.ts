@@ -12,6 +12,7 @@ export {
   Dialog,
   DialogHeader,
   DialogSection,
+  DialogList,
   DialogActions,
   Header,
   MaterialIcon,

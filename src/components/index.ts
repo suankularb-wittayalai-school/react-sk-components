@@ -16,6 +16,7 @@ export {
   default as Dialog,
   DialogHeader,
   DialogSection,
+  DialogList,
   DialogActions,
 } from "./Dialog";
 export { default as Header } from "./Header";
