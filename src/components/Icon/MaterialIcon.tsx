@@ -22,6 +22,7 @@ const MaterialIcon = ({
   style,
 }: MaterialIconProps) => (
   <i
+    aria-hidden
     className={`${type == "outlined" ? "icon--outlined" : "icon"} ${
       allowCustomSize ? "icon--custom-size" : ""
     } ${className || ""}`}

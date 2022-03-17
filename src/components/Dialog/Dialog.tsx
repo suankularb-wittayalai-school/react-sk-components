@@ -8,10 +8,11 @@ import DialogHeader from "./DialogHeader";
 import DialogActions, { DialogAction } from "./DialogActions";
 
 export interface DialogProps {
-  // Type
+  // General
   type: "regular" | "large";
+  name: string;
   // Header
-  title: string;
+  title: string | JSX.Element;
   icon?: JSX.Element;
   supportingText?: string | JSX.Element;
   closeIcon?: JSX.Element;
@@ -47,6 +48,7 @@ export interface DialogProps {
  */
 const Dialog = ({
   type,
+  name,
   title,
   icon,
   supportingText,
@@ -70,7 +72,7 @@ const Dialog = ({
       {/* Dialog */}
       <dialog
         aria-hidden={!show}
-        aria-labelledby={title}
+        aria-labelledby={name}
         className={type == "large" ? "dialog--large" : "dialog"}
       >
         {isBlank ? (
@@ -80,6 +82,7 @@ const Dialog = ({
             {/* Header */}
             {title && (
               <DialogHeader
+                name={name}
                 title={title}
                 icon={icon}
                 supportingText={supportingText}

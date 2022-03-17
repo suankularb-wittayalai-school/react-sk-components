@@ -1,9 +1,10 @@
-// Modules
+// Components
 import Button from "../Button/Button";
 import MaterialIcon from "../Icon/MaterialIcon";
 
 export interface DialogHeaderProps {
-  title: string;
+  name: string;
+  title: string | JSX.Element;
   icon?: JSX.Element;
   supportingText?: string | JSX.Element;
   closeIcon?: JSX.Element;
@@ -23,6 +24,7 @@ export interface DialogHeaderProps {
  * @param onSubmit Triggered when button with type `submit` is clicked/tapped
  */
 const DialogHeader = ({
+  name,
   title,
   icon,
   supportingText,
@@ -44,10 +46,10 @@ const DialogHeader = ({
         {icon ? (
           <div className="dialog__hero">
             <div className="dialog__hero__icon">{icon}</div>
-            <h1 id={title}>{title}</h1>
+            <h1 id={name}>{title}</h1>
           </div>
         ) : (
-          <h1 id={title}>{title}</h1>
+          <h1 id={name}>{title}</h1>
         )}
         {onSubmit && (
           <Button
