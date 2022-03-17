@@ -3,7 +3,7 @@ import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 export interface ButtonProps {
   name?: string | JSX.Element;
-  type: "filled" | "outlined" | "text";
+  type: "filled" | "outlined" | "text" | "tonal";
   iconOnly?: boolean;
   icon?: JSX.Element;
   onClick?: Function;
@@ -37,6 +37,8 @@ const Button = ({
         ? "btn--outlined"
         : type == "text"
         ? "btn--text"
+        : type == "tonal"
+        ? "btn--tonal"
         : "btn--filled"
     } ${iconOnly ? "btn--icon" : icon ? "btn--has-icon" : ""} ${
       className || ""
