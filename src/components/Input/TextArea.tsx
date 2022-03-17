@@ -37,20 +37,18 @@ const TextArea = ({
   return (
     <div className={`input textarea ${className || ""}`} style={style}>
       <textarea
-        aria-labelledby={name}
         onChange={(e) => setInputValue(e.target.value)}
         autoComplete={attr?.autoComplete}
         autoFocus={attr?.autoFocus}
-        cols={attr?.cols}
         disabled={attr?.disabled}
         form={attr?.form}
+        id={name}
         maxLength={attr?.maxLength}
         minLength={attr?.minLength}
         name={name}
         placeholder={label}
         readOnly={attr?.readOnly}
         required={attr?.required}
-        rows={attr?.rows}
         value={inputValue}
         wrap={attr?.wrap}
       />

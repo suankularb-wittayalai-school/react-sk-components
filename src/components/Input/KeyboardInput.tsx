@@ -54,6 +54,7 @@ const KeyboardInput = ({
         disabled={attr?.disabled}
         enterKeyHint={attr?.enterKeyHint}
         form={attr?.form}
+        id={name}
         list={attr?.list}
         max={attr?.max}
         maxLength={attr?.maxLength}

@@ -52,6 +52,7 @@ const NativeInput = ({
         disabled={attr?.disabled}
         enterKeyHint={attr?.enterKeyHint}
         form={attr?.form}
+        id={name}
         list={attr?.list}
         name={name}
         placeholder={label}

@@ -33,30 +33,30 @@ const DialogHeader = ({
 }: DialogHeaderProps): JSX.Element => {
   return (
     <div className="dialog__header">
-      {icon ? (
-        <div className="dialog__hero">
-          <div className="dialog__hero__icon">{icon}</div>
-          <h1>{title}</h1>
-        </div>
-      ) : (
-        <div className="dialog__top-app-bar">
-          <Button
-            type="text"
-            iconOnly
-            icon={closeIcon ? closeIcon : <MaterialIcon icon="close" />}
-            onClick={() => onClose()}
-            className="dialog__top-app-bar__close"
-          />
+      <div className="dialog__top-app-bar">
+        <Button
+          type="text"
+          iconOnly
+          icon={closeIcon ? closeIcon : <MaterialIcon icon="close" />}
+          onClick={() => onClose()}
+          className="dialog__top-app-bar__close"
+        />
+        {icon ? (
+          <div className="dialog__hero">
+            <div className="dialog__hero-icon">{icon}</div>
+            <h1 id={title}>{title}</h1>
+          </div>
+        ) : (
           <h1 id={title}>{title}</h1>
-          {onSubmit && (
-            <Button
-              name={submitName || "Submit"}
-              type="text"
-              onClick={() => onSubmit()}
-            />
-          )}
-        </div>
-      )}
+        )}
+        {onSubmit && (
+          <Button
+            name={submitName || "Submit"}
+            type="text"
+            onClick={() => onSubmit()}
+          />
+        )}
+      </div>
       {supportingText && <p>{supportingText}</p>}
     </div>
   );
