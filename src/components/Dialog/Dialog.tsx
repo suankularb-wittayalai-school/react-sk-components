@@ -34,10 +34,12 @@ export interface DialogProps {
 /**
  * Dialog presents information in need of immediate attention and prompts the user to make crucial decisions
  * 
+ * ---
  * **General**
  * @param type `"regular" | "large"`
  * @param label The text label for screenreaders
  * 
+ * ---
  * **Header**
  * @param title The text to show on top of the Dialog, summarises the content
  * @param icon The hero icon on top of title text, will make header centered
