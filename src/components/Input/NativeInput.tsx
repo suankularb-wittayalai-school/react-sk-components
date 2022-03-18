@@ -1,9 +1,6 @@
 // Modules
 import { useEffect, useState } from "react";
 
-// Styles
-import "@suankularb-components/css/dist/css/suankularb-components.min.css";
-
 export interface NativeInputProps {
   name: string;
   type: "color" | "date" | "datetime-local" | "month" | "time" | "week";
@@ -55,6 +52,7 @@ const NativeInput = ({
         disabled={attr?.disabled}
         enterKeyHint={attr?.enterKeyHint}
         form={attr?.form}
+        id={name}
         list={attr?.list}
         name={name}
         placeholder={label}

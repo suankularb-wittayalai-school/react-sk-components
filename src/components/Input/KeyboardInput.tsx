@@ -1,9 +1,6 @@
 // Modules
 import { useEffect, useState } from "react";
 
-// Styles
-import "@suankularb-components/css/dist/css/suankularb-components.min.css";
-
 export interface KeyboardInputProps {
   name: string;
   type: "email" | "number" | "password" | "tel" | "text" | "url";
@@ -57,6 +54,7 @@ const KeyboardInput = ({
         disabled={attr?.disabled}
         enterKeyHint={attr?.enterKeyHint}
         form={attr?.form}
+        id={name}
         list={attr?.list}
         max={attr?.max}
         maxLength={attr?.maxLength}

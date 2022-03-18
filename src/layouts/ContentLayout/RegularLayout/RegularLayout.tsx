@@ -1,9 +1,6 @@
 // Modules
 import { ReactNode } from "react";
 
-// Styles
-import "@suankularb-components/css/dist/css/suankularb-components.min.css";
-
 export interface RegularLayoutProps {
   Title: JSX.Element;
   children: ReactNode;

@@ -9,10 +9,16 @@ export {
   ChipList,
   ChipFilterList,
   ChipRadioGroup,
+  Dialog,
+  DialogHeader,
+  DialogSection,
+  DialogList,
+  DialogActions,
   Header,
   MaterialIcon,
   KeyboardInput,
   NativeInput,
+  TextArea,
   Dropdown,
   Search,
   LinkButton,
@@ -20,11 +26,13 @@ export {
   Section,
   Table,
   Title,
-  XScrollContent
+  XScrollContent,
 } from "./components";
 
 export {
   PageLayout,
   RegularLayout,
-  ListLayout
+  ListLayout,
+  ListSection,
+  MainSection,
 } from "./layouts";

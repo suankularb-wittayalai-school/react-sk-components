@@ -12,12 +12,20 @@ export {
   ChipFilterList,
   ChipRadioGroup,
 } from "./ChipList";
+export {
+  default as Dialog,
+  DialogHeader,
+  DialogSection,
+  DialogList,
+  DialogActions,
+} from "./Dialog";
 export { default as Header } from "./Header";
 export { default as MaterialIcon } from "./Icon";
 export {
   default as KeyboardInput,
   NativeInput,
   Dropdown,
+  TextArea,
   Search,
 } from "./Input";
 export { default as LinkButton } from "./Link";

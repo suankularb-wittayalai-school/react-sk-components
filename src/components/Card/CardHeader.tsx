@@ -4,7 +4,7 @@ import MaterialIcon from "../Icon/MaterialIcon";
 export interface CardHeaderProps {
   icon?: string | JSX.Element;
   title: JSX.Element;
-  label: string | JSX.Element;
+  label?: string | JSX.Element;
   end?: JSX.Element;
   className?: string;
   style?: React.CSSProperties;

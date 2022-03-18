@@ -1,9 +1,6 @@
 // Components
 import CardList from "../../../components/CardList/CardList";
 
-// Styles
-import "@suankularb-components/css/dist/css/suankularb-components.min.css";
-
 // Types
 import { CardListProps } from "../../../components/CardList/CardList";
 
