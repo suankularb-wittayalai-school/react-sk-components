@@ -117,23 +117,27 @@ const Dialog = ({
               children
             ) : (
               <>
-                {/* Header */}
-                {title && (
-                  <DialogHeader
-                    label={label}
-                    title={title}
-                    icon={icon}
-                    supportingText={supportingText}
-                    closeIcon={closeIcon}
-                    submitName={
-                      actions?.find((action) => action.type == "submit")?.name
-                    }
-                    onClose={() => onClose()}
-                    onSubmit={onSubmit ? () => onSubmit() : undefined}
-                  />
-                )}
-                {/* Content */}
-                {children}
+                <div className="dialog__content">
+                  {/* Header */}
+                  {title && (
+                    <DialogHeader
+                      label={label}
+                      title={title}
+                      icon={icon}
+                      supportingText={supportingText}
+                      closeIcon={closeIcon}
+                      submitName={
+                        actions?.find((action) => action.type == "submit")?.name
+                      }
+                      onClose={() => onClose()}
+                      onSubmit={onSubmit ? () => onSubmit() : undefined}
+                    />
+                  )}
+
+                  {/* Content */}
+                  {children}
+                </div>
+
                 {/* Actions */}
                 {actions && (
                   <DialogActions
