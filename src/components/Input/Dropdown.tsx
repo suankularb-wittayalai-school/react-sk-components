@@ -1,6 +1,6 @@
 // Modules
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // Components
 import MaterialIcon from "../Icon";
@@ -63,6 +63,7 @@ export interface DropdownProps {
   placeholder?: string;
   noOptionsText?: string;
   icon?: { expandMore: JSX.Element; expandLess: JSX.Element };
+  onChange?: Function;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -74,6 +75,7 @@ export interface DropdownProps {
  * @param options An array of options for the Dropdown Options
  * @param placeholder Displays when the user hasn’t selected
  * @param noOptionsText Displays when there is no options
+ * @param onChange Triggerd when the selected option changes
  */
 const Dropdown = ({
   name,
@@ -82,6 +84,7 @@ const Dropdown = ({
   placeholder,
   noOptionsText,
   icon,
+  onChange,
   className,
   style,
 }: DropdownProps): JSX.Element => {
@@ -90,6 +93,8 @@ const Dropdown = ({
   const [selectedItemValue, setSelectedItemValue] = useState<any>(
     options.length > 0 ? options[0].value : undefined
   );
+
+  useEffect(() => onChange && onChange(selectedItemValue), [selectedItemValue])
 
   return (
     <div
