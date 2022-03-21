@@ -59,7 +59,11 @@ const DialogHeader = ({
           />
         )}
       </div>
-      {supportingText && <p>{supportingText}</p>}
+      {supportingText && typeof supportingText == "string" ? (
+        <p>{supportingText}</p>
+      ) : (
+        supportingText
+      )}
     </div>
   );
 };
