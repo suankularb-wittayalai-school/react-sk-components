@@ -128,10 +128,10 @@ const Dropdown = ({
         {showList && (
           <motion.div
             className="dropdown__options"
-            key="dropdown-options"
+            key={`${name}-dropdown-options`}
             role="listbox"
             initial={{ y: -20, opacity: 0 }}
-            animate={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
             exit={{ y: -20, opacity: 0 }}
             transition={animationTransition}
           >
