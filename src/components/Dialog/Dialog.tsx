@@ -10,6 +10,7 @@ import DialogActions, { DialogAction } from "./DialogActions";
 
 // Utils
 import { animationTransition } from "../../utils/animations/config";
+import { useHotkeys } from "react-hotkeys-hook";
 
 export interface DialogProps {
   // General
@@ -85,6 +86,8 @@ const Dialog = ({
   onSubmit,
   children,
 }: DialogProps): JSX.Element => {
+  useHotkeys("esc", () => onClose());
+
   return (
     <AnimatePresence>
       {show && (
