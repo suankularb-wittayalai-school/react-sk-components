@@ -130,14 +130,9 @@ const Dropdown = ({
             className="dropdown__options"
             key="dropdown-options"
             role="listbox"
-            initial="hidden"
-            animate="enter"
-            exit="exit"
-            variants={{
-              hidden: { y: -20, opacity: 0 },
-              enter: { y: 0, opacity: 1 },
-              exit: { y: -20, opacity: 0 },
-            }}
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: -20, opacity: 0 }}
+            exit={{ y: -20, opacity: 0 }}
             transition={animationTransition}
           >
             {options.length == 0 ? (
