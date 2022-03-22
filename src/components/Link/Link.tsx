@@ -5,12 +5,14 @@ import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 import { LinkElement as LinkElementType } from "../../utils/types";
 
 export interface LinkProps {
-  name: string | JSX.Element;
-  type: "filled" | "outlined" | "text";
+  name?: string | JSX.Element;
+  label?: string;
+  type: "filled" | "outlined" | "text" | "tonal";
   iconOnly?: boolean;
   icon?: JSX.Element;
   url: string;
   LinkElement?: LinkElementType;
+  isDangerous?: boolean;
   className?: string;
   style?: React.CSSProperties;
   attr?: React.AnchorHTMLAttributes<HTMLAnchorElement>;
@@ -23,14 +25,17 @@ export interface LinkProps {
  * @param icon An icon in the form of a JSX Element, will be placed in front of the text
  * @param url The location of the page this Link Button leads to
  * @param LinkElement The element wrapping the Anchor (i.e. `Link` from `next/link`)
+ * @param isDangerous If the button triggers some dangerous action, makes Button have danger color
  */
 const LinkButton = ({
   name,
+  label,
   type,
   iconOnly,
   icon,
   url,
   LinkElement,
+  isDangerous,
   className,
   style,
   attr,
@@ -38,29 +43,37 @@ const LinkButton = ({
   LinkElement ? (
     <LinkElement href={url}>
       <a
+        aria-label={label}
         className={`${
           type == "outlined"
             ? "btn--outlined"
             : type == "text"
             ? "btn--text"
+            : type == "tonal"
+            ? "btn--tonal"
             : "btn--filled"
         } ${iconOnly ? "btn--icon" : icon ? "btn--has-icon" : ""} ${
-          className || ""
-        }`}
+          isDangerous ? "btn--danger" : ""
+        } ${className || ""}`}
         style={style}
       >
         {icon}
-        <span>{name}</span>
+        {name && <span>{name}</span>}
       </a>
     </LinkElement>
   ) : (
     <a
+      aria-label={label}
       className={`${
         type == "outlined"
           ? "btn--outlined"
           : type == "text"
           ? "btn--text"
+          : type == "tonal"
+          ? "btn--tonal"
           : "btn--filled"
+      } ${iconOnly ? "btn--icon" : icon ? "btn--has-icon" : ""} ${
+        isDangerous ? "btn--danger" : ""
       } ${className || ""}`}
       download={attr?.download}
       href={url}
@@ -73,7 +86,7 @@ const LinkButton = ({
       referrerPolicy={attr?.referrerPolicy}
     >
       {icon}
-      <span>{name}</span>
+      {name && <span>{name}</span>}
     </a>
   );
 

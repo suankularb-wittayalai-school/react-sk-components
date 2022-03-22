@@ -1,6 +1,6 @@
 {
   "name": "@suankularb-components/react",
-  "version": "2.2.5",
+  "version": "2.3.0",
   "description": "A React implementation of Suankularb Components",
   "main": "dist/cjs/index.js",
   "types": "dist/index.d.ts",
@@ -25,8 +25,9 @@
   },
   "homepage": "https://github.com/suankularb-wittayalai-school/react-sk-components#readme",
   "dependencies": {
-    "@suankularb-components/css": "^2.2.4",
-    "framer-motion": "^6.2.4"
+    "@suankularb-components/css": "^2.2.5",
+    "framer-motion": "^6.2.4",
+    "react-hotkeys-hook": "^3.4.4"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.0.1",

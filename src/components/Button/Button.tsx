@@ -21,6 +21,7 @@ export interface ButtonProps {
  * @param type The type of the button, can be "filled" | "outlined" | "text"
  * @param iconOnly Has only icon
  * @param icon An icon in the form of a JSX Element, will be placed in front of the text
+ * @param isDangerous If the button triggers some dangerous action, makes Button have danger color
  * @param onClick Triggered on click
  */
 const Button = ({
