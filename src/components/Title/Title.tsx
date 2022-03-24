@@ -1,5 +1,5 @@
-// Styles
-import "@suankularb-components/css/dist/css/suankularb-components.min.css";
+// Components
+import MaterialIcon from "../Icon/MaterialIcon";
 
 // Types
 import { LinkElement as LinkElementType } from "../../utils/types";
@@ -7,7 +7,7 @@ import { LinkElement as LinkElementType } from "../../utils/types";
 /**
  * The Icons section of Title, shaped like a pill
  * @param pageIcon The icon that symobolises the page
- * @param backGoesTo The link in which clicking Back icon will lead to
+ * @param backGoesTo The link in which clicking Back icon will lead to, or the function which will be triggered
  * @param backIcon The Back icon
  * @param LinkElement The element wrapping the Anchor (i.e. `Link` from `next/link`)
  */
@@ -18,30 +18,19 @@ const TitleIcons = ({
   LinkElement,
 }: {
   pageIcon: JSX.Element | string;
-  backGoesTo: string;
-  backIcon?: JSX.Element | string;
+  backGoesTo: string | Function;
+  backIcon?: JSX.Element;
   LinkElement?: LinkElementType;
 }) => {
   const BackIconElement = () =>
-    backIcon ? (
-      // If backIcon is a string, render Material Icon of that string
-      typeof backIcon == "string" ? (
-        <i className="icon" translate="no">
-          {backIcon}
-        </i>
-      ) : (
-        // If backIcon is a JSX Element, render it as is
-        backIcon
-      )
-    ) : (
-      // Default
-      <i className="icon" translate="no">
-        arrow_back
-      </i>
-    );
+    backIcon ? backIcon : <MaterialIcon icon="arrow_back" />;
   return (
     <div className="title__icons">
-      {LinkElement ? (
+      {backGoesTo instanceof Function ? (
+        <button className="title__icons__back" onClick={() => backGoesTo()}>
+          <BackIconElement />
+        </button>
+      ) : LinkElement ? (
         <LinkElement href={backGoesTo}>
           <a className="title__icons__back">
             <BackIconElement />
