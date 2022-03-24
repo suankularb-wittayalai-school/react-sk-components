@@ -1,6 +1,3 @@
-// Styles
-import "@suankularb-components/css/dist/css/suankularb-components.min.css";
-
 export interface ButtonProps {
   name?: string | JSX.Element;
   label?: string;

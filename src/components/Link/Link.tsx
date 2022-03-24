@@ -1,6 +1,3 @@
-// Styles
-import "@suankularb-components/css/dist/css/suankularb-components.min.css";
-
 // Types
 import { LinkElement as LinkElementType } from "../../utils/types";
 

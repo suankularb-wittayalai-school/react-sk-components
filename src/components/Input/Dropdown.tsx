@@ -64,6 +64,7 @@ export interface DropdownProps {
   noOptionsText?: string;
   icon?: { expandMore: JSX.Element; expandLess: JSX.Element };
   onChange?: Function;
+  defaultValue?: DropdownOptionType["value"];
   className?: string;
   style?: React.CSSProperties;
 }
@@ -85,16 +86,17 @@ const Dropdown = ({
   noOptionsText,
   icon,
   onChange,
+  defaultValue,
   className,
   style,
 }: DropdownProps): JSX.Element => {
   const [showList, setShowList] = useState<boolean>(false);
   const [hasBeenSelected, setHasBeenSelected] = useState<boolean>(false);
   const [selectedItemValue, setSelectedItemValue] = useState<any>(
-    options.length > 0 ? options[0].value : undefined
+    defaultValue || options.length > 0 ? options[0].value : undefined
   );
 
-  useEffect(() => onChange && onChange(selectedItemValue), [selectedItemValue])
+  useEffect(() => onChange && onChange(selectedItemValue), [selectedItemValue]);
 
   return (
     <div
