@@ -1,13 +1,14 @@
 // Modules
 import { ReactNode } from "react";
 
-export interface CardProps {
+// Types
+import { SKComponent } from "../../utils/types";
+
+export interface CardProps extends SKComponent {
   type: "horizontal" | "stacked";
   appearance?: "outlined" | "elevated" | "tonal";
   hasAction?: boolean;
   children: ReactNode;
-  className?: string;
-  style?: React.CSSProperties;
 }
 
 const Card = ({

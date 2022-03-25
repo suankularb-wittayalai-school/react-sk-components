@@ -1,7 +1,7 @@
 // Modules
 import { ReactNode } from "react";
 
-interface ChipListProps {
+export interface ChipListProps {
   scrollable?: boolean;
   noWrap?: boolean;
   children: ReactNode;

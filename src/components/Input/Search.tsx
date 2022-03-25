@@ -1,12 +1,13 @@
 // Modules
 import { useState } from "react";
 
-export interface SearchProps {
+// Types
+import { SKComponent } from "../../utils/types";
+
+export interface SearchProps extends SKComponent {
   placeholder?: string;
   onChange?: Function;
   onSubmit?: Function;
-  className?: string;
-  style?: React.CSSProperties;
 }
 
 /**

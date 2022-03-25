@@ -1,4 +1,7 @@
-export interface ButtonProps {
+// Types
+import { SKComponent } from "../../utils/types";
+
+export interface ButtonProps extends SKComponent {
   name?: string | JSX.Element;
   label?: string;
   type: "filled" | "outlined" | "text" | "tonal";
@@ -6,8 +9,6 @@ export interface ButtonProps {
   icon?: JSX.Element;
   isDangerous?: boolean;
   onClick?: Function;
-  className?: string;
-  style?: React.CSSProperties;
   attr?: React.ButtonHTMLAttributes<HTMLButtonElement>;
 }
 

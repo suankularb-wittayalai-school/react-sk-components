@@ -6,7 +6,10 @@ import { useEffect, useState } from "react";
 import MaterialIcon from "../Icon";
 
 // Type
-import { DropdownOption as DropdownOptionType } from "../../utils/types/input";
+import {
+  SKComponent,
+  DropdownOption as DropdownOptionType,
+} from "../../utils/types";
 
 // Utils
 import { animationTransition } from "../../utils/animations/config";
@@ -56,7 +59,7 @@ const DropdownOptions = ({
   </div>
 );
 
-export interface DropdownProps {
+export interface DropdownProps extends SKComponent {
   name: string;
   label: string;
   options: Array<DropdownOptionType>;
@@ -65,8 +68,6 @@ export interface DropdownProps {
   icon?: { expandMore: JSX.Element; expandLess: JSX.Element };
   onChange?: Function;
   defaultValue?: DropdownOptionType["value"];
-  className?: string;
-  style?: React.CSSProperties;
 }
 
 /**

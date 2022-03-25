@@ -1,10 +1,11 @@
 // Modules
 import { ReactNode } from "react";
 
-export interface CardActionsProps {
+// Types
+import { SKComponent } from "../../utils/types";
+
+export interface CardActionsProps extends SKComponent {
   children: ReactNode;
-  className?: string;
-  style?: React.CSSProperties;
 }
 
 /**

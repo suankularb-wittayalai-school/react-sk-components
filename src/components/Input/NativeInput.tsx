@@ -1,14 +1,15 @@
 // Modules
 import { useEffect, useState } from "react";
 
-export interface NativeInputProps {
+// Types
+import { SKComponent } from "../../utils/types";
+
+export interface NativeInputProps extends SKComponent {
   name: string;
   type: "color" | "date" | "datetime-local" | "month" | "time" | "week";
   label: string;
   onChange?: Function;
   defaultValue?: string | number;
-  className?: string;
-  style?: React.CSSProperties;
   attr?: React.InputHTMLAttributes<HTMLInputElement>;
 }
 

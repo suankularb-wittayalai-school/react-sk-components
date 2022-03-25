@@ -1,14 +1,15 @@
 // Types
-import { FAB as FABType } from "../../utils/types/fabs";
-import { LinkElement as LinkElementType } from "../../utils/types";
+import {
+  FAB as FABType,
+  LinkElement as LinkElementType,
+  SKComponent,
+} from "../../utils/types";
 
-export interface FABProps {
+export interface FABProps extends SKComponent {
   content: FABType;
   color?: "primary" | "secondary" | "tertiary" | "surface" | "error";
   url: string;
   LinkElement: LinkElementType;
-  className?: string;
-  style?: React.CSSProperties;
   attr?: React.AnchorHTMLAttributes<HTMLAnchorElement>;
 }
 
@@ -80,7 +81,9 @@ const FAB = ({
     >
       <div className="fab__content">
         <div className="fab__icon">{content.icon}</div>
-        <span>{content.type == "extended" && <span>{content.label}</span>}</span>
+        <span>
+          {content.type == "extended" && <span>{content.label}</span>}
+        </span>
       </div>
     </a>
   );

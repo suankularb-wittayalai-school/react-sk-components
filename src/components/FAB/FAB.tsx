@@ -1,12 +1,10 @@
 // Types
-import { FAB as FABType } from "../../utils/types/fabs";
+import { FAB as FABType, SKComponent } from "../../utils/types";
 
-export interface FABProps {
+export interface FABProps extends SKComponent {
   content: FABType;
   color?: "primary" | "secondary" | "tertiary" | "surface" | "error";
   onClick: Function;
-  className?: string;
-  style?: React.CSSProperties;
   attr?: React.ButtonHTMLAttributes<HTMLButtonElement>;
 }
 

@@ -1,6 +1,9 @@
 // Modules
 import { useEffect, useState } from "react";
 
+// Types
+import { SKComponent } from "../../utils/types";
+
 type DialogListItem = {
   name: string;
   label: string | JSX.Element;
@@ -10,12 +13,17 @@ type DialogListItem = {
   monogramDefault?: boolean;
 };
 
-interface DialogListProps {
+interface DialogListProps extends SKComponent {
   content: Array<DialogListItem>;
   onChange?: Function;
 }
 
-const DialogList = ({ content, onChange }: DialogListProps): JSX.Element => {
+const DialogList = ({
+  content,
+  onChange,
+  className,
+  style,
+}: DialogListProps): JSX.Element => {
   const [contentStates, setContentStates] = useState<
     Array<{ name: DialogListItem["name"]; checked: boolean }>
   >(content.map((listItem) => ({ name: listItem.name, checked: false })));
@@ -32,7 +40,7 @@ const DialogList = ({ content, onChange }: DialogListProps): JSX.Element => {
   );
 
   return (
-    <ul className="dialog__list">
+    <ul className={`dialog__list ${className}`} style={style}>
       {content.map((listItem) => (
         <li key={listItem.name} className="dialog__list__item">
           <div className="dialog__list__item__section">

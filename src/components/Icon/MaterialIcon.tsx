@@ -1,9 +1,10 @@
-export interface MaterialIconProps {
+// Types
+import { SKComponent } from "../../utils/types";
+
+export interface MaterialIconProps extends SKComponent {
   icon: string;
   type?: "filled" | "outlined";
   allowCustomSize?: boolean;
-  className?: string;
-  style?: React.CSSProperties;
 }
 
 /**

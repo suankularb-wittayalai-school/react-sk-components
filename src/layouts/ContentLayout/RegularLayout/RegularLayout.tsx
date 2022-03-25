@@ -1,11 +1,12 @@
 // Modules
 import { ReactNode } from "react";
 
-export interface RegularLayoutProps {
+// Types
+import { SKComponent } from "../../../utils/types";
+
+export interface RegularLayoutProps extends SKComponent {
   Title: JSX.Element;
   children: ReactNode;
-  className?: string;
-  style?: React.CSSProperties;
 }
 
 /**

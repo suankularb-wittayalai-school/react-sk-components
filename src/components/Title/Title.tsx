@@ -2,7 +2,7 @@
 import MaterialIcon from "../Icon/MaterialIcon";
 
 // Types
-import { LinkElement as LinkElementType } from "../../utils/types";
+import { LinkElement as LinkElementType, SKComponent } from "../../utils/types";
 
 /**
  * The Icons section of Title, shaped like a pill
@@ -54,14 +54,12 @@ const TitleIcons = ({
   );
 };
 
-export interface TitleProps {
+export interface TitleProps extends SKComponent {
   name: { title: string; subtitle?: string };
   pageIcon: JSX.Element | string;
   backGoesTo: string;
   backIcon?: JSX.Element;
   LinkElement?: LinkElementType;
-  className?: string;
-  style?: React.CSSProperties;
 }
 
 /**

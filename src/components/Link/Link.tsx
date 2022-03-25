@@ -1,7 +1,7 @@
 // Types
-import { LinkElement as LinkElementType } from "../../utils/types";
+import { SKComponent, LinkElement as LinkElementType } from "../../utils/types";
 
-export interface LinkProps {
+export interface LinkProps extends SKComponent {
   name?: string | JSX.Element;
   label?: string;
   type: "filled" | "outlined" | "text" | "tonal";
@@ -10,8 +10,6 @@ export interface LinkProps {
   url: string;
   LinkElement?: LinkElementType;
   isDangerous?: boolean;
-  className?: string;
-  style?: React.CSSProperties;
   attr?: React.AnchorHTMLAttributes<HTMLAnchorElement>;
 }
 

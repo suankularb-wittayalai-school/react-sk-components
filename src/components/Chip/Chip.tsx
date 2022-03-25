@@ -1,4 +1,7 @@
-export interface ChipProps {
+// Types
+import { SKComponent } from "../../utils/types";
+
+export interface ChipProps extends SKComponent {
   name: string | JSX.Element;
   appearance?: "regular" | "elevated";
   selected?: boolean;
@@ -6,8 +9,6 @@ export interface ChipProps {
   trailingIcon?: JSX.Element;
   avatar?: JSX.Element;
   onClick?: Function;
-  className?: string;
-  style?: React.CSSProperties;
 }
 
 /**
