@@ -92,9 +92,17 @@ const Dropdown = ({
   style,
 }: DropdownProps): JSX.Element => {
   const [showList, setShowList] = useState<boolean>(false);
-  const [hasBeenSelected, setHasBeenSelected] = useState<boolean>(false);
-  const [selectedItemValue, setSelectedItemValue] = useState<any>(
-    defaultValue || options.length > 0 ? options[0].value : undefined
+  const [hasBeenSelected, setHasBeenSelected] = useState<boolean>(
+    defaultValue ? true : false
+  );
+  const [selectedItemValue, setSelectedItemValue] = useState<
+    DropdownOptionType["value"]
+  >(
+    defaultValue
+      ? defaultValue
+      : options.length > 0
+      ? options[0].value
+      : undefined
   );
 
   useEffect(() => onChange && onChange(selectedItemValue), [selectedItemValue]);
