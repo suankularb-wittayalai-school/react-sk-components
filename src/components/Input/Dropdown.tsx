@@ -13,6 +13,7 @@ import {
 
 // Utils
 import { animationTransition } from "../../utils/animations/config";
+import { useHotkeys } from "react-hotkeys-hook";
 
 /**
  * Displays the options for the dropdown
@@ -104,8 +105,56 @@ const Dropdown = ({
       ? options[0].value
       : undefined
   );
+  const [selectedItemIndex, setSelectedItemIndex] = useState<number>(
+    defaultValue
+      ? options.findIndex((option) => defaultValue == option.value)
+      : 0
+  );
 
-  useEffect(() => onChange && onChange(selectedItemValue), [selectedItemValue]);
+  // FIXME(@SiravitPhokeed): None of this works! In the callback, `selectedItemIndex` is always the default 0.
+
+  useEffect(() => {
+    if (onChange) onChange(selectedItemValue);
+    setSelectedItemIndex(
+      options.findIndex((option) => selectedItemValue == option.value)
+    );
+    console.log({
+      inUseEffect: options.findIndex(
+        (option) => selectedItemValue == option.value
+      ),
+    });
+  }, [selectedItemValue]);
+
+  function moveSelectedUp() {
+    console.log({ inMoveSelectedUp: selectedItemIndex });
+
+    if (selectedItemIndex == 0)
+      setSelectedItemValue(options[options.length - 1].value);
+    else setSelectedItemValue(options[selectedItemIndex - 1].value);
+  }
+
+  function moveSelectedDown() {
+    if (selectedItemIndex == options.length - 1)
+      setSelectedItemValue(options[0].value);
+    else setSelectedItemValue(options[selectedItemIndex + 1].value);
+  }
+
+  function moveSelectedViaKey(e: KeyboardEvent) {
+    switch (e.key) {
+      case "ArrowUp":
+        moveSelectedUp();
+      case "ArrowDown":
+        moveSelectedDown();
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("keydown", moveSelectedViaKey);
+
+    return () => {
+      window.removeEventListener("keydown", moveSelectedViaKey);
+    };
+  }, []);
 
   return (
     <div
