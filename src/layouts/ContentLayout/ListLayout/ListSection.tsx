@@ -10,13 +10,21 @@ import { CardListProps } from "../../../components/CardList/CardList";
  * @param ListItem The element for List Item, must accept content, className, and onClick
  * @param onChange The function triggered when the active ID changes
  */
-const ListSection = ({ listGroups, ListItem, onChange }: CardListProps) => {
+const ListSection = ({
+  listGroups,
+  ListItem,
+  onChange,
+  className,
+  style,
+}: CardListProps) => {
   return (
     <section className="content-layout--list__list">
       <CardList
         listGroups={listGroups}
         ListItem={ListItem}
         onChange={onChange}
+        className={className}
+        style={style}
       />
     </section>
   );

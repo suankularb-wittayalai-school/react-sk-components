@@ -8,3 +8,8 @@ export type LinkElement = ({
   href: string;
   children: ReactNode;
 }) => JSX.Element;
+
+export type SKComponent = {
+  className?: string;
+  style?: React.CSSProperties;
+};

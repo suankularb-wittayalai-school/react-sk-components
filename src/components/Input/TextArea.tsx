@@ -1,13 +1,14 @@
 // Modules
 import { useEffect, useState } from "react";
 
-export interface TextAreaProps {
+// Types
+import { SKComponent } from "../../utils/types";
+
+export interface TextAreaProps extends SKComponent {
   name: string;
   label: string;
   onChange: Function;
   defaultValue?: string | number;
-  className?: string;
-  style?: React.CSSProperties;
   attr?: React.TextareaHTMLAttributes<HTMLInputElement>;
 }
 

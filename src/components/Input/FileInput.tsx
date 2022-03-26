@@ -1,12 +1,13 @@
 // Modules
 import { useEffect, useState } from "react";
 
-export interface FileInputProps {
+// Types
+import { SKComponent } from "../../utils/types";
+
+export interface FileInputProps extends SKComponent {
   name: string;
   label: string;
   onChange?: Function;
-  className?: string;
-  style?: React.CSSProperties;
 }
 
 /**

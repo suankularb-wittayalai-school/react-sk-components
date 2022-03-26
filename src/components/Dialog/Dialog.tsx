@@ -1,18 +1,19 @@
 // Modules
 import { AnimatePresence, motion } from "framer-motion";
 import { ReactNode } from "react";
+import { useHotkeys } from "react-hotkeys-hook";
 
 // Components
 import DialogHeader from "./DialogHeader";
 
 // Types
 import DialogActions, { DialogAction } from "./DialogActions";
+import { SKComponent } from "../../utils/types";
 
 // Utils
 import { animationTransition } from "../../utils/animations/config";
-import { useHotkeys } from "react-hotkeys-hook";
 
-export interface DialogProps {
+export interface DialogProps extends SKComponent {
   // General
   type: "regular" | "large";
   label: string;
@@ -85,6 +86,8 @@ const Dialog = ({
   onClose,
   onSubmit,
   children,
+  className,
+  style,
 }: DialogProps): JSX.Element => {
   useHotkeys("esc", () => onClose());
 
@@ -110,7 +113,10 @@ const Dialog = ({
           <motion.dialog
             key={label}
             aria-labelledby={label}
-            className={type == "large" ? "dialog--large" : "dialog"}
+            className={`${type == "large" ? "dialog--large" : "dialog"} ${
+              className || ""
+            }`}
+            style={style}
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
             exit={{ scale: 0.8 }}

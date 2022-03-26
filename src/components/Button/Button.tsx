@@ -1,7 +1,7 @@
-// Styles
-import "@suankularb-components/css/dist/css/suankularb-components.min.css";
+// Types
+import { SKComponent } from "../../utils/types";
 
-export interface ButtonProps {
+export interface ButtonProps extends SKComponent {
   name?: string | JSX.Element;
   label?: string;
   type: "filled" | "outlined" | "text" | "tonal";
@@ -9,8 +9,6 @@ export interface ButtonProps {
   icon?: JSX.Element;
   isDangerous?: boolean;
   onClick?: Function;
-  className?: string;
-  style?: React.CSSProperties;
   attr?: React.ButtonHTMLAttributes<HTMLButtonElement>;
 }
 

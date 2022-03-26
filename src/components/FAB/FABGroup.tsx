@@ -1,15 +1,20 @@
 // Modules
 import { ReactNode } from "react";
 
-export interface FABGroupProps {
+// Types
+import { SKComponent } from "../../utils/types";
+
+export interface FABGroupProps extends SKComponent {
   children: ReactNode;
 }
 
 /**
  * A group of Floating Action Buttons
  */
-const FABGroup = ({ children }: FABGroupProps) => (
-  <div className="fab-group">{children}</div>
+const FABGroup = ({ children, className, style }: FABGroupProps) => (
+  <div className={`fab-group ${className}`} style={style}>
+    {children}
+  </div>
 );
 
 export default FABGroup;

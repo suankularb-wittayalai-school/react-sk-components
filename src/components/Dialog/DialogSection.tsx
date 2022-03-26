@@ -1,6 +1,10 @@
+// Modules
 import { ReactNode } from "react";
 
-export interface DialogSectionProps {
+// Types
+import { SKComponent } from "../../utils/types";
+
+export interface DialogSectionProps extends SKComponent {
   name: string;
   textElement?: JSX.Element;
   isDoubleColumn?: boolean;
@@ -18,8 +22,14 @@ const DialogSection = ({
   textElement,
   isDoubleColumn,
   children,
+  className,
+  style,
 }: DialogSectionProps): JSX.Element => (
-  <section className="dialog__section" aria-labelledby={name}>
+  <section
+    aria-labelledby={name}
+    className={`dialog__section ${className}`}
+    style={style}
+  >
     {/* Header */}
     <h2 id={name}>{textElement ? textElement : name}</h2>
 

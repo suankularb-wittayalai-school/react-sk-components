@@ -1,3 +1,5 @@
+import "@suankularb-components/css/dist/css/suankularb-components.min.css";
+
 export {
   Button,
   Card,

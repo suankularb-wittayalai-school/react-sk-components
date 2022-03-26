@@ -4,7 +4,10 @@ import { useEffect, useState } from "react";
 // Components
 import Search from "../../components/Input/Search";
 
-export interface CardListProps {
+// Types
+import { SKComponent } from "../../utils/types";
+
+export interface CardListProps extends SKComponent {
   listGroups: Array<{
     groupName: string;
     content: Array<{ id: number; content: {} }>;
@@ -26,13 +29,19 @@ export interface CardListProps {
  * @param ListItem The element for List Item, must accept content, className, and onClick
  * @param onChange The function triggered when the active ID changes
  */
-const CardList = ({ listGroups, ListItem, onChange }: CardListProps) => {
+const CardList = ({
+  listGroups,
+  ListItem,
+  onChange,
+  className,
+  style,
+}: CardListProps) => {
   const [activeID, setActiveID] = useState<number>(0);
 
   useEffect(() => onChange(activeID), [activeID]);
 
   return (
-    <section className="card-list">
+    <section className={`card-list ${className || ""}`} style={style}>
       {/* Search */}
       <div className="card-list__search">
         <Search />

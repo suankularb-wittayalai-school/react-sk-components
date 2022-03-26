@@ -6,7 +6,10 @@ import { useEffect, useState } from "react";
 import MaterialIcon from "../Icon";
 
 // Type
-import { DropdownOption as DropdownOptionType } from "../../utils/types/input";
+import {
+  SKComponent,
+  DropdownOption as DropdownOptionType,
+} from "../../utils/types";
 
 // Utils
 import { animationTransition } from "../../utils/animations/config";
@@ -56,7 +59,7 @@ const DropdownOptions = ({
   </div>
 );
 
-export interface DropdownProps {
+export interface DropdownProps extends SKComponent {
   name: string;
   label: string;
   options: Array<DropdownOptionType>;
@@ -64,8 +67,7 @@ export interface DropdownProps {
   noOptionsText?: string;
   icon?: { expandMore: JSX.Element; expandLess: JSX.Element };
   onChange?: Function;
-  className?: string;
-  style?: React.CSSProperties;
+  defaultValue?: DropdownOptionType["value"];
 }
 
 /**
@@ -85,16 +87,25 @@ const Dropdown = ({
   noOptionsText,
   icon,
   onChange,
+  defaultValue,
   className,
   style,
 }: DropdownProps): JSX.Element => {
   const [showList, setShowList] = useState<boolean>(false);
-  const [hasBeenSelected, setHasBeenSelected] = useState<boolean>(false);
-  const [selectedItemValue, setSelectedItemValue] = useState<any>(
-    options.length > 0 ? options[0].value : undefined
+  const [hasBeenSelected, setHasBeenSelected] = useState<boolean>(
+    defaultValue ? true : false
+  );
+  const [selectedItemValue, setSelectedItemValue] = useState<
+    DropdownOptionType["value"]
+  >(
+    defaultValue
+      ? defaultValue
+      : options.length > 0
+      ? options[0].value
+      : undefined
   );
 
-  useEffect(() => onChange && onChange(selectedItemValue), [selectedItemValue])
+  useEffect(() => onChange && onChange(selectedItemValue), [selectedItemValue]);
 
   return (
     <div

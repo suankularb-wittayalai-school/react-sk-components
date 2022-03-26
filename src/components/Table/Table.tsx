@@ -1,11 +1,12 @@
 // Module
 import { ReactNode } from "react";
 
-export interface TableProps {
+// Types
+import { SKComponent } from "../../utils/types";
+
+export interface TableProps extends SKComponent {
   type?: "outlined" | "elevated";
   width?: number;
-  className?: string;
-  style?: React.CSSProperties;
   children: ReactNode;
 }
 

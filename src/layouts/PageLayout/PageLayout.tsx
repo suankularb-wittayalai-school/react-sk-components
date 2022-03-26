@@ -5,10 +5,13 @@ import { ReactNode } from "react";
 import Navigation from "../../components/Navigation";
 
 // Types
-import { LinkElement as LinkElementType } from "../../utils/types";
-import { NavItem } from "../../utils/types";
+import {
+  LinkElement as LinkElementType,
+  NavItem,
+  SKComponent,
+} from "../../utils/types";
 
-export interface PageLayoutTypes {
+export interface PageLayoutProps extends SKComponent {
   currentPath: string;
   navItems: Array<NavItem>;
   LinkElement?: LinkElementType;
@@ -25,8 +28,10 @@ const PageLayout = ({
   navItems,
   LinkElement,
   children,
-}: PageLayoutTypes) => (
-  <div className="page-layout">
+  className,
+  style,
+}: PageLayoutProps) => (
+  <div className={`page-layout ${className}`} style={style}>
     <Navigation
       currentPath={currentPath}
       navItems={navItems}

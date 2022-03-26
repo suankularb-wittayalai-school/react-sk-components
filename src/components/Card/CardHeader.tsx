@@ -1,13 +1,14 @@
 // Components
 import MaterialIcon from "../Icon/MaterialIcon";
 
-export interface CardHeaderProps {
+// Types
+import { SKComponent } from "../../utils/types";
+
+export interface CardHeaderProps extends SKComponent {
   icon?: string | JSX.Element;
   title: JSX.Element;
   label?: string | JSX.Element;
   end?: JSX.Element;
-  className?: string;
-  style?: React.CSSProperties;
 }
 
 /**

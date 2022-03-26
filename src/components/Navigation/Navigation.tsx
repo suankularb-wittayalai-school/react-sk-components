@@ -1,6 +1,9 @@
 // Types
-import { LinkElement as LinkElementType } from "../../utils/types";
-import { NavItem } from "../../utils/types";
+import {
+  LinkElement as LinkElementType,
+  NavItem,
+  SKComponent,
+} from "../../utils/types";
 
 /**
  * An item inside of Navigation Bar
@@ -45,12 +48,10 @@ const NavigationItem = ({
     </a>
   );
 
-export interface NavigationProps {
+export interface NavigationProps extends SKComponent {
   currentPath: string;
   navItems: Array<NavItem>;
   LinkElement?: LinkElementType;
-  className?: string;
-  style?: React.CSSProperties;
   attr?: React.AnchorHTMLAttributes<HTMLAnchorElement>;
 }
 

@@ -2,7 +2,10 @@
 import Button from "../Button/Button";
 import MaterialIcon from "../Icon/MaterialIcon";
 
-export interface DialogHeaderProps {
+// Types
+import { SKComponent } from "../../utils/types";
+
+export interface DialogHeaderProps extends SKComponent {
   label: string;
   title: string | JSX.Element;
   icon?: JSX.Element;
@@ -32,9 +35,11 @@ const DialogHeader = ({
   submitName,
   onClose,
   onSubmit,
+  className,
+  style,
 }: DialogHeaderProps): JSX.Element => {
   return (
-    <div className="dialog__header">
+    <div className={`dialog__header ${className}`} style={style}>
       <div className="dialog__top-app-bar">
         <Button
           type="text"

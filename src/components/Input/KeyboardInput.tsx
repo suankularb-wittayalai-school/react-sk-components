@@ -1,14 +1,15 @@
 // Modules
 import { useEffect, useState } from "react";
 
-export interface KeyboardInputProps {
+// Types
+import { SKComponent } from "../../utils/types";
+
+export interface KeyboardInputProps extends SKComponent {
   name: string;
   type: "email" | "number" | "password" | "tel" | "text" | "url";
   label: string;
   onChange: Function;
   defaultValue?: string | number;
-  className?: string;
-  style?: React.CSSProperties;
   attr?: React.InputHTMLAttributes<HTMLInputElement>;
 }
 
