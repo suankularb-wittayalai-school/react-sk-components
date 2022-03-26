@@ -38,7 +38,7 @@ const NativeInput = ({
   style,
   attr,
 }: NativeInputProps): JSX.Element => {
-  const [inputValue, setInputValue] = useState(defaultValue);
+  const [inputValue, setInputValue] = useState(defaultValue || "");
 
   useEffect(() => onChange && onChange(inputValue), [inputValue]);
 

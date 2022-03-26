@@ -40,7 +40,7 @@ const KeyboardInput = ({
   style,
   attr,
 }: KeyboardInputProps): JSX.Element => {
-  const [inputValue, setInputValue] = useState(defaultValue);
+  const [inputValue, setInputValue] = useState(defaultValue || "");
 
   useEffect(() => onChange && onChange(inputValue), [inputValue]);
 

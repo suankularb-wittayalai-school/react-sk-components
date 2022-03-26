@@ -20,13 +20,11 @@ import { animationTransition } from "../../utils/animations/config";
  */
 const DropdownOptions = ({
   options,
-  noShowSelected,
   selectedItemValue,
   optionOnClick,
   noOptionsText,
 }: {
   options: Array<DropdownOptionType>;
-  noShowSelected: boolean;
   selectedItemValue: any;
   optionOnClick: (optionValue: any) => any;
   noOptionsText?: string;
@@ -36,7 +34,7 @@ const DropdownOptions = ({
       <button disabled>{noOptionsText || "No options"}</button>
     ) : (
       options.map((option) =>
-        noShowSelected && selectedItemValue === option.value ? (
+        selectedItemValue === option.value ? (
           <button
             aria-selected="true"
             className="selected"
@@ -98,7 +96,7 @@ const Dropdown = ({
   const [showList, setShowList] = useState<boolean>(false);
 
   // If the user has selected an Option
-  const [hasBeenSelected, setHasBeenSelected] = useState<boolean>(
+  const [showSelected, setShowSelected] = useState<boolean>(
     defaultValue ? true : false
   );
   // The value of the selected Option, use `defaultValue` as default if provided, otherwise use first option
@@ -120,8 +118,8 @@ const Dropdown = ({
   );
 
   // Handles keyboard navigation
-  const [focused, setFocused] = useState<boolean>(false);
-  const [currKeyCode, setCurrKeyCode] = useState<"up" | "down" | "escape">();
+  const [listeningForKeys, setListeningForKeys] = useState<boolean>(false);
+  const [currKeyCode, setCurrKeyCode] = useState<"up" | "down">();
 
   useEffect(() => {
     if (onChange) onChange(selectedItemValue);
@@ -130,16 +128,14 @@ const Dropdown = ({
     );
   }, [selectedItemValue]);
 
-  // Listen for key presses
+  // Listens for key presses
   useHotkeys("up", () => setCurrKeyCode("up"));
   useHotkeys("down", () => setCurrKeyCode("down"));
-  useHotkeys("escape", () => setCurrKeyCode("escape"));
 
   // Keyboard navigation logic
   useEffect(() => {
-    if (focused) {
+    if (listeningForKeys) {
       if (!showList) setShowList(true);
-      if (!hasBeenSelected) setHasBeenSelected(true);
 
       switch (currKeyCode) {
         case "up":
@@ -171,18 +167,15 @@ const Dropdown = ({
         aria-haspopup="listbox"
         className="dropdown__button"
         onClick={() => setShowList(!showList)}
-        onFocus={() => setFocused(true)}
-        onBlur={() => {
-          setFocused(false);
-          setShowList(false);
-        }}
+        onFocus={() => setListeningForKeys(true)}
+        onBlur={() => setListeningForKeys(false)}
         role="combobox"
       >
         <span>
           {
             // Displays placeholder if placeholder exists until the user selects an option
             // If not, the first option or noOptionsText is displayed
-            hasBeenSelected || !placeholder
+            showSelected || !placeholder
               ? options.length == 0
                 ? noOptionsText || "No options"
                 : options.find((option) => selectedItemValue === option.value)
@@ -198,6 +191,7 @@ const Dropdown = ({
         </div>
       </button>
 
+      {/* Dropdown Options */}
       <AnimatePresence>
         {showList && (
           <motion.div
@@ -214,11 +208,10 @@ const Dropdown = ({
             ) : (
               <DropdownOptions
                 options={options}
-                noShowSelected={hasBeenSelected}
                 selectedItemValue={selectedItemValue}
                 optionOnClick={(optionValue) => {
-                  if (!hasBeenSelected) {
-                    setHasBeenSelected(true);
+                  if (!showSelected) {
+                    setShowSelected(true);
                   }
                   setSelectedItemValue(optionValue);
                   setShowList(false);
@@ -230,6 +223,7 @@ const Dropdown = ({
         )}
       </AnimatePresence>
 
+      {/* Dropdown Label */}
       <label className="dropdown__label" htmlFor={name}>
         {label}
       </label>
