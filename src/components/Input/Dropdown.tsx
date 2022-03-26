@@ -1,6 +1,7 @@
 // Modules
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useHotkeys } from "react-hotkeys-hook";
 
 // Components
 import MaterialIcon from "../Icon";
@@ -13,7 +14,6 @@ import {
 
 // Utils
 import { animationTransition } from "../../utils/animations/config";
-import { useHotkeys } from "react-hotkeys-hook";
 
 /**
  * Displays the options for the dropdown
@@ -28,7 +28,7 @@ const DropdownOptions = ({
   options: Array<DropdownOptionType>;
   noShowSelected: boolean;
   selectedItemValue: any;
-  optionOnClick: (optionValue: any) => void;
+  optionOnClick: (optionValue: any) => any;
   noOptionsText?: string;
 }) => (
   <div className="dropdown__options" role="listbox">
@@ -42,6 +42,7 @@ const DropdownOptions = ({
             className="selected"
             key={option.value}
             role="option"
+            tabIndex={-1}
           >
             {option.label}
           </button>
@@ -51,6 +52,7 @@ const DropdownOptions = ({
             key={option.value}
             onClick={() => optionOnClick(option.value)}
             role="option"
+            tabIndex={-1}
           >
             {option.label}
           </button>
@@ -92,10 +94,14 @@ const Dropdown = ({
   className,
   style,
 }: DropdownProps): JSX.Element => {
+  // If Dropdown Options is shown
   const [showList, setShowList] = useState<boolean>(false);
+
+  // If the user has selected an Option
   const [hasBeenSelected, setHasBeenSelected] = useState<boolean>(
     defaultValue ? true : false
   );
+  // The value of the selected Option, use `defaultValue` as default if provided, otherwise use first option
   const [selectedItemValue, setSelectedItemValue] = useState<
     DropdownOptionType["value"]
   >(
@@ -105,57 +111,55 @@ const Dropdown = ({
       ? options[0].value
       : undefined
   );
+
+  // The value of the selected Option, use `defaultValue` as default if provided, otherwise use first option
   const [selectedItemIndex, setSelectedItemIndex] = useState<number>(
     defaultValue
       ? options.findIndex((option) => defaultValue == option.value)
       : 0
   );
 
-  // FIXME(@SiravitPhokeed): None of this works! In the callback, `selectedItemIndex` is always the default 0.
+  // Handles keyboard navigation
+  const [focused, setFocused] = useState<boolean>(false);
+  const [currKeyCode, setCurrKeyCode] = useState<"up" | "down" | "escape">();
 
   useEffect(() => {
     if (onChange) onChange(selectedItemValue);
     setSelectedItemIndex(
       options.findIndex((option) => selectedItemValue == option.value)
     );
-    console.log({
-      inUseEffect: options.findIndex(
-        (option) => selectedItemValue == option.value
-      ),
-    });
   }, [selectedItemValue]);
 
-  function moveSelectedUp() {
-    console.log({ inMoveSelectedUp: selectedItemIndex });
+  // Listen for key presses
+  useHotkeys("up", () => setCurrKeyCode("up"));
+  useHotkeys("down", () => setCurrKeyCode("down"));
+  useHotkeys("escape", () => setCurrKeyCode("escape"));
 
-    if (selectedItemIndex == 0)
-      setSelectedItemValue(options[options.length - 1].value);
-    else setSelectedItemValue(options[selectedItemIndex - 1].value);
-  }
-
-  function moveSelectedDown() {
-    if (selectedItemIndex == options.length - 1)
-      setSelectedItemValue(options[0].value);
-    else setSelectedItemValue(options[selectedItemIndex + 1].value);
-  }
-
-  function moveSelectedViaKey(e: KeyboardEvent) {
-    switch (e.key) {
-      case "ArrowUp":
-        moveSelectedUp();
-      case "ArrowDown":
-        moveSelectedDown();
-    }
-  }
-
+  // Keyboard navigation logic
   useEffect(() => {
-    window.addEventListener("keydown", moveSelectedViaKey);
+    if (focused) {
+      if (!showList) setShowList(true);
+      if (!hasBeenSelected) setHasBeenSelected(true);
 
-    return () => {
-      window.removeEventListener("keydown", moveSelectedViaKey);
-    };
-  }, []);
+      switch (currKeyCode) {
+        case "up":
+          if (selectedItemIndex == 0)
+            setSelectedItemValue(options[options.length - 1].value);
+          else setSelectedItemValue(options[selectedItemIndex - 1].value);
+          break;
 
+        case "down":
+          if (selectedItemIndex == options.length - 1)
+            setSelectedItemValue(options[0].value);
+          else setSelectedItemValue(options[selectedItemIndex + 1].value);
+          break;
+      }
+
+      setCurrKeyCode(undefined);
+    }
+  }, [currKeyCode]);
+
+  // Renders Dropdown
   return (
     <div
       className={`dropdown ${showList ? "show" : ""} ${className || ""}`}
@@ -167,6 +171,11 @@ const Dropdown = ({
         aria-haspopup="listbox"
         className="dropdown__button"
         onClick={() => setShowList(!showList)}
+        onFocus={() => setFocused(true)}
+        onBlur={() => {
+          setFocused(false);
+          setShowList(false);
+        }}
         role="combobox"
       >
         <span>
