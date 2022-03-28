@@ -26,7 +26,7 @@ const DropdownOptions = ({
 }: {
   options: Array<DropdownOptionType>;
   selectedItemValue: any;
-  optionOnClick: (optionValue: any) => any;
+  optionOnClick: (optionValue: any) => void;
   noOptionsText?: string;
 }) => (
   <div className="dropdown__options" role="listbox">
