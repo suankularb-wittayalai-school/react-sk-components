@@ -1,6 +1,7 @@
 // Modules
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useHotkeys } from "react-hotkeys-hook";
 
 // Components
 import MaterialIcon from "../Icon";
@@ -19,13 +20,11 @@ import { animationTransition } from "../../utils/animations/config";
  */
 const DropdownOptions = ({
   options,
-  noShowSelected,
   selectedItemValue,
   optionOnClick,
   noOptionsText,
 }: {
   options: Array<DropdownOptionType>;
-  noShowSelected: boolean;
   selectedItemValue: any;
   optionOnClick: (optionValue: any) => void;
   noOptionsText?: string;
@@ -35,12 +34,13 @@ const DropdownOptions = ({
       <button disabled>{noOptionsText || "No options"}</button>
     ) : (
       options.map((option) =>
-        noShowSelected && selectedItemValue === option.value ? (
+        selectedItemValue === option.value ? (
           <button
             aria-selected="true"
             className="selected"
             key={option.value}
             role="option"
+            tabIndex={-1}
           >
             {option.label}
           </button>
@@ -50,6 +50,7 @@ const DropdownOptions = ({
             key={option.value}
             onClick={() => optionOnClick(option.value)}
             role="option"
+            tabIndex={-1}
           >
             {option.label}
           </button>
@@ -91,10 +92,14 @@ const Dropdown = ({
   className,
   style,
 }: DropdownProps): JSX.Element => {
+  // If Dropdown Options is shown
   const [showList, setShowList] = useState<boolean>(false);
-  const [hasBeenSelected, setHasBeenSelected] = useState<boolean>(
+
+  // If the user has selected an Option
+  const [showSelected, setShowSelected] = useState<boolean>(
     defaultValue ? true : false
   );
+  // The value of the selected Option, use `defaultValue` as default if provided, otherwise use first option
   const [selectedItemValue, setSelectedItemValue] = useState<
     DropdownOptionType["value"]
   >(
@@ -105,8 +110,52 @@ const Dropdown = ({
       : undefined
   );
 
-  useEffect(() => onChange && onChange(selectedItemValue), [selectedItemValue]);
+  // The value of the selected Option, use `defaultValue` as default if provided, otherwise use first option
+  const [selectedItemIndex, setSelectedItemIndex] = useState<number>(
+    defaultValue
+      ? options.findIndex((option) => defaultValue == option.value)
+      : 0
+  );
 
+  // Handles keyboard navigation
+  const [listeningForKeys, setListeningForKeys] = useState<boolean>(false);
+  const [currKeyCode, setCurrKeyCode] = useState<"up" | "down">();
+
+  useEffect(() => {
+    if (onChange) onChange(selectedItemValue);
+    setSelectedItemIndex(
+      options.findIndex((option) => selectedItemValue == option.value)
+    );
+  }, [selectedItemValue]);
+
+  // Listens for key presses
+  useHotkeys("up", () => setCurrKeyCode("up"));
+  useHotkeys("down", () => setCurrKeyCode("down"));
+
+  // Keyboard navigation logic
+  useEffect(() => {
+    if (listeningForKeys) {
+      if (!showList) setShowList(true);
+
+      switch (currKeyCode) {
+        case "up":
+          if (selectedItemIndex == 0)
+            setSelectedItemValue(options[options.length - 1].value);
+          else setSelectedItemValue(options[selectedItemIndex - 1].value);
+          break;
+
+        case "down":
+          if (selectedItemIndex == options.length - 1)
+            setSelectedItemValue(options[0].value);
+          else setSelectedItemValue(options[selectedItemIndex + 1].value);
+          break;
+      }
+
+      setCurrKeyCode(undefined);
+    }
+  }, [currKeyCode]);
+
+  // Renders Dropdown
   return (
     <div
       className={`dropdown ${showList ? "show" : ""} ${className || ""}`}
@@ -118,13 +167,15 @@ const Dropdown = ({
         aria-haspopup="listbox"
         className="dropdown__button"
         onClick={() => setShowList(!showList)}
+        onFocus={() => setListeningForKeys(true)}
+        onBlur={() => setListeningForKeys(false)}
         role="combobox"
       >
         <span>
           {
             // Displays placeholder if placeholder exists until the user selects an option
             // If not, the first option or noOptionsText is displayed
-            hasBeenSelected || !placeholder
+            showSelected || !placeholder
               ? options.length == 0
                 ? noOptionsText || "No options"
                 : options.find((option) => selectedItemValue === option.value)
@@ -140,6 +191,7 @@ const Dropdown = ({
         </div>
       </button>
 
+      {/* Dropdown Options */}
       <AnimatePresence>
         {showList && (
           <motion.div
@@ -156,11 +208,10 @@ const Dropdown = ({
             ) : (
               <DropdownOptions
                 options={options}
-                noShowSelected={hasBeenSelected}
                 selectedItemValue={selectedItemValue}
                 optionOnClick={(optionValue) => {
-                  if (!hasBeenSelected) {
-                    setHasBeenSelected(true);
+                  if (!showSelected) {
+                    setShowSelected(true);
                   }
                   setSelectedItemValue(optionValue);
                   setShowList(false);
@@ -172,6 +223,7 @@ const Dropdown = ({
         )}
       </AnimatePresence>
 
+      {/* Dropdown Label */}
       <label className="dropdown__label" htmlFor={name}>
         {label}
       </label>
