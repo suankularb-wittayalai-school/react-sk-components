@@ -10,7 +10,7 @@ import { SKComponent } from "../../utils/types";
 export interface CardListProps extends SKComponent {
   listGroups: Array<{
     groupName: string;
-    content: Array<{ id: number; content: {} }>;
+    content: Array<{ id: number; content: any }>;
   }>;
   ListItem: ({
     id,
