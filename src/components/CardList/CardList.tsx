@@ -13,9 +13,11 @@ export interface CardListProps extends SKComponent {
     content: Array<{ id: number; content: {} }>;
   }>;
   ListItem: ({
+    id,
     content,
     className,
   }: {
+    id: number;
     content: any;
     className: string;
     onClick: () => void;
@@ -26,7 +28,7 @@ export interface CardListProps extends SKComponent {
 /**
  * The list of Cards that can be selected
  * @param listGroups An array of List Groups which contains List Items
- * @param ListItem The element for List Item, must accept content, className, and onClick
+ * @param ListItem The element for List Item, must accept id, content, className, and onClick
  * @param onChange The function triggered when the active ID changes
  */
 const CardList = ({
@@ -60,6 +62,7 @@ const CardList = ({
                   // List Item
                   <li key={listItem.id}>
                     <ListItem
+                      id={listItem.id}
                       content={listItem.content}
                       className={`card-list__item ${
                         activeID == listItem.id ? "active" : ""
