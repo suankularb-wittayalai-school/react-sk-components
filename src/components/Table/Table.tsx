@@ -30,7 +30,7 @@ const Table = ({
     } ${className || ""}`}
     style={style}
   >
-    <table className="table" style={{ width: width }}>
+    <table className="table" style={{ minWidth: width }}>
       {children}
     </table>
   </div>
