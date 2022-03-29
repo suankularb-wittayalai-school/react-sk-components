@@ -5,7 +5,8 @@ import { ReactNode } from "react";
 import { SKComponent } from "../../../utils/types";
 
 export interface ListLayoutProps extends SKComponent {
-  Title: JSX.Element;
+  Title?: JSX.Element;
+  show: Boolean;
   children: ReactNode;
 }
 
@@ -16,17 +17,25 @@ export interface ListLayoutProps extends SKComponent {
  *
  * @param Title Title element
  */
-const ListLayout = ({ Title, className, style, children }: ListLayoutProps) => {
-  const TitleElement = () => Title;
-
-  return (
-    <>
-      <TitleElement />
-      <main className={`content-layout--list ${className || ""}`} style={style}>
-        <div className="content-layout__content">{children}</div>
-      </main>
-    </>
-  );
-};
+const ListLayout = ({
+  Title,
+  show,
+  className,
+  style,
+  children,
+}: ListLayoutProps) => (
+  <>
+    {Title && Title}
+    <main
+      className={`content-layout--list ${show ? "show" : ""} ${
+        className || ""
+      }`}
+      style={style}
+    >
+      <div className="content-layout__overlay" />
+      <div className="content-layout__content">{children}</div>
+    </main>
+  </>
+);
 
 export default ListLayout;

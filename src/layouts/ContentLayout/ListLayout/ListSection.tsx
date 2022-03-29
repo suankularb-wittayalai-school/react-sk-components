@@ -18,7 +18,7 @@ const ListSection = ({
   style,
 }: CardListProps) => {
   return (
-    <section className="content-layout--list__list">
+    <section className="content-layout__list-section">
       <CardList
         listGroups={listGroups}
         ListItem={ListItem}

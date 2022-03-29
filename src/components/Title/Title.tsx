@@ -57,7 +57,7 @@ const TitleIcons = ({
 export interface TitleProps extends SKComponent {
   name: { title: string; subtitle?: string };
   pageIcon: JSX.Element | string;
-  backGoesTo: string;
+  backGoesTo: string | Function;
   backIcon?: JSX.Element;
   LinkElement?: LinkElementType;
 }

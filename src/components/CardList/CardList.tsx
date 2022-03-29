@@ -16,7 +16,7 @@ export interface CardListProps extends SKComponent {
     content,
     className,
   }: {
-    content: {};
+    content: any;
     className: string;
     onClick: () => void;
   }) => JSX.Element;
@@ -51,17 +51,16 @@ const CardList = ({
         <ul className="card-list__list-content">
           {listGroups.map((listGroup) => (
             // List Group
-            <li className="card-list__group">
+            <li key={listGroup.groupName} className="card-list__group">
               {/* Group Header */}
               <h3 className="card-list__header">{listGroup.groupName}</h3>
               {/* Group Content */}
               <ul className="card-list__items">
                 {listGroup.content.map((listItem) => (
                   // List Item
-                  <li>
+                  <li key={listItem.id}>
                     <ListItem
-                      key={listItem.id}
-                      content={listItem}
+                      content={listItem.content}
                       className={`card-list__item ${
                         activeID == listItem.id ? "active" : ""
                       }`}
