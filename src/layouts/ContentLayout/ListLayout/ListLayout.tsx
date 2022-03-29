@@ -16,13 +16,14 @@ export interface ListLayoutProps extends SKComponent {
  * Its children must consist of `ListSection` and `MainSection`
  *
  * @param Title Title element
+ * @param show If the Main Section is currently visible on mobile or not 
  */
 const ListLayout = ({
   Title,
   show,
+  children,
   className,
   style,
-  children,
 }: ListLayoutProps) => (
   <>
     {Title && Title}
