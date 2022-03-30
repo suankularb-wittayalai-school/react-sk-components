@@ -1,31 +1,23 @@
-// Components
-import CardList from "../../../components/CardList/CardList";
+// Modules
+import { ReactNode } from "react";
 
 // Types
-import { CardListProps } from "../../../components/CardList/CardList";
+import { SKComponent } from "../../../utils/types";
+
+export interface ListSectionProps extends SKComponent {
+  children: ReactNode;
+}
 
 /**
- * The left section of List Layout where Card List lives
- * @param listGroups An array of List Groups which contains List Items
- * @param ListItem The element for List Item, must accept content, className, and onClick
- * @param onChange The function triggered when the active ID changes
+ * The left section of List Layout where Card List should live
  */
-const ListSection = ({
-  listGroups,
-  ListItem,
-  onChange,
-  className,
-  style,
-}: CardListProps) => {
+const ListSection = ({ children, className, style }: ListSectionProps) => {
   return (
-    <section className="content-layout--list__list">
-      <CardList
-        listGroups={listGroups}
-        ListItem={ListItem}
-        onChange={onChange}
-        className={className}
-        style={style}
-      />
+    <section
+      className={`content-layout__list-section ${className || ""}`}
+      style={style}
+    >
+      {children}
     </section>
   );
 };

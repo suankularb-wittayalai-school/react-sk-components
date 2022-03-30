@@ -1,13 +1,13 @@
 // Modules
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // Types
 import { SKComponent } from "../../utils/types";
 
 export interface SearchProps extends SKComponent {
   placeholder?: string;
-  onChange?: Function;
-  onSubmit?: Function;
+  onChange?: (e: string) => void;
+  onSubmit?: (e: string) => void;
 }
 
 /**
@@ -23,16 +23,17 @@ const Search = ({
 }: SearchProps) => {
   const [query, setQuery] = useState<string>("");
 
+  useEffect(() => onChange && onChange(query), [query]);
+
   return (
-    <form className={`search ${className || ""}`} style={style}>
+    <form
+      onSubmit={(e) => e.preventDefault()}
+      className={`search ${className || ""}`}
+      style={style}
+    >
       <button
         className="search__button"
-        onClick={(e) => {
-          e.preventDefault;
-          if (onSubmit) {
-            onSubmit(query);
-          }
-        }}
+        onClick={() => onSubmit && onSubmit(query)}
       >
         <i className="icon search__icon" translate="no">
           search
@@ -41,12 +42,7 @@ const Search = ({
       <input
         type="search"
         className="search__input"
-        onChange={(e) => {
-          setQuery(e.target.value);
-          if (onChange) {
-            onChange(query);
-          }
-        }}
+        onChange={(e) => setQuery(e.target.value)}
         placeholder={placeholder || "Search"}
       />
     </form>

@@ -10,13 +10,15 @@ import { SKComponent } from "../../utils/types";
 export interface CardListProps extends SKComponent {
   listGroups: Array<{
     groupName: string;
-    content: Array<{ id: number; content: {} }>;
+    content: Array<{ id: number; content: any }>;
   }>;
   ListItem: ({
+    id,
     content,
     className,
   }: {
-    content: {};
+    id: number;
+    content: any;
     className: string;
     onClick: () => void;
   }) => JSX.Element;
@@ -26,7 +28,7 @@ export interface CardListProps extends SKComponent {
 /**
  * The list of Cards that can be selected
  * @param listGroups An array of List Groups which contains List Items
- * @param ListItem The element for List Item, must accept content, className, and onClick
+ * @param ListItem The element for List Item, must accept id, content, className, and onClick
  * @param onChange The function triggered when the active ID changes
  */
 const CardList = ({
@@ -51,17 +53,17 @@ const CardList = ({
         <ul className="card-list__list-content">
           {listGroups.map((listGroup) => (
             // List Group
-            <li className="card-list__group">
+            <li key={listGroup.groupName} className="card-list__group">
               {/* Group Header */}
               <h3 className="card-list__header">{listGroup.groupName}</h3>
               {/* Group Content */}
               <ul className="card-list__items">
                 {listGroup.content.map((listItem) => (
                   // List Item
-                  <li>
+                  <li key={listItem.id}>
                     <ListItem
-                      key={listItem.id}
-                      content={listItem}
+                      id={listItem.id}
+                      content={listItem.content}
                       className={`card-list__item ${
                         activeID == listItem.id ? "active" : ""
                       }`}

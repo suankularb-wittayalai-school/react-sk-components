@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 import { SKComponent } from "../../../utils/types";
 
 export interface RegularLayoutProps extends SKComponent {
-  Title: JSX.Element;
+  Title?: JSX.Element;
   children: ReactNode;
 }
 
@@ -20,11 +20,10 @@ const RegularLayout = ({
   style,
   children,
 }: RegularLayoutProps) => {
-  const TitleElement = () => Title;
 
   return (
     <>
-      <TitleElement />
+      {Title && Title}
       <main className={`content-layout ${className || ""}`} style={style}>
         <div className="content-layout__content">{children}</div>
       </main>
