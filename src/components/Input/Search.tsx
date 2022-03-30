@@ -24,15 +24,14 @@ const Search = ({
   const [query, setQuery] = useState<string>("");
 
   return (
-    <form className={`search ${className || ""}`} style={style}>
+    <form
+      onSubmit={(e) => e.preventDefault()}
+      className={`search ${className || ""}`}
+      style={style}
+    >
       <button
         className="search__button"
-        onClick={(e) => {
-          e.preventDefault;
-          if (onSubmit) {
-            onSubmit(query);
-          }
-        }}
+        onClick={() => onSubmit && onSubmit(query)}
       >
         <i className="icon search__icon" translate="no">
           search
