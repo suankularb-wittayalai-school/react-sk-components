@@ -1,5 +1,5 @@
 // Modules
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // Types
 import { SKComponent } from "../../utils/types";
@@ -23,6 +23,8 @@ const Search = ({
 }: SearchProps) => {
   const [query, setQuery] = useState<string>("");
 
+  useEffect(() => onChange && onChange(query), [query]);
+
   return (
     <form
       onSubmit={(e) => e.preventDefault()}
@@ -40,12 +42,7 @@ const Search = ({
       <input
         type="search"
         className="search__input"
-        onChange={(e) => {
-          setQuery(e.target.value);
-          if (onChange) {
-            onChange(query);
-          }
-        }}
+        onChange={(e) => setQuery(e.target.value)}
         placeholder={placeholder || "Search"}
       />
     </form>
