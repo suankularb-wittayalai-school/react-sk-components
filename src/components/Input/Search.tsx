@@ -6,8 +6,8 @@ import { SKComponent } from "../../utils/types";
 
 export interface SearchProps extends SKComponent {
   placeholder?: string;
-  onChange?: Function;
-  onSubmit?: Function;
+  onChange?: (e: string) => void;
+  onSubmit?: (e: string) => void;
 }
 
 /**
