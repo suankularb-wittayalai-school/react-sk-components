@@ -7,8 +7,8 @@ import { SKComponent } from "../../utils/types";
 export interface TextAreaProps extends SKComponent {
   name: string;
   label: string;
-  onChange: Function;
-  defaultValue?: string | number;
+  onChange: (newValue: string) => void;
+  defaultValue?: string;
   attr?: React.TextareaHTMLAttributes<HTMLInputElement>;
 }
 
@@ -31,7 +31,7 @@ const TextArea = ({
   style,
   attr,
 }: TextAreaProps): JSX.Element => {
-  const [inputValue, setInputValue] = useState(defaultValue);
+  const [inputValue, setInputValue] = useState<string>(defaultValue || "");
 
   useEffect(() => onChange && onChange(inputValue), [inputValue]);
 
