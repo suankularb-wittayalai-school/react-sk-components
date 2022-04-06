@@ -42,7 +42,7 @@ const InputChip = ({
     >
       {avatar && <div className="chip__avatar">{avatar}</div>}
       {leadingIcon && <div className="chip__icon">{leadingIcon}</div>}
-      <span>{name}</span>
+      {typeof name == "string" ? <span>{name}</span> : name}
       <button className="chip__icon--btn" onClick={() => onClose && onClose()}>
         <MaterialIcon icon="close" />
       </button>
