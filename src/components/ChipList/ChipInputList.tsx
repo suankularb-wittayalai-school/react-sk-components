@@ -6,13 +6,15 @@ import Chip from "../Chip/Chip";
 import ChipList from "./ChipList";
 import MaterialIcon from "../Icon/MaterialIcon";
 
-export interface Choice {
+export interface ListItem {
   id: string;
+  avatar?: JSX.Element;
+  leadingIcon?: JSX.Element;
   name: string | JSX.Element;
 }
 
-export interface ChipFilterListProps {
-  list: Array<Choice>;
+export interface ChipInputListProps {
+  list: Array<ListItem>;
   onChange?: Function;
   scrollable?: boolean;
   noWrap?: boolean;
@@ -26,11 +28,15 @@ export interface ChipFilterListProps {
  * @param noWrap Disables wrapping when the width is too small, is *not* needed if `scrollable` is true
  */
 const ChipInputList = ({
-  list,
+  list: defaultList,
   onChange,
   scrollable,
   noWrap,
-}: ChipFilterListProps): JSX.Element => {
+}: ChipInputListProps): JSX.Element => {
+  const [list, setList] = useState<Array<ListItem>>(defaultList);
+
+  useEffect(() => onChange && onChange(list), [list]);
+
   return (
     <ChipList scrollable={scrollable} noWrap={noWrap}>
       {list.map((listItem, index) => (
