@@ -10,6 +10,7 @@ export {
   FilterChip,
   ChipList,
   ChipFilterList,
+  ChipInputList,
   ChipRadioGroup,
   Dialog,
   DialogHeader,

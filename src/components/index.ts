@@ -10,6 +10,7 @@ export { default as Chip, FilterChip } from "./Chip";
 export {
   default as ChipList,
   ChipFilterList,
+  ChipInputList,
   ChipRadioGroup,
 } from "./ChipList";
 export {
