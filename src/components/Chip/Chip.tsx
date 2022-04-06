@@ -33,7 +33,7 @@ const Chip = ({
   style,
 }: ChipProps): JSX.Element => (
   <button
-    className={` ${
+    className={`${
       leadingIcon && trailingIcon
         ? "chip--has-icons"
         : avatar && trailingIcon
