@@ -1,5 +1,16 @@
+// Components
+import MaterialIcon from "../Icon/MaterialIcon";
+
 // Types
-import { ChipProps } from "./Chip";
+import { SKComponent } from "../../utils/types";
+
+export interface InputChipProps extends SKComponent {
+  name: string | JSX.Element;
+  appearance?: "regular" | "elevated";
+  leadingIcon?: JSX.Element;
+  avatar?: JSX.Element;
+  onClose?: Function;
+}
 
 /**
  * A Chip that can be toggled on and off
@@ -12,11 +23,12 @@ import { ChipProps } from "./Chip";
 const InputChip = ({
   name,
   appearance,
-  avatar,
   leadingIcon,
+  avatar,
+  onClose,
   className,
   style,
-}: ChipProps) => {
+}: InputChipProps) => {
   return (
     <li
       className={`input-chip ${
@@ -31,6 +43,9 @@ const InputChip = ({
       {avatar && <div className="chip__avatar">{avatar}</div>}
       {leadingIcon && <div className="chip__icon">{leadingIcon}</div>}
       <span>{name}</span>
+      <button className="chip__icon--btn" onClick={() => onClose && onClose()}>
+        <MaterialIcon icon="close" />
+      </button>
     </li>
   );
 };
