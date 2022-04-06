@@ -1,10 +1,6 @@
-// Modules
-import { useEffect, useState } from "react";
-
 // Components
-import Chip from "../Chip/Chip";
+import InputChip from "../Chip/InputChip";
 import ChipList from "./ChipList";
-import MaterialIcon from "../Icon/MaterialIcon";
 
 export interface ListItem {
   id: string;
@@ -15,7 +11,7 @@ export interface ListItem {
 
 export interface ChipInputListProps {
   list: Array<ListItem>;
-  onChange?: Function;
+  setList?: (newList: Array<ListItem>) => void;
   scrollable?: boolean;
   noWrap?: boolean;
 }
@@ -23,31 +19,29 @@ export interface ChipInputListProps {
 /**
  * A list of Filter Chips and Chip Radio Groups that the user can choose many from
  * @param list An array of choices the user has entered
- * @param onChange Triggered when the selected Chips change
+ * @param setList Set the state of the list
  * @param scrollable If true, Chip List will fill the width and scroll
  * @param noWrap Disables wrapping when the width is too small, is *not* needed if `scrollable` is true
  */
 const ChipInputList = ({
-  list: defaultList,
-  onChange,
+  list,
+  setList,
   scrollable,
   noWrap,
-}: ChipInputListProps): JSX.Element => {
-  const [list, setList] = useState<Array<ListItem>>(defaultList);
-
-  useEffect(() => onChange && onChange(list), [list]);
-
-  return (
-    <ChipList scrollable={scrollable} noWrap={noWrap}>
-      {list.map((listItem, index) => (
-        <Chip
-          key={index}
-          name={listItem.name}
-          trailingIcon={<MaterialIcon icon="close" />}
-        />
-      ))}
-    </ChipList>
-  );
-};
+}: ChipInputListProps): JSX.Element => (
+  <ChipList scrollable={scrollable} noWrap={noWrap}>
+    {list.map((listItem, index) => (
+      <InputChip
+        key={index}
+        name={listItem.name}
+        avatar={listItem.avatar}
+        leadingIcon={listItem.leadingIcon}
+        onClose={() =>
+          setList && setList(list.filter((item) => listItem.id != item.id))
+        }
+      />
+    ))}
+  </ChipList>
+);
 
 export default ChipInputList;
