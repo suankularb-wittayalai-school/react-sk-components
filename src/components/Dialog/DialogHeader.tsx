@@ -58,7 +58,7 @@ const DialogHeader = ({
         )}
         {onSubmit && (
           <Button
-            name={submitName || "Submit"}
+            label={submitName || "Submit"}
             type="text"
             onClick={() => onSubmit()}
           />

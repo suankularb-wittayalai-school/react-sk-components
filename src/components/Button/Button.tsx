@@ -2,8 +2,8 @@
 import { SKComponent } from "../../utils/types";
 
 export interface ButtonProps extends SKComponent {
-  name?: string | JSX.Element;
-  label?: string;
+  name?: string;
+  label?: string | JSX.Element;
   type: "filled" | "outlined" | "text" | "tonal";
   iconOnly?: boolean;
   icon?: JSX.Element;
@@ -35,7 +35,7 @@ const Button = ({
   attr,
 }: ButtonProps) => (
   <button
-    aria-label={label}
+    aria-label={name}
     autoFocus={attr?.autoFocus}
     className={`${
       type == "outlined"
@@ -59,12 +59,10 @@ const Button = ({
     style={style}
     type={attr?.type}
     value={attr?.value}
-    onClick={() => {
-      if (onClick) onClick();
-    }}
+    onClick={() => onClick && onClick()}
   >
     {icon}
-    {name && <span>{name}</span>}
+    {label && <span>{label}</span>}
   </button>
 );
 

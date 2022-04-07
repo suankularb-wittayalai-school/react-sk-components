@@ -6,10 +6,11 @@ export {
   CardSupportingText,
 } from "./Card";
 export { default as CardList } from "./CardList";
-export { default as Chip, FilterChip } from "./Chip";
+export { default as Chip, ActionChip, FilterChip, InputChip } from "./Chip";
 export {
   default as ChipList,
   ChipFilterList,
+  ChipInputList,
   ChipRadioGroup,
 } from "./ChipList";
 export {

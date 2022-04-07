@@ -33,7 +33,7 @@ const DialogActions = ({
       <Button
         key={action.name}
         type="text"
-        name={action.name}
+        label={action.name}
         className={action.isDangerous ? "btn--danger" : undefined}
         onClick={() =>
           action.type == "close"

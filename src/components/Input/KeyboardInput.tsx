@@ -8,8 +8,8 @@ export interface KeyboardInputProps extends SKComponent {
   name: string;
   type: "email" | "number" | "password" | "tel" | "text" | "url";
   label: string;
-  onChange: Function;
-  defaultValue?: string | number;
+  onChange: (newValue: string) => void;
+  defaultValue?: string;
   attr?: React.InputHTMLAttributes<HTMLInputElement>;
 }
 
@@ -40,7 +40,7 @@ const KeyboardInput = ({
   style,
   attr,
 }: KeyboardInputProps): JSX.Element => {
-  const [inputValue, setInputValue] = useState(defaultValue || "");
+  const [inputValue, setInputValue] = useState<string>(defaultValue || "");
 
   useEffect(() => onChange && onChange(inputValue), [inputValue]);
 
