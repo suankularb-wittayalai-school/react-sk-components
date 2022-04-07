@@ -32,8 +32,8 @@ export interface ChipInputListProps {
  * A list of Chips added by the user via an input
  * @param list An array of Chip Input List Items the user has entered
  * @param onChange Triggered when a Chip Input List Item is deleted
- * @param onAdd Triggered when the Add Chip is
- * @param addChipName Add Chip label for screenreaders
+ * @param onAdd Triggered when Add Chip is
+ * @param addChipOptions Options for Add Chip; same as Action Chip
  * @param scrollable If true, Chip List will fill the width and scroll
  * @param noWrap Disables wrapping when the width is too small, is *not* needed if `scrollable` is true
  */
