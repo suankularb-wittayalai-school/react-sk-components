@@ -30,7 +30,11 @@ const InputChip = ({
 }: InputChipProps) => (
   <li
     className={`input-chip ${
-      leadingIcon ? "chip--has-leading-icon" : avatar ? "chip--has-avatar" : ""
+      leadingIcon
+        ? "chip--has-icons"
+        : avatar
+        ? "chip--has-avatar-and-icon"
+        : "chip--has-trailing-icon"
     } ${appearance == "elevated" ? "chip--elevated" : ""} ${className || ""}`}
     style={style}
   >
