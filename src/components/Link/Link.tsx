@@ -2,8 +2,8 @@
 import { SKComponent, LinkElement as LinkElementType } from "../../utils/types";
 
 export interface LinkProps extends SKComponent {
-  name?: string | JSX.Element;
-  label?: string;
+  name?: string;
+  label?: string | JSX.Element;
   type: "filled" | "outlined" | "text" | "tonal";
   iconOnly?: boolean;
   icon?: JSX.Element;
@@ -38,7 +38,7 @@ const LinkButton = ({
   LinkElement ? (
     <LinkElement href={url}>
       <a
-        aria-label={label}
+        aria-label={name}
         className={`${
           type == "outlined"
             ? "btn--outlined"
@@ -53,12 +53,12 @@ const LinkButton = ({
         style={style}
       >
         {icon}
-        {name && <span>{name}</span>}
+        {label && <span>{label}</span>}
       </a>
     </LinkElement>
   ) : (
     <a
-      aria-label={label}
+      aria-label={name}
       className={`${
         type == "outlined"
           ? "btn--outlined"
@@ -81,7 +81,7 @@ const LinkButton = ({
       referrerPolicy={attr?.referrerPolicy}
     >
       {icon}
-      {name && <span>{name}</span>}
+      {label && <span>{label}</span>}
     </a>
   );
 
