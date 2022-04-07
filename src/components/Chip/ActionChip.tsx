@@ -2,8 +2,8 @@
 import { SKComponent } from "../../utils/types";
 
 export interface ActionChipProps extends SKComponent {
-  name: string;
-  type: "filled" | "tonal";
+  name?: string;
+  type?: "filled" | "tonal";
   icon: JSX.Element;
   onClick?: Function;
   attr?: React.ButtonHTMLAttributes<HTMLButtonElement>;

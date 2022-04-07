@@ -1,6 +1,8 @@
 // Components
+import ActionChip from "../Chip/ActionChip";
 import InputChip from "../Chip/InputChip";
 import ChipList from "./ChipList";
+import MaterialIcon from "../Icon/MaterialIcon";
 
 export interface ListItem {
   id: string;
@@ -12,20 +14,26 @@ export interface ListItem {
 export interface ChipInputListProps {
   list: Array<ListItem>;
   onChange?: (newList: Array<ListItem>) => void;
+  onAdd?: Function;
+  addChipName?: string;
   scrollable?: boolean;
   noWrap?: boolean;
 }
 
 /**
- * A list of Filter Chips and Chip Radio Groups that the user can choose many from
- * @param list An array of choices the user has entered
- * @param setList Set the state of the list
+ * A list of Chips added by the user via an input
+ * @param list An array of Chip Input List Items the user has entered
+ * @param onChange Triggered when a Chip Input List Item is deleted
+ * @param onAdd Triggered when the Add Chip is
+ * @param addChipName Add Chip label for screenreaders
  * @param scrollable If true, Chip List will fill the width and scroll
  * @param noWrap Disables wrapping when the width is too small, is *not* needed if `scrollable` is true
  */
 const ChipInputList = ({
   list,
   onChange,
+  onAdd,
+  addChipName,
   scrollable,
   noWrap,
 }: ChipInputListProps): JSX.Element => (
@@ -41,6 +49,13 @@ const ChipInputList = ({
         }
       />
     ))}
+    {onAdd && (
+      <ActionChip
+        name={addChipName || "Add"}
+        icon={<MaterialIcon icon="add" />}
+        onClick={() => onAdd()}
+      />
+    )}
   </ChipList>
 );
 
