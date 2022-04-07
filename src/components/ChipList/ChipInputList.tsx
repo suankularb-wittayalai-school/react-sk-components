@@ -61,7 +61,7 @@ const ChipInputList = ({
       <ActionChip
         name={addChipOptions?.name || "Add"}
         type={addChipOptions?.type}
-        icon={addChipOptions?.icon || <MaterialIcon icon="add" />}
+        icon={addChipOptions?.icon || <MaterialIcon icon="add" allowCustomSize />}
         onClick={() => onAdd()}
         attr={addChipOptions?.attr}
         className={addChipOptions?.className}
