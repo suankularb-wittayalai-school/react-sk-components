@@ -59,9 +59,7 @@ const Button = ({
     style={style}
     type={attr?.type}
     value={attr?.value}
-    onClick={() => {
-      if (onClick) onClick();
-    }}
+    onClick={() => onClick && onClick()}
   >
     {icon}
     {name && <span>{name}</span>}
