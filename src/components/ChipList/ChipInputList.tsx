@@ -4,6 +4,9 @@ import InputChip from "../Chip/InputChip";
 import ChipList from "./ChipList";
 import MaterialIcon from "../Icon/MaterialIcon";
 
+// Types
+import { SKComponent } from "../../utils/types";
+
 export interface ListItem {
   id: string;
   avatar?: JSX.Element;
@@ -15,7 +18,12 @@ export interface ChipInputListProps {
   list: Array<ListItem>;
   onChange?: (newList: Array<ListItem>) => void;
   onAdd?: Function;
-  addChipName?: string;
+  addChipOptions?: SKComponent & {
+    name?: string;
+    type?: "filled" | "tonal";
+    icon: JSX.Element;
+    attr?: React.ButtonHTMLAttributes<HTMLButtonElement>;
+  };
   scrollable?: boolean;
   noWrap?: boolean;
 }
@@ -33,7 +41,7 @@ const ChipInputList = ({
   list,
   onChange,
   onAdd,
-  addChipName,
+  addChipOptions,
   scrollable,
   noWrap,
 }: ChipInputListProps): JSX.Element => (
@@ -51,9 +59,13 @@ const ChipInputList = ({
     ))}
     {onAdd && (
       <ActionChip
-        name={addChipName || "Add"}
-        icon={<MaterialIcon icon="add" />}
+        name={addChipOptions?.name || "Add"}
+        type={addChipOptions?.type}
+        icon={addChipOptions?.icon || <MaterialIcon icon="add" />}
         onClick={() => onAdd()}
+        attr={addChipOptions?.attr}
+        className={addChipOptions?.className}
+        style={addChipOptions?.style}
       />
     )}
   </ChipList>
