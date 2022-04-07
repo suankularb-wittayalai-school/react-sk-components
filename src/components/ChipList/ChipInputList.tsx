@@ -11,7 +11,7 @@ export interface ListItem {
 
 export interface ChipInputListProps {
   list: Array<ListItem>;
-  setList?: (newList: Array<ListItem>) => void;
+  onChange?: (newList: Array<ListItem>) => void;
   scrollable?: boolean;
   noWrap?: boolean;
 }
@@ -25,7 +25,7 @@ export interface ChipInputListProps {
  */
 const ChipInputList = ({
   list,
-  setList,
+  onChange,
   scrollable,
   noWrap,
 }: ChipInputListProps): JSX.Element => (
@@ -37,7 +37,7 @@ const ChipInputList = ({
         avatar={listItem.avatar}
         leadingIcon={listItem.leadingIcon}
         onClose={() =>
-          setList && setList(list.filter((item) => listItem.id != item.id))
+          onChange && onChange(list.filter((item) => listItem.id != item.id))
         }
       />
     ))}
