@@ -1,6 +1,6 @@
 {
   "name": "@suankularb-components/react",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "description": "A React implementation of Suankularb Components",
   "main": "dist/cjs/index.js",
   "types": "dist/index.d.ts",

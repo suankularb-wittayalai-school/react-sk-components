@@ -6,6 +6,7 @@ export {
   CardActions,
   CardHeader,
   CardSupportingText,
+  CardList,
   Chip,
   FilterChip,
   ChipList,
