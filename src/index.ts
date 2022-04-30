@@ -25,6 +25,7 @@ export {
   TextArea,
   Dropdown,
   Search,
+  LayoutGridCols,
   LinkButton,
   Navigation,
   Section,

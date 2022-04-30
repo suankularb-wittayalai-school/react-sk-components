@@ -29,6 +29,7 @@ export {
   TextArea,
   Search,
 } from "./Input";
+export { default as LayoutGridCols } from "./LayoutGridCols";
 export { default as LinkButton } from "./Link";
 export { default as Navigation } from "./Navigation";
 export { default as Section } from "./Section";
