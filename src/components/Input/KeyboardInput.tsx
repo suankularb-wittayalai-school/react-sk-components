@@ -8,8 +8,10 @@ export interface KeyboardInputProps extends SKComponent {
   name: string;
   type: "email" | "number" | "password" | "tel" | "text" | "url";
   label: string;
+  helperMsg?: string;
+  errorMsg?: string;
   onChange: (newValue: string) => void;
-  defaultValue?: string;
+  defaultValue?: string | number;
   attr?: React.InputHTMLAttributes<HTMLInputElement>;
 }
 
@@ -34,18 +36,25 @@ const KeyboardInput = ({
   name,
   type,
   label,
+  helperMsg,
+  errorMsg,
   onChange,
   defaultValue,
   className,
   style,
   attr,
 }: KeyboardInputProps): JSX.Element => {
-  const [inputValue, setInputValue] = useState<string>(defaultValue || "");
+  const [inputValue, setInputValue] = useState<string>(
+    (typeof defaultValue == "number"
+      ? defaultValue.toString()
+      : defaultValue) || ""
+  );
 
   useEffect(() => onChange && onChange(inputValue), [inputValue]);
 
   return (
     <div className={`input ${className || ""}`} style={style}>
+      {/* Input */}
       <input
         aria-labelledby={name}
         onChange={(e) => setInputValue(e.target.value)}
@@ -72,9 +81,19 @@ const KeyboardInput = ({
         type={type}
         value={inputValue}
       />
+      
+      {/* Label */}
       <label className="input__placeholder" htmlFor={name}>
         {label}
       </label>
+
+      {/* Helper message */}
+      {helperMsg && <span className="input__helper">{helperMsg}</span>}
+
+      {/* Error message */}
+      {errorMsg && !helperMsg && (
+        <span className="input__error">{errorMsg}</span>
+      )}
     </div>
   );
 };

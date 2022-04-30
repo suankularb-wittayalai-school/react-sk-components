@@ -8,7 +8,9 @@ export interface NativeInputProps extends SKComponent {
   name: string;
   type: "color" | "date" | "datetime-local" | "month" | "time" | "week";
   label: string;
-  onChange?: Function;
+  helperMsg?: string;
+  errorMsg?: string;
+  onChange: (newValue: string) => void;
   defaultValue?: string | number;
   attr?: React.InputHTMLAttributes<HTMLInputElement>;
 }
@@ -32,18 +34,25 @@ const NativeInput = ({
   name,
   type,
   label,
+  helperMsg,
+  errorMsg,
   onChange,
   defaultValue,
   className,
   style,
   attr,
 }: NativeInputProps): JSX.Element => {
-  const [inputValue, setInputValue] = useState(defaultValue || "");
+  const [inputValue, setInputValue] = useState<string>(
+    (typeof defaultValue == "number"
+      ? defaultValue.toString()
+      : defaultValue) || ""
+  );
 
   useEffect(() => onChange && onChange(inputValue), [inputValue]);
 
   return (
     <div className={`input--persistent ${className || ""}`} style={style}>
+      {/* Input */}
       <input
         aria-labelledby={name}
         onChange={(e) => setInputValue(e.target.value)}
@@ -62,9 +71,19 @@ const NativeInput = ({
         type={type}
         value={inputValue}
       />
+
+      {/* Label */}
       <label className="input--persistent__label" htmlFor={name}>
         {label}
       </label>
+
+      {/* Helper message */}
+      {helperMsg && <span className="input__helper">{helperMsg}</span>}
+
+      {/* Error message */}
+      {errorMsg && !helperMsg && (
+        <span className="input__error">{errorMsg}</span>
+      )}
     </div>
   );
 };
