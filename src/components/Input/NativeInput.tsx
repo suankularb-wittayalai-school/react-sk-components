@@ -78,12 +78,12 @@ const NativeInput = ({
       </label>
 
       {/* Helper message */}
-      {helperMsg && <span className="input__helper">{helperMsg}</span>}
+      {helperMsg && !errorMsg && (
+        <span className="input__helper">{helperMsg}</span>
+      )}
 
       {/* Error message */}
-      {errorMsg && !helperMsg && (
-        <span className="input__error">{errorMsg}</span>
-      )}
+      {errorMsg && <span className="input__error">{errorMsg}</span>}
     </div>
   );
 };
