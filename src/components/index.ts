@@ -20,6 +20,8 @@ export {
   DialogList,
   DialogActions,
 } from "./Dialog";
+export { default as FAB, FABGroup, FABLink } from "./FAB";
+export { default as FormButton } from "./FormButton";
 export { default as Header } from "./Header";
 export { default as MaterialIcon } from "./Icon";
 export {
