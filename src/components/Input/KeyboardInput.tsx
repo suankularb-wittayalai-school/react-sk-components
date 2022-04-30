@@ -21,7 +21,6 @@ export interface KeyboardInputProps extends SKComponent {
  * Focusing on Keyboard Input will move the placeholder up to be the label of the Input
  *
  * @param name Used for ID
- *
  * @param type `input` element type, Keyboard Input supports
  *
  * ```ts
@@ -29,7 +28,9 @@ export interface KeyboardInputProps extends SKComponent {
  * ```
  *
  * @param label The display label/placeholder
- *
+ * @param helperMsg A message displayed below the input, usually guides or provides an example of what to enter in 
+ * @param errorMsg Tells the user what’s wrong with the input
+ * @param onChange Triggered when the input value changes
  * @param defaultValue The value that already is in the `input` element
  */
 const KeyboardInput = ({

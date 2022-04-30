@@ -52,6 +52,7 @@ export interface NavigationProps extends SKComponent {
   currentPath: string;
   navItems: Array<NavItem>;
   LinkElement?: LinkElementType;
+  isTransparent?: boolean;
   attr?: React.AnchorHTMLAttributes<HTMLAnchorElement>;
 }
 
@@ -64,6 +65,7 @@ const Navigation = ({
   currentPath,
   navItems,
   LinkElement,
+  isTransparent,
   className,
   style,
   attr,
@@ -72,7 +74,10 @@ const Navigation = ({
   const cleanedCurrentPath = currentPath.split(/\?|#/)[0];
 
   return (
-    <nav className={`nav ${className || ""}`} style={style}>
+    <nav
+      className={`${isTransparent ? "nav--scrim" : "nav"} ${className || ""}`}
+      style={style}
+    >
       <div className="nav__content">
         {navItems.map((navItem, index) => (
           <NavigationItem

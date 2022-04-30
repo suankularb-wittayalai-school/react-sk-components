@@ -19,15 +19,16 @@ export interface NativeInputProps extends SKComponent {
  * Native Input is meant for inputs that have native UIs
  *
  * @param name Used for ID
- *
  * @param type `input` element type, Keyboard Input supports
- *
+ * 
  * ```ts
  * "color" | "date" | "datetime-local" | "month" | "time" | "week"
  * ```
- *
+ * 
  * @param label The display label
- *
+ * @param helperMsg A message displayed below the input, usually guides or provides an example of what to enter in 
+ * @param errorMsg Tells the user what’s wrong with the input
+ * @param onChange Triggered when the input value changes
  * @param defaultValue The value that already is in the `input` element
  */
 const NativeInput = ({
