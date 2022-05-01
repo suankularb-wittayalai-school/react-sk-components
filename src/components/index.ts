@@ -20,6 +20,8 @@ export {
   DialogList,
   DialogActions,
 } from "./Dialog";
+export { default as FAB, FABGroup, FABLink } from "./FAB";
+export { default as FormButton } from "./FormButton";
 export { default as Header } from "./Header";
 export { default as MaterialIcon } from "./Icon";
 export {
@@ -29,7 +31,8 @@ export {
   TextArea,
   Search,
 } from "./Input";
-export { default as LinkButton } from "./Link";
+export { default as LayoutGridCols } from "./LayoutGridCols";
+export { default as LinkButton } from "./LinkButton";
 export { default as Navigation } from "./Navigation";
 export { default as Section } from "./Section";
 export { default as Table } from "./Table";

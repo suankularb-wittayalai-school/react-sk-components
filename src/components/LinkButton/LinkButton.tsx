@@ -5,35 +5,39 @@ export interface LinkProps extends SKComponent {
   name?: string;
   label?: string | JSX.Element;
   type: "filled" | "outlined" | "text" | "tonal";
-  iconOnly?: boolean;
   icon?: JSX.Element;
   url: string;
   LinkElement?: LinkElementType;
+  iconOnly?: boolean;
+  disabled?: boolean;
   isDangerous?: boolean;
   attr?: React.AnchorHTMLAttributes<HTMLAnchorElement>;
 }
 
 /**
  * A Link Button redirects the user to a page
- * @param name The text in the button
+ * @param name The text label for screenreaders
+ * @param label The text in the button
  * @param type The type of the button, can be "filled" | "outlined" | "text"
  * @param icon An icon in the form of a JSX Element, will be placed in front of the text
  * @param url The location of the page this Link Button leads to
  * @param LinkElement The element wrapping the Anchor (i.e. `Link` from `next/link`)
+ * @param disabled If the button is not available
  * @param isDangerous If the button triggers some dangerous action, makes Button have danger color
  */
 const LinkButton = ({
   name,
   label,
   type,
-  iconOnly,
   icon,
   url,
   LinkElement,
+  iconOnly,
+  disabled,
   isDangerous,
+  attr,
   className,
   style,
-  attr,
 }: LinkProps) =>
   LinkElement ? (
     <LinkElement href={url}>
@@ -48,8 +52,8 @@ const LinkButton = ({
             ? "btn--tonal"
             : "btn--filled"
         } ${iconOnly ? "btn--icon" : icon ? "btn--has-icon" : ""} ${
-          isDangerous ? "btn--danger" : ""
-        } ${className || ""}`}
+          disabled ? "btn--disabled" : ""
+        } ${isDangerous ? "btn--danger" : ""} ${className || ""}`}
         style={style}
       >
         {icon}

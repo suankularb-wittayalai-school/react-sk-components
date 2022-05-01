@@ -8,8 +8,10 @@ export interface KeyboardInputProps extends SKComponent {
   name: string;
   type: "email" | "number" | "password" | "tel" | "text" | "url";
   label: string;
+  helperMsg?: string;
+  errorMsg?: string;
   onChange: (newValue: string) => void;
-  defaultValue?: string;
+  defaultValue?: string | number;
   attr?: React.InputHTMLAttributes<HTMLInputElement>;
 }
 
@@ -19,7 +21,6 @@ export interface KeyboardInputProps extends SKComponent {
  * Focusing on Keyboard Input will move the placeholder up to be the label of the Input
  *
  * @param name Used for ID
- *
  * @param type `input` element type, Keyboard Input supports
  *
  * ```ts
@@ -27,25 +28,34 @@ export interface KeyboardInputProps extends SKComponent {
  * ```
  *
  * @param label The display label/placeholder
- *
+ * @param helperMsg A message displayed below the input, usually guides or provides an example of what to enter in 
+ * @param errorMsg Tells the user what’s wrong with the input
+ * @param onChange Triggered when the input value changes
  * @param defaultValue The value that already is in the `input` element
  */
 const KeyboardInput = ({
   name,
   type,
   label,
+  helperMsg,
+  errorMsg,
   onChange,
   defaultValue,
   className,
   style,
   attr,
 }: KeyboardInputProps): JSX.Element => {
-  const [inputValue, setInputValue] = useState<string>(defaultValue || "");
+  const [inputValue, setInputValue] = useState<string>(
+    (typeof defaultValue == "number"
+      ? defaultValue.toString()
+      : defaultValue) || ""
+  );
 
   useEffect(() => onChange && onChange(inputValue), [inputValue]);
 
   return (
     <div className={`input ${className || ""}`} style={style}>
+      {/* Input */}
       <input
         aria-labelledby={name}
         onChange={(e) => setInputValue(e.target.value)}
@@ -72,9 +82,19 @@ const KeyboardInput = ({
         type={type}
         value={inputValue}
       />
+
+      {/* Label */}
       <label className="input__placeholder" htmlFor={name}>
         {label}
       </label>
+
+      {/* Helper message */}
+      {helperMsg && !errorMsg && (
+        <span className="input__helper">{helperMsg}</span>
+      )}
+
+      {/* Error message */}
+      {errorMsg && <span className="input__error">{errorMsg}</span>}
     </div>
   );
 };
