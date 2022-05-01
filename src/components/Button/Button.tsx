@@ -15,11 +15,12 @@ export interface ButtonProps extends SKComponent {
 
 /**
  * A Button triggers an action
- * @param name The text in the button
- * @param label The text label for screenreaders
+ * @param name The text label for screenreaders
+ * @param label The text in the button
  * @param type The type of the button, can be "filled" | "outlined" | "text"
- * @param iconOnly Has only icon
  * @param icon An icon in the form of a JSX Element, will be placed in front of the text
+ * @param iconOnly Has only icon
+ * @param disabled If the button is not available
  * @param isDangerous If the button triggers some dangerous action, makes Button have danger color
  * @param onClick Triggered on click
  */

@@ -12,7 +12,14 @@ export interface FormButtonProps extends SKComponent {
 }
 
 /**
- *
+ * Form Button is used to control forms by either resetting or submitting them
+ * @param name The text label for screenreaders
+ * @param label The text in the button
+ * @param type Type of action the button triggers, can be "submit" | "reset"
+ * @param appearance The appearance of the button, can be "filled" | "outlined" | "text"
+ * @param disabled If the button is not available
+ * @param isDangerous If the button triggers some dangerous action, makes Button have danger color
+ * @param onClick Triggered on click
  */
 const FormButton = ({
   name,
