@@ -5,33 +5,34 @@ import { ReactNode } from "react";
 import { SKComponent } from "../../utils/types";
 
 export interface DialogSectionProps extends SKComponent {
-  name: string;
-  textElement?: JSX.Element;
+  name?: string;
+  title?: string;
   isDoubleColumn?: boolean;
   children: ReactNode;
 }
 
 /**
  * A section of content inside Dialog
- * @param name The title of this section
- * @param textElement If the header is an element, use this param
+ * @param name The ID of this section
+ * @param title The title of this section
  * @param isDoubleColumn Splits the content into a 2-column grid
  */
 const DialogSection = ({
   name,
-  textElement,
+  title,
   isDoubleColumn,
   children,
   className,
   style,
 }: DialogSectionProps): JSX.Element => (
   <section
-    aria-labelledby={name}
+    aria-labelledby={`${name}-header`}
     className={`dialog__section ${className}`}
+    id={name}
     style={style}
   >
     {/* Header */}
-    <h2 id={name}>{textElement ? textElement : name}</h2>
+    {title && <h2 id={`${name}-header`}>{title}</h2>}
 
     {/* Content */}
     {isDoubleColumn ? (
