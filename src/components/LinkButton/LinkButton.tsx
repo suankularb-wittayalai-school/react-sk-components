@@ -5,10 +5,11 @@ export interface LinkProps extends SKComponent {
   name?: string;
   label?: string | JSX.Element;
   type: "filled" | "outlined" | "text" | "tonal";
-  iconOnly?: boolean;
   icon?: JSX.Element;
   url: string;
   LinkElement?: LinkElementType;
+  iconOnly?: boolean;
+  disabled?: boolean;
   isDangerous?: boolean;
   attr?: React.AnchorHTMLAttributes<HTMLAnchorElement>;
 }
@@ -26,14 +27,15 @@ const LinkButton = ({
   name,
   label,
   type,
-  iconOnly,
   icon,
   url,
   LinkElement,
+  iconOnly,
+  disabled,
   isDangerous,
+  attr,
   className,
   style,
-  attr,
 }: LinkProps) =>
   LinkElement ? (
     <LinkElement href={url}>
@@ -48,8 +50,8 @@ const LinkButton = ({
             ? "btn--tonal"
             : "btn--filled"
         } ${iconOnly ? "btn--icon" : icon ? "btn--has-icon" : ""} ${
-          isDangerous ? "btn--danger" : ""
-        } ${className || ""}`}
+          disabled ? "btn--disabled" : ""
+        } ${isDangerous ? "btn--danger" : ""} ${className || ""}`}
         style={style}
       >
         {icon}

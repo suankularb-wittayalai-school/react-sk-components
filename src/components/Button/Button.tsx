@@ -5,10 +5,11 @@ export interface ButtonProps extends SKComponent {
   name?: string;
   label?: string | JSX.Element;
   type: "filled" | "outlined" | "text" | "tonal";
-  iconOnly?: boolean;
   icon?: JSX.Element;
+  iconOnly?: boolean;
+  disabled?: boolean;
   isDangerous?: boolean;
-  onClick?: Function;
+  onClick?: () => void;
   attr?: React.ButtonHTMLAttributes<HTMLButtonElement>;
 }
 
@@ -26,8 +27,9 @@ const Button = ({
   name,
   label,
   type,
-  iconOnly,
   icon,
+  iconOnly,
+  disabled,
   isDangerous,
   onClick,
   className,
@@ -46,9 +48,9 @@ const Button = ({
         ? "btn--tonal"
         : "btn--filled"
     } ${iconOnly ? "btn--icon" : icon ? "btn--has-icon" : ""} ${
-      isDangerous ? "btn--danger" : ""
-    } ${className || ""}`}
-    disabled={attr?.disabled}
+      disabled ? "btn--disabled" : ""
+    } ${isDangerous ? "btn--danger" : ""} ${className || ""}`}
+    disabled={disabled || attr?.disabled}
     form={attr?.form}
     formAction={attr?.formAction}
     formEncType={attr?.formEncType}
@@ -59,7 +61,7 @@ const Button = ({
     style={style}
     type={attr?.type}
     value={attr?.value}
-    onClick={() => onClick && onClick()}
+    onClick={onClick ? () => onClick() : undefined}
   >
     {icon}
     {label && <span>{label}</span>}
