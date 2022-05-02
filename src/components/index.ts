@@ -27,6 +27,7 @@ export { default as MaterialIcon } from "./Icon";
 export {
   default as KeyboardInput,
   NativeInput,
+  FileInput,
   Dropdown,
   TextArea,
   Search,

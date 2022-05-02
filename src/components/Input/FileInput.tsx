@@ -1,26 +1,37 @@
 // Modules
 import { useEffect, useState } from "react";
 
+// Components
+import MaterialIcon from "../Icon/MaterialIcon";
+
 // Types
 import { SKComponent } from "../../utils/types";
 
 export interface FileInputProps extends SKComponent {
   name: string;
   label: string;
+  noneAttachedMsg?: string;
+  helperMsg?: string;
   onChange?: Function;
+  attr?: React.InputHTMLAttributes<HTMLInputElement>;
 }
 
 /**
  * File Input accepts one file and displays it
  * @param name Used for ID
  * @param label The display label
+ * @param helperMsg A message displayed below the input, usually guides or provides an example of what to enter in
+ * @param onChange Triggered when the input value changes
  */
 const FileInput = ({
   name,
   label,
+  noneAttachedMsg,
+  helperMsg,
   onChange,
   className,
   style,
+  attr,
 }: FileInputProps) => {
   const [file, setFile] = useState<File>();
 
@@ -28,7 +39,13 @@ const FileInput = ({
 
   return (
     <div className={`input--file ${className || ""}`} style={style}>
+      {/* Input */}
       <input
+        accept={attr?.accept}
+        autoComplete={attr?.autoComplete}
+        capture={attr?.capture}
+        disabled={attr?.disabled}
+        form={attr?.form}
         id={name}
         type="file"
         onChange={(e) =>
@@ -38,10 +55,19 @@ const FileInput = ({
       <label htmlFor={name}>
         <div className="input--file__label">{label}</div>
         <div className="input--file__filename">
-          {file ? file.name : "No files attached"}
+          {file ? file.name : noneAttachedMsg ?? "No files attached"}
         </div>
-        <i className="icon input--file__icon">attach_file</i>
+        <div className="input--file__icon">
+          <MaterialIcon icon="attach_file" />
+        </div>
       </label>
+
+      {/* Helper message */}
+      {helperMsg && (
+        <span className="input__helper">
+          {helperMsg}
+        </span>
+      )}
     </div>
   );
 };
