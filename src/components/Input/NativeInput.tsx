@@ -10,6 +10,7 @@ export interface NativeInputProps extends SKComponent {
   label: string;
   helperMsg?: string;
   errorMsg?: string;
+  useAutoMsg?: boolean;
   onChange: (newValue: string) => void;
   defaultValue?: string | number;
   attr?: React.InputHTMLAttributes<HTMLInputElement>;
@@ -20,14 +21,15 @@ export interface NativeInputProps extends SKComponent {
  *
  * @param name Used for ID
  * @param type `input` element type, Keyboard Input supports
- * 
+ *
  * ```ts
  * "color" | "date" | "datetime-local" | "month" | "time" | "week"
  * ```
- * 
+ *
  * @param label The display label
- * @param helperMsg A message displayed below the input, usually guides or provides an example of what to enter in 
- * @param errorMsg Tells the user what’s wrong with the input
+ * @param helperMsg A message displayed below the input, usually guides or provides an example of what to enter in
+ * @param useAutoMsg Tells the user what’s wrong with the input
+ * @param autoError Automatically show helper or error message depending on browser error checking of the input
  * @param onChange Triggered when the input value changes
  * @param defaultValue The value that already is in the `input` element
  */
@@ -37,6 +39,7 @@ const NativeInput = ({
   label,
   helperMsg,
   errorMsg,
+  useAutoMsg,
   onChange,
   defaultValue,
   className,
@@ -80,11 +83,17 @@ const NativeInput = ({
 
       {/* Helper message */}
       {helperMsg && !errorMsg && (
-        <span className="input__helper">{helperMsg}</span>
+        <span className={useAutoMsg ? "input__helper--auto" : "input__helper"}>
+          {helperMsg}
+        </span>
       )}
 
       {/* Error message */}
-      {errorMsg && <span className="input__error">{errorMsg}</span>}
+      {errorMsg && (
+        <span className={useAutoMsg ? "input__error--auto" : "input__error"}>
+          {errorMsg}
+        </span>
+      )}
     </div>
   );
 };
