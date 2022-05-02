@@ -55,7 +55,7 @@ const FormButton = ({
       formTarget={attr?.formTarget}
       id={name}
       name={name}
-      onClick={onClick ? () => onClick() : undefined}
+      onClick={disabled !== false && onClick ? () => onClick() : undefined}
       style={style}
       type={type}
       value={label}

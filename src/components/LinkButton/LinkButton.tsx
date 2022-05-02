@@ -38,24 +38,33 @@ const LinkButton = ({
   attr,
   className,
   style,
-}: LinkProps) =>
-  LinkElement ? (
+}: LinkProps) => {
+  const btnClassName = `${
+    type == "outlined"
+      ? "btn--outlined"
+      : type == "text"
+      ? "btn--text"
+      : type == "tonal"
+      ? "btn--tonal"
+      : "btn--filled"
+  } ${iconOnly ? "btn--icon" : icon ? "btn--has-icon" : ""} ${
+    disabled ? "btn--disabled" : ""
+  } ${isDangerous ? "btn--danger" : ""} ${className || ""}`;
+
+  return disabled ? (
+    <a
+      aria-disabled={true}
+      aria-label={name}
+      className={btnClassName}
+      role="link"
+      style={style}
+    >
+      {icon}
+      {label && <span>{label}</span>}
+    </a>
+  ) : LinkElement ? (
     <LinkElement href={url}>
-      <a
-        aria-label={name}
-        className={`${
-          type == "outlined"
-            ? "btn--outlined"
-            : type == "text"
-            ? "btn--text"
-            : type == "tonal"
-            ? "btn--tonal"
-            : "btn--filled"
-        } ${iconOnly ? "btn--icon" : icon ? "btn--has-icon" : ""} ${
-          disabled ? "btn--disabled" : ""
-        } ${isDangerous ? "btn--danger" : ""} ${className || ""}`}
-        style={style}
-      >
+      <a aria-label={name} className={btnClassName} style={style}>
         {icon}
         {label && <span>{label}</span>}
       </a>
@@ -63,17 +72,7 @@ const LinkButton = ({
   ) : (
     <a
       aria-label={name}
-      className={`${
-        type == "outlined"
-          ? "btn--outlined"
-          : type == "text"
-          ? "btn--text"
-          : type == "tonal"
-          ? "btn--tonal"
-          : "btn--filled"
-      } ${iconOnly ? "btn--icon" : icon ? "btn--has-icon" : ""} ${
-        isDangerous ? "btn--danger" : ""
-      } ${className || ""}`}
+      className={btnClassName}
       download={attr?.download}
       href={url}
       hrefLang={attr?.hrefLang}
@@ -88,5 +87,6 @@ const LinkButton = ({
       {label && <span>{label}</span>}
     </a>
   );
+};
 
 export default LinkButton;
