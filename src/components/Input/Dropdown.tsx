@@ -29,7 +29,7 @@ const DropdownOptions = ({
   optionOnClick: (optionValue: any) => void;
   noOptionsText?: string;
 }) => (
-  <div className="dropdown__options" role="listbox">
+  <>
     {options.length == 0 ? (
       <button disabled>{noOptionsText || "No options"}</button>
     ) : (
@@ -57,7 +57,7 @@ const DropdownOptions = ({
         )
       )
     )}
-  </div>
+  </>
 );
 
 export interface DropdownProps extends SKComponent {
