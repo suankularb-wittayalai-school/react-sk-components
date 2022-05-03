@@ -8,6 +8,7 @@ export interface DialogSectionProps extends SKComponent {
   name?: string;
   title?: string;
   isDoubleColumn?: boolean;
+  hasNoGap?: boolean;
   children: ReactNode;
 }
 
@@ -21,6 +22,7 @@ const DialogSection = ({
   name,
   title,
   isDoubleColumn,
+  hasNoGap,
   children,
   className,
   style,
@@ -36,7 +38,9 @@ const DialogSection = ({
 
     {/* Content */}
     {isDoubleColumn ? (
-      <div className="dialog__columns">{children}</div>
+      <div className={hasNoGap ? "dialog__columns--no-gap" : "dialog__columns"}>
+        {children}
+      </div>
     ) : (
       children
     )}
