@@ -92,7 +92,11 @@ const KeyboardInput = ({
       </label>
 
       {/* Helper message */}
-      {helperMsg && !errorMsg && (
+      {(useAutoMsg
+        ? // If auto message is on, don’t check for error message
+          helperMsg
+        : // Else, show helper message only when there is no error message
+          helperMsg && !errorMsg) && (
         <span className={useAutoMsg ? "input__helper--auto" : "input__helper"}>
           {helperMsg}
         </span>

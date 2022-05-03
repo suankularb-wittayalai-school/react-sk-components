@@ -13,6 +13,7 @@ export interface FileInputProps extends SKComponent {
   noneAttachedMsg?: string;
   helperMsg?: string;
   onChange?: Function;
+  defaultValue?: File;
   attr?: React.InputHTMLAttributes<HTMLInputElement>;
 }
 
@@ -22,6 +23,7 @@ export interface FileInputProps extends SKComponent {
  * @param label The display label
  * @param helperMsg A message displayed below the input, usually guides or provides an example of what to enter in
  * @param onChange Triggered when the input value changes
+ * @param defaultValue The value that already is in the `input` element
  */
 const FileInput = ({
   name,
@@ -29,11 +31,14 @@ const FileInput = ({
   noneAttachedMsg,
   helperMsg,
   onChange,
+  defaultValue,
   className,
   style,
   attr,
 }: FileInputProps) => {
   const [file, setFile] = useState<File>();
+
+  useEffect(() => setFile(defaultValue), [defaultValue]);
 
   useEffect(() => onChange && onChange(file), [file]);
 
@@ -63,11 +68,7 @@ const FileInput = ({
       </label>
 
       {/* Helper message */}
-      {helperMsg && (
-        <span className="input__helper">
-          {helperMsg}
-        </span>
-      )}
+      {helperMsg && <span className="input__helper">{helperMsg}</span>}
     </div>
   );
 };
