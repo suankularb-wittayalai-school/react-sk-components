@@ -61,7 +61,7 @@ const FileInput = ({
           {file ? file.name : noneAttachedMsg ?? "No files attached"}
         </div>
         <div className="input--file__icon">
-          <MaterialIcon icon="attach_file" />
+          <MaterialIcon icon="attach_file" allowCustomSize />
         </div>
       </label>
 
