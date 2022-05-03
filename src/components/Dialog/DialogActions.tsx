@@ -7,6 +7,7 @@ import { SKComponent } from "../../utils/types";
 export type DialogAction = {
   name: string;
   type: "close" | "submit";
+  disabled?: boolean;
   isDangerous?: boolean;
 };
 
@@ -34,7 +35,7 @@ const DialogActions = ({
         key={action.name}
         type="text"
         label={action.name}
-        className={action.isDangerous ? "btn--danger" : undefined}
+        disabled={action.disabled}
         onClick={() =>
           action.type == "close"
             ? onClose()
@@ -42,6 +43,7 @@ const DialogActions = ({
             ? onSubmit()
             : undefined
         }
+        className={action.isDangerous ? "btn--danger" : undefined}
       />
     ))}
   </div>
