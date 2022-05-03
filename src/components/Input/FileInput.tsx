@@ -12,7 +12,7 @@ export interface FileInputProps extends SKComponent {
   label: string;
   noneAttachedMsg?: string;
   helperMsg?: string;
-  onChange?: Function;
+  onChange?: (newValue: File) => void;
   defaultValue?: File;
   attr?: React.InputHTMLAttributes<HTMLInputElement>;
 }
@@ -36,11 +36,9 @@ const FileInput = ({
   style,
   attr,
 }: FileInputProps) => {
-  const [file, setFile] = useState<File>();
+  const [file, setFile] = useState<File | undefined>(defaultValue);
 
-  useEffect(() => setFile(defaultValue), [defaultValue]);
-
-  useEffect(() => onChange && onChange(file), [file]);
+  useEffect(() => onChange && file && onChange(file), [file]);
 
   return (
     <div className={`input--file ${className || ""}`} style={style}>
