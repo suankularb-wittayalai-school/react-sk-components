@@ -62,7 +62,7 @@ const Button = ({
     style={style}
     type={attr?.type}
     value={attr?.value}
-    onClick={disabled !== false && onClick ? () => onClick() : undefined}
+    onClick={onClick ? () => onClick() : undefined}
   >
     {icon}
     {label && <span>{label}</span>}
