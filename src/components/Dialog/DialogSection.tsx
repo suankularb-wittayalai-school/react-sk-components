@@ -41,6 +41,8 @@ const DialogSection = ({
       <div className={hasNoGap ? "dialog__columns--no-gap" : "dialog__columns"}>
         {children}
       </div>
+    ) : hasNoGap ? (
+      <div>{children}</div>
     ) : (
       children
     )}
