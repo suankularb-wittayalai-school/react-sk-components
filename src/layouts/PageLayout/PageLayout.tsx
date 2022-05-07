@@ -15,6 +15,7 @@ export interface PageLayoutProps extends SKComponent {
   currentPath: string;
   navItems: Array<NavItem>;
   LinkElement?: LinkElementType;
+  navIsTransparent?: boolean;
   children: ReactNode;
 }
 
@@ -22,11 +23,14 @@ export interface PageLayoutProps extends SKComponent {
  * The layout shared among all pages
  * @param currentPath The current path of the application, can include queries and fragments
  * @param navItems A list of navigation items, each consists of name, icon, and URL; should not be longer than 5 items
+ * @param LinkElement The element wrapping the Anchor (i.e. `Link` from `next/link`)
+ * @param navIsTransparent If there is no background on Navigation
  */
 const PageLayout = ({
   currentPath,
   navItems,
   LinkElement,
+  navIsTransparent,
   children,
   className,
   style,
@@ -36,6 +40,7 @@ const PageLayout = ({
       currentPath={currentPath}
       navItems={navItems}
       LinkElement={LinkElement}
+      isTransparent={navIsTransparent}
     />
     {children}
   </div>
