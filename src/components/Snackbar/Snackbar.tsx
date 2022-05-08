@@ -20,7 +20,17 @@ const Snackbar = ({
   isStacked,
   isAboveFAB,
 }: SnackbarProps): JSX.Element => (
-  <div className="snackbar" role="status">
+  <div
+    className={
+      isStacked || isAboveFAB
+        ? [
+            isStacked && "snackbar--stacked",
+            isAboveFAB && "snackbar--above-fab",
+          ].join(" ")
+        : "snackbar"
+    }
+    role="status"
+  >
     <p className="snackbar__label">{text}</p>
     {action && (
       <Button
