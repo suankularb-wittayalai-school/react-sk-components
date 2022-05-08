@@ -34,6 +34,7 @@ export {
   LinkButton,
   Navigation,
   Section,
+  Snackbar,
   Table,
   Title,
   XScrollContent,
