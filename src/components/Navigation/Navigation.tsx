@@ -7,6 +7,9 @@ import {
 
 /**
  * An item inside of Navigation Bar
+ * @param active Indicate if this Navigation Item is the current one
+ * @param navItem Information about this Navigation Item
+ * @param LinkElement The element wrapping the Anchor (i.e. `Link` from `next/link`)
  */
 const NavigationItem = ({
   active,
@@ -60,6 +63,8 @@ export interface NavigationProps extends SKComponent {
  * A responsive Navigation bar
  * @param currentPath The current path of the application, can include queries and fragments
  * @param navItems A list of navigation items, each consists of name, icon, and URL; should not be longer than 5 items
+ * @param LinkElement The element wrapping the Anchor (i.e. `Link` from `next/link`)
+ * @param isTransparent If there is no background
  */
 const Navigation = ({
   currentPath,
