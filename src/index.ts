@@ -35,6 +35,7 @@ export {
   Navigation,
   Section,
   Snackbar,
+  SnackbarManager,
   Table,
   Title,
   XScrollContent,

@@ -36,7 +36,7 @@ export { default as LayoutGridCols } from "./LayoutGridCols";
 export { default as LinkButton } from "./LinkButton";
 export { default as Navigation } from "./Navigation";
 export { default as Section } from "./Section";
-export { default as Snackbar } from "./Snackbar";
+export { default as Snackbar, SnackbarManager } from "./Snackbar";
 export { default as Table } from "./Table";
 export { default as Title } from "./Title";
 export { default as XScrollContent } from "./XScrollContent";
