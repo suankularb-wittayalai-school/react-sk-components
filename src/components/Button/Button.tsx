@@ -1,4 +1,5 @@
 // Types
+import { classNames } from "../../utils/helpers/elements";
 import { SKComponent } from "../../utils/types";
 
 export interface ButtonProps extends SKComponent {
@@ -40,17 +41,20 @@ const Button = ({
   <button
     aria-label={name}
     autoFocus={attr?.autoFocus}
-    className={`${
+    className={classNames([
+      "btn",
       type == "outlined"
         ? "btn--outlined"
         : type == "text"
         ? "btn--text"
         : type == "tonal"
         ? "btn--tonal"
-        : "btn--filled"
-    } ${iconOnly ? "btn--icon" : icon ? "btn--has-icon" : ""} ${
-      disabled ? "btn--disabled" : ""
-    } ${isDangerous ? "btn--danger" : ""} ${className || ""}`}
+        : "btn--filled",
+      iconOnly ? "btn--icon" : icon && "btn--has-icon",
+      disabled && "btn--disabled",
+      isDangerous && "btn--danger",
+      className,
+    ])}
     disabled={disabled || attr?.disabled}
     form={attr?.form}
     formAction={attr?.formAction}

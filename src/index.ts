@@ -1,6 +1,7 @@
 import "@suankularb-components/css/dist/css/suankularb-components.min.css";
 
 export {
+  Banner,
   Button,
   Card,
   CardActions,
