@@ -1,4 +1,5 @@
 // Types
+import { classNames } from "../../utils/helpers/elements";
 import { SKComponent } from "../../utils/types";
 
 export interface MaterialIconProps extends SKComponent {
@@ -8,7 +9,7 @@ export interface MaterialIconProps extends SKComponent {
 }
 
 /**
- * A font implementation of Google’s Material Design Icons
+ * A font implementation of Google’s Material Symbols
  * @param icon The icon text as seen in [Google Fonts](https://fonts.google.com/icons)
  * @param type `"filled" | "outlined"`
  */
@@ -21,9 +22,12 @@ const MaterialIcon = ({
 }: MaterialIconProps) => (
   <i
     aria-hidden
-    className={`${type == "outlined" ? "icon--outlined" : "icon"} ${
-      allowCustomSize ? "icon--custom-size" : ""
-    } ${className || ""}`}
+    className={classNames([
+      "icon",
+      type == "filled" && "icon--filled",
+      allowCustomSize && "icon--custom-size",
+      className,
+    ])}
     style={style}
     translate="no"
   >
