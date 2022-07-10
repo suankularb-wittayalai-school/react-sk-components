@@ -17,7 +17,7 @@ const TitleIcons = ({
   backIcon,
   LinkElement,
 }: {
-  pageIcon: JSX.Element | string;
+  pageIcon: JSX.Element;
   backGoesTo: string | Function;
   backIcon?: JSX.Element;
   LinkElement?: LinkElementType;
@@ -41,23 +41,15 @@ const TitleIcons = ({
           <BackIconElement />
         </a>
       )}
-      <div className="title__icons__page">
-        {typeof pageIcon == "string" ? (
-          <i className="icon" translate="no">
-            {pageIcon}
-          </i>
-        ) : (
-          pageIcon
-        )}
-      </div>
+      <div className="title__icons__page">{pageIcon}</div>
     </div>
   );
 };
 
 export interface TitleProps extends SKComponent {
   name: { title: string; subtitle?: string };
-  pageIcon: JSX.Element | string;
-  backGoesTo: string | Function;
+  pageIcon: JSX.Element;
+  backGoesTo?: string | Function;
   backIcon?: JSX.Element;
   LinkElement?: LinkElementType;
 }
@@ -84,12 +76,14 @@ const Title = ({
 }: TitleProps) => (
   <header className={`title ${className || ""}`} style={style}>
     <div className="title__content">
-      <TitleIcons
-        pageIcon={pageIcon}
-        backGoesTo={backGoesTo}
-        backIcon={backIcon}
-        LinkElement={LinkElement}
-      />
+      {backGoesTo && (
+        <TitleIcons
+          pageIcon={pageIcon}
+          backGoesTo={backGoesTo}
+          backIcon={backIcon}
+          LinkElement={LinkElement}
+        />
+      )}
       <div className="title__text">
         <h1>{name.title}</h1>
         {name.subtitle && <p>{name.subtitle}</p>}
