@@ -34,6 +34,7 @@ export {
   LayoutGridCols,
   LinkButton,
   Navigation,
+  Noticebar,
   Section,
   Snackbar,
   SnackbarManager,
