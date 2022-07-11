@@ -103,7 +103,7 @@ const Dropdown = ({
   const [selectedItemValue, setSelectedItemValue] = useState<
     DropdownOptionType["value"]
   >(
-    defaultValue
+    defaultValue && options.find((option) => option.value)
       ? defaultValue
       : options.length > 0
       ? options[0].value
@@ -154,6 +154,19 @@ const Dropdown = ({
       setCurrKeyCode(undefined);
     }
   }, [currKeyCode]);
+
+  // Reset selection when options change
+  useEffect(
+    () =>
+      setSelectedItemValue(
+        defaultValue && options.find((option) => option.value)
+          ? defaultValue
+          : options.length > 0
+          ? options[0].value
+          : undefined
+      ),
+    [options]
+  );
 
   // Renders Dropdown
   return (
