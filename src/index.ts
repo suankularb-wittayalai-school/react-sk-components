@@ -35,6 +35,7 @@ export {
   LinkButton,
   Navigation,
   Noticebar,
+  NoticebarManager,
   Section,
   Snackbar,
   SnackbarManager,

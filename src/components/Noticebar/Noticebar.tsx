@@ -1,24 +1,32 @@
+// Modules
+import { motion } from "framer-motion";
+
 // Components
 import { ActionsChildren } from "../Actions";
 
+// Animation
+import { animationTransition } from "../../utils/animations/config";
+
 // Types
+import { ActionsChildrenProps } from "../Actions/ActionsChildren";
 import { BannerAction } from "../Banner/Banner";
 import { LinkElement, SKComponent } from "../../utils/types";
 
 // Helpers
 import { classNames } from "../../utils/helpers/elements";
-import { ActionsChildrenProps } from "../Actions/ActionsChildren";
 
 export interface NoticebarProps extends SKComponent {
+  id: string;
   type: "info" | "notice" | "warning";
   icon?: JSX.Element;
   title?: string;
   message: string | JSX.Element;
-  actions: [BannerAction] | [BannerAction, BannerAction];
+  actions: [] | [BannerAction] | [BannerAction, BannerAction];
   LinkElement?: LinkElement;
 }
 
 const Noticebar = ({
+  id,
   type,
   icon,
   title,
@@ -28,7 +36,12 @@ const Noticebar = ({
   className,
   style,
 }: NoticebarProps): JSX.Element => (
-  <div
+  <motion.div
+    key={id}
+    initial={{ scale: 0.9, opacity: 0 }}
+    animate={{ scale: 1, opacity: 1 }}
+    exit={{ scale: 0.9, opacity: 0 }}
+    transition={animationTransition}
     role="alert"
     className={classNames(["noticebar", `noticebar--${type}`, className])}
     style={style}
@@ -58,7 +71,7 @@ const Noticebar = ({
         LinkElement={LinkElement}
       />
     </div>
-  </div>
+  </motion.div>
 );
 
 export default Noticebar;
