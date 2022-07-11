@@ -5,16 +5,21 @@ import { useEffect, useState } from "react";
 // Components
 import Snackbar from "./Snackbar";
 
-type WaitingSnackbar = { id: string; text: string };
+// Types
+import { SnackbarProps } from "./Snackbar";
+
+type WaitingSnackbar = Omit<SnackbarProps, "onClose" | "isAboveFAB">;
 
 export interface SnackbarManagerProps {
   queue: WaitingSnackbar[];
   setQueue: (newQueue: WaitingSnackbar[]) => void;
+  isAboveFAB?: boolean;
 }
 
 const SnackbarManager = ({
   queue,
   setQueue,
+  isAboveFAB,
 }: SnackbarManagerProps): JSX.Element => {
   const [current, setCurrent] = useState<WaitingSnackbar | null>(null);
   const [internalQueue, setInternalQueue] = useState<WaitingSnackbar[]>([]);
@@ -61,7 +66,13 @@ const SnackbarManager = ({
           <Snackbar
             id={current.id}
             text={current.text}
-            onClose={() => setQueue(queue.slice(1))}
+            action={current.action}
+            isStacked={current.isStacked}
+            isAboveFAB={isAboveFAB}
+            onClose={() => {
+              setCurrent(null);
+              setQueue(queue.slice(1));
+            }}
           />
         )}
       </AnimatePresence>
