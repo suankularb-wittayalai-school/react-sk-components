@@ -1,6 +1,9 @@
 // Modules
 import { useEffect, useState } from "react";
 
+// Helpers
+import { numStringToString } from "../../utils/helpers/converters";
+
 // Types
 import { SKComponent } from "../../utils/types";
 
@@ -49,12 +52,14 @@ const KeyboardInput = ({
   attr,
 }: KeyboardInputProps): JSX.Element => {
   const [inputValue, setInputValue] = useState<string>(
-    (typeof defaultValue == "number"
-      ? defaultValue.toString()
-      : defaultValue) || ""
+    numStringToString(defaultValue)
   );
 
   useEffect(() => onChange && onChange(inputValue), [inputValue]);
+  useEffect(
+    () => setInputValue(numStringToString(defaultValue)),
+    [defaultValue]
+  );
 
   return (
     <div className={`input ${className || ""}`} style={style}>
