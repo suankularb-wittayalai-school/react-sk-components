@@ -31,7 +31,7 @@ const Banner = ({
   actions,
   LinkElement,
 }: BannerProps): JSX.Element => (
-  <section className={classNames(["banner", `banner--${type}`])}>
+  <section role="warning" className={classNames(["banner", `banner--${type}`])}>
     {title && (
       <div className="banner__header">
         {icon}
