@@ -157,19 +157,6 @@ const Dropdown = ({
     }
   }, [currKeyCode]);
 
-  // Reset selection when options change
-  useEffect(
-    () =>
-      setSelectedItemValue(
-        defaultValue && options.find((option) => option.value)
-          ? defaultValue
-          : options.length > 0
-          ? options[0].value
-          : undefined
-      ),
-    [options]
-  );
-
   // Renders Dropdown
   return (
     <div
