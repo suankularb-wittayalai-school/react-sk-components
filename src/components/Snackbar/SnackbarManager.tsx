@@ -57,7 +57,7 @@ const SnackbarManager = ({
       setAccepting(true);
     }
 
-    if (queue.length > 0 && internalQueue.length > 0) goThroughQueue();
+    if (!goingThroughQueue) goThroughQueue();
   }, [internalQueue]);
 
   useEffect(() => {
@@ -66,7 +66,7 @@ const SnackbarManager = ({
         setAccepting(false);
         setInternalQueue(queue.slice(internalQueue.length));
       } else if (queue.length > 0) {
-        setInternalQueue([])
+        setInternalQueue([]);
         setQueue([]);
       }
     } else if (!goingThroughQueue && queue.length > 0) {

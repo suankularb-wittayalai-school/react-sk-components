@@ -5,8 +5,8 @@ import Banner from "./Banner";
 import MaterialIcon from "../Icon";
 
 // Types
-import { LinkElement, SKComponent } from "../../utils/types";
 import { BannerProps } from "./Banner";
+import { LinkElement, SKComponent } from "../../utils/types";
 
 export interface BannerManagerProps extends SKComponent {
   id: string;
