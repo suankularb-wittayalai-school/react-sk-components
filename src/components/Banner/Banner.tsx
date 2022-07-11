@@ -1,9 +1,15 @@
+// Modules
+import { motion } from "framer-motion";
+
 // Components
 import ActionsChildren from "../Actions/ActionsChildren";
 
+// Animations
+import { animationTransition } from "../../utils/animations/config";
+
 // Types
 import { ActionsChildrenProps } from "../Actions/ActionsChildren";
-import { LinkElement as LinkElementType } from "../../utils/types";
+import { LinkElement as LinkElementType, SKComponent } from "../../utils/types";
 
 // Helpers
 import { classNames } from "../../utils/helpers/elements";
@@ -14,7 +20,8 @@ export type BannerAction = {
   isDangerous?: boolean | undefined;
 } & ({ type: "button"; onClick: () => void } | { type: "link"; url: string });
 
-export interface BannerProps {
+export interface BannerProps extends SKComponent {
+  id: string;
   type: "info" | "notice" | "warning";
   icon?: JSX.Element;
   title?: string;
@@ -24,14 +31,26 @@ export interface BannerProps {
 }
 
 const Banner = ({
+  id,
   type,
   icon,
   title,
   supportingText,
   actions,
   LinkElement,
+  className,
+  style,
 }: BannerProps): JSX.Element => (
-  <section role="warning" className={classNames(["banner", `banner--${type}`])}>
+  <motion.section
+    key={id}
+    initial={{ x: 360, opacity: 0 }}
+    animate={{ x: 0, opacity: 1 }}
+    exit={{ x: 360, opacity: 0 }}
+    transition={animationTransition}
+    role="warning"
+    className={classNames(["banner", `banner--${type}`, className])}
+    style={style}
+  >
     {title && (
       <div className="banner__header">
         {icon}
@@ -54,7 +73,7 @@ const Banner = ({
         LinkElement={LinkElement}
       />
     </div>
-  </section>
+  </motion.section>
 );
 
 export default Banner;

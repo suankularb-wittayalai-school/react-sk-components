@@ -38,9 +38,9 @@ const Noticebar = ({
 }: NoticebarProps): JSX.Element => (
   <motion.div
     key={id}
-    initial={{ scale: 0.9, opacity: 0 }}
-    animate={{ scale: 1, opacity: 1 }}
-    exit={{ scale: 0.9, opacity: 0 }}
+    initial={{ x: 360, opacity: 0 }}
+    animate={{ x: 0, opacity: 1 }}
+    exit={{ x: 360, opacity: 0 }}
     transition={animationTransition}
     role="alert"
     className={classNames(["noticebar", `noticebar--${type}`, className])}

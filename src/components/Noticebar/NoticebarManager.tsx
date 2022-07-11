@@ -1,7 +1,7 @@
 import { AnimatePresence } from "framer-motion";
 
 // Components
-import Noticebar from ".";
+import Noticebar from "./Noticebar";
 import MaterialIcon from "../Icon";
 
 // Types
@@ -22,6 +22,7 @@ const NoticebarManager = ({
   <AnimatePresence initial={false}>
     {noticebars.map((noticebar) => (
       <Noticebar
+        key={noticebar.id}
         id={noticebar.id}
         type={noticebar.type}
         icon={

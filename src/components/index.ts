@@ -1,4 +1,4 @@
-export { default as Banner } from "./Banner";
+export { default as Banner, BannerManager } from "./Banner";
 export { default as Button } from "./Button";
 export {
   default as Card,
