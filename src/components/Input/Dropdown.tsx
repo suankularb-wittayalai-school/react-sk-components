@@ -65,6 +65,7 @@ export interface DropdownProps extends SKComponent {
   label: string;
   options: Array<DropdownOptionType>;
   placeholder?: string;
+  helperMsg?: string;
   noOptionsText?: string;
   icon?: { expandMore: JSX.Element; expandLess: JSX.Element };
   onChange?: Function;
@@ -86,6 +87,7 @@ const Dropdown = ({
   options,
   placeholder,
   noOptionsText,
+  helperMsg,
   icon,
   onChange,
   defaultValue,
@@ -103,7 +105,7 @@ const Dropdown = ({
   const [selectedItemValue, setSelectedItemValue] = useState<
     DropdownOptionType["value"]
   >(
-    defaultValue
+    defaultValue && options.find((option) => option.value)
       ? defaultValue
       : options.length > 0
       ? options[0].value
@@ -154,6 +156,19 @@ const Dropdown = ({
       setCurrKeyCode(undefined);
     }
   }, [currKeyCode]);
+
+  // Reset selection when options change
+  useEffect(
+    () =>
+      setSelectedItemValue(
+        defaultValue && options.find((option) => option.value)
+          ? defaultValue
+          : options.length > 0
+          ? options[0].value
+          : undefined
+      ),
+    [options]
+  );
 
   // Renders Dropdown
   return (
@@ -227,6 +242,9 @@ const Dropdown = ({
       <label className="dropdown__label" htmlFor={name}>
         {label}
       </label>
+
+      {/* Helper message */}
+      {helperMsg && <span className="input__helper">{helperMsg}</span>}
     </div>
   );
 };

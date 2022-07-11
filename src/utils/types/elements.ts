@@ -6,7 +6,7 @@ export type LinkElement = ({
   children,
 }: {
   href: string;
-  children: ReactNode;
+  children?: ReactNode;
 }) => JSX.Element;
 
 export type SKComponent = {
