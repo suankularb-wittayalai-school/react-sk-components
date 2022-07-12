@@ -9,7 +9,6 @@ import { BannerProps } from "./Banner";
 import { LinkElement, SKComponent } from "../../utils/types";
 
 export interface BannerManagerProps extends SKComponent {
-  id: string;
   banners: (Omit<BannerProps, "LinkElement"> & { id: string })[];
   LinkElement?: LinkElement;
 }
